@@ -58,7 +58,6 @@ public class AciertoPage extends BasePage {
     public void isLifeInsurancePageOpened() {
         log.info("The page with options for insurance services is opened");
         $(LIFE_INSURANCE_LABEL).shouldBe(visible, Duration.ofSeconds(30));
-        closeWebDriver();
     }
 
     @Step("Click on the button [I'm Interested]")
@@ -66,6 +65,12 @@ public class AciertoPage extends BasePage {
         log.info("Click on I'm interested button with {} index", index);
         $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))).shouldBe(visible, Duration.ofSeconds(25)).click();
         return this;
+    }
+
+    @Step("Closing window acierto to avoid displaying pop up 'Leave the page'")
+    public void closeCurrentWindow() {
+        log.info("Closing window acierto to avoid displaying pop up 'Leave the page'");
+        Selenide.closeWindow();
     }
 
     @Step
