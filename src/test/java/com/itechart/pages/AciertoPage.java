@@ -24,6 +24,7 @@ public class AciertoPage extends BasePage {
     private static final By CALL_ME_ON_THIS_PHONE_BUTTON = By.xpath("(//button[contains(@data-gtm, 'call-me')])[2]");
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
+    private static final By X_BUTTON = By.xpath("//button[contains(@title,'Cerrar')]");
 
     @Step("Open Acierto Main Page")
     public AciertoPage open() {
@@ -58,7 +59,12 @@ public class AciertoPage extends BasePage {
     public void isLifeInsurancePageOpened() {
         log.info("The page with options for insurance services is opened");
         $(LIFE_INSURANCE_LABEL).shouldBe(visible, Duration.ofSeconds(30));
-        closeWebDriver();
+    }
+
+    @Step("Closing window acierto to avoid displaying pop up 'Leave the page'")
+    public void closeCurrentWindow() {
+        log.info("Closing window acierto to avoid displaying pop up 'Leave the page'");
+        Selenide.closeWindow();
     }
 
     @Step("Click on the button [I'm Interested]")
@@ -90,6 +96,15 @@ public class AciertoPage extends BasePage {
     public AciertoPage closeButtonClick() {
         log.info("Click on [Close] button on Grateful modal");
         $(CLOSE_BUTTON).click();
+        return this;
+    }
+
+    @Step
+    public AciertoPage xButtonClick() {
+        log.info("Click on [X] button on Case tab");
+        while ($(X_BUTTON).exists()){
+            $(X_BUTTON).click();
+        }
         return this;
     }
 
