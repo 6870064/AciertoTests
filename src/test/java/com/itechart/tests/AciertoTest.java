@@ -47,6 +47,7 @@ public class AciertoTest extends BaseTest {
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
+        aciertoPage.xButtonClick();
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
