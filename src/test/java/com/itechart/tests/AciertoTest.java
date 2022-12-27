@@ -33,6 +33,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
     }
 
     @Test(description = "Creation of the insurance record with provider AsisaVida and validation it in Salesforce")
@@ -44,6 +45,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -78,6 +80,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -112,6 +115,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -146,6 +150,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -180,6 +185,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -214,6 +220,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -248,6 +255,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -282,6 +290,7 @@ public class AciertoTest extends BaseTest {
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();

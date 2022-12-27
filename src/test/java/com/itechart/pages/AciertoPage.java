@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 @Log4j2
 public class AciertoPage extends BasePage {
 
-    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
+    private final String ACIERTO_URL = "https://stg.acierto.com/seguros-vida/comparador/";
     private static final String INFO_DETAILS_LOCATOR = "//*[text()='%s']";
     private static final String DATA_LOCATOR = "[data-gtm=%s]";
     private static final String IM_INTERESTED_BUTTON = "(//button//span[text()='Me interesa'])[%s]";
@@ -58,7 +58,12 @@ public class AciertoPage extends BasePage {
     public void isLifeInsurancePageOpened() {
         log.info("The page with options for insurance services is opened");
         $(LIFE_INSURANCE_LABEL).shouldBe(visible, Duration.ofSeconds(30));
-        closeWebDriver();
+    }
+
+    @Step("Closing window acierto to avoid displaying pop up 'Leave the page'")
+    public void closeCurrentWindow() {
+        log.info("Closing window acierto to avoid displaying pop up 'Leave the page'");
+        Selenide.closeWindow();
     }
 
     @Step("Click on the button [I'm Interested]")
