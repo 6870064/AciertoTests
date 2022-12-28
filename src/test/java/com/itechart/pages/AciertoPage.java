@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 @Log4j2
 public class AciertoPage extends BasePage {
 
-    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
+    private final String ACIERTO_URL = "https://stg.acierto.com/seguros-vida/comparador/";
     private static final String INFO_DETAILS_LOCATOR = "//*[text()='%s']";
     private static final String DATA_LOCATOR = "[data-gtm=%s]";
     private static final String IM_INTERESTED_BUTTON = "(//button//span[text()='Me interesa'])[%s]";
