@@ -2,6 +2,7 @@ package com.itechart.tests;
 
 import com.itechart.base.BaseTest;
 import io.github.dzmitryrak.enums.SortOrder;
+import io.github.dzmitryrak.pages.Panel;
 import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class AciertoTest extends BaseTest {
     private final String INSURANCE_PERIOD = "Anual";
     private final String PERSON_GENDER = "Hombre";
     private String tabName = "Detalles";
-    private String selectFilterValue = "Cases Created Today";
+    private String selectFilterValue = "Acierto child case queue";
     private final String[] companiesArray = new String[]{"Asisa Vida", "Axa Vida Protec", "Santalucía Vida",
             "FIATC Vida", "Credit Andorra Life", "Zurich Vida", "Previs Vida", "Allianz Vida Riesgo"};
     private String columnTitle = "Número del caso";
@@ -38,14 +39,14 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider AsisaVida and validation it in Salesforce")
     public void aciertoTestAsisaVidaValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
-                .imInterestedButtonClick(1)
-                .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
-                .isGratitudeModalDisplayed();
-        aciertoPage.closeButtonClick()
-                .isLifeInsurancePageOpened();
-        aciertoPage.closeCurrentWindow();
+//        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+//                .imInterestedButtonClick(1)
+//                .isFinalModalDisplayed();
+//        aciertoPage.callMeOnThisPhoneButtonClick()
+//                .isGratitudeModalDisplayed();
+//        aciertoPage.closeButtonClick()
+//                .isLifeInsurancePageOpened();
+//        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
@@ -56,19 +57,24 @@ public class AciertoTest extends BaseTest {
         listView.openObjectFromList(1);
         detailsPage.waitTillOpened(tabName);
         detailsPage.clickTab(tabName);
-        Map<String, String> userdata = new HashMap<>() {
+        Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
                 put("Teléfono del cliente", EXPECTED_PHONE);
-                //TODO раскомментировать после доработки sfHelper
-//                put("Teléfono", EXPECTED_PHONE);
-//                put("Email", EMAIL);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Nombre del producto", companiesArray[0]);
             }
         };
-        detailsPage.validate(userdata);
+        detailsPage.validate(userDetailsData);
+
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[0]);
+            }
+        };
+
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", EXPECTED_PHONE);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Axa Vida Protec' and validation it in Salesforce")
