@@ -2,7 +2,6 @@ package com.itechart.tests;
 
 import com.itechart.base.BaseTest;
 import io.github.dzmitryrak.enums.SortOrder;
-import io.github.dzmitryrak.pages.Panel;
 import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,9 +52,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
@@ -93,9 +92,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
             {
@@ -128,9 +127,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
             {
@@ -163,9 +162,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
             {
@@ -198,9 +197,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
             {
@@ -233,9 +232,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
             {
@@ -268,9 +267,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
             {
@@ -303,9 +302,9 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.DESC.getText());
+        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
         listView.openObjectFromList(1);
-        detailsPage.waitTillOpened(tabName);
+        detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
             {
