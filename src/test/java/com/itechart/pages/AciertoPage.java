@@ -60,17 +60,17 @@ public class AciertoPage extends BasePage {
         $(LIFE_INSURANCE_LABEL).shouldBe(visible, Duration.ofSeconds(30));
     }
 
-    @Step("Closing window acierto to avoid displaying pop up 'Leave the page'")
-    public void closeCurrentWindow() {
-        log.info("Closing window acierto to avoid displaying pop up 'Leave the page'");
-        Selenide.closeWindow();
-    }
-
     @Step("Click on the button [I'm Interested]")
     public AciertoPage imInterestedButtonClick(int index) {
         log.info("Click on I'm interested button with {} index", index);
         $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))).shouldBe(visible, Duration.ofSeconds(25)).click();
         return this;
+    }
+
+    @Step("Closing window acierto to avoid displaying pop up 'Leave the page'")
+    public void closeCurrentWindow() {
+        log.info("Closing window acierto to avoid displaying pop up 'Leave the page'");
+        Selenide.closeWindow();
     }
 
     @Step
