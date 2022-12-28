@@ -38,14 +38,14 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider AsisaVida and validation it in Salesforce")
     public void aciertoTestAsisaVidaValidation() {
-//        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
-//                .imInterestedButtonClick(1)
-//                .isFinalModalDisplayed();
-//        aciertoPage.callMeOnThisPhoneButtonClick()
-//                .isGratitudeModalDisplayed();
-//        aciertoPage.closeButtonClick()
-//                .isLifeInsurancePageOpened();
-//        aciertoPage.closeCurrentWindow();
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+                .imInterestedButtonClick(1)
+                .isFinalModalDisplayed();
+        aciertoPage.callMeOnThisPhoneButtonClick()
+                .isGratitudeModalDisplayed();
+        aciertoPage.closeButtonClick()
+                .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
         homePage.isPageOpened();
