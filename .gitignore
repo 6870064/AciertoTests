@@ -10,6 +10,9 @@ target/
 # Log file
 *.log
 
+# Local configuration file (sdk path, configuration, etc)
+configuration.properties
+
 # BlueJ files
 *.ctxt
 
