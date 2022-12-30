@@ -3,11 +3,15 @@
 target*
 build/
 .idea
+.allure
 
 target/
 
 # Log file
 *.log
+
+# Local configuration file (sdk path, configuration, etc)
+configuration.properties
 
 # BlueJ files
 *.ctxt
@@ -27,6 +31,8 @@ compiler.*
 *.zip
 *.tar.gz
 *.rar
+allure-2.9.0
+.allure
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*

@@ -47,7 +47,7 @@ public class AciertoPage extends BasePage {
     }
 
 
-    @Step("Filling the field with data")
+    @Step("Filling the field {locator} with data {data}")
     public AciertoPage setPersonData(String locator, String data) {
         log.info(String.format("Filling %s field with data %s", locator, data));
         $((String.format(DATA_LOCATOR, locator))).setValue(data);
@@ -60,7 +60,7 @@ public class AciertoPage extends BasePage {
         $(LIFE_INSURANCE_LABEL).shouldBe(visible, Duration.ofSeconds(30));
     }
 
-    @Step("Click on the button [I'm Interested]")
+    @Step("Click on the button [I'm Interested] bith the index {index}")
     public AciertoPage imInterestedButtonClick(int index) {
         log.info("Click on I'm interested button with {} index", index);
         $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))).shouldBe(visible, Duration.ofSeconds(25)).click();
