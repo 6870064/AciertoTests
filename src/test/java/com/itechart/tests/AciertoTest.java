@@ -12,7 +12,8 @@ public class AciertoTest extends BaseTest {
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";
     private final String EMAIL = "acierto1@mailinator.com";
-    private final String PHONE = "911000222";
+    private String randomStr = String.valueOf((int) (Math.random() * 100));
+    private final String PHONE = String.format("921002%s%s%s", randomStr, randomStr, randomStr);
     private final String EXPECTED_PHONE = String.format("+34%s", PHONE);
     private final String INSURANCE_PERIOD = "Anual";
     private final String PERSON_GENDER = "Hombre";
