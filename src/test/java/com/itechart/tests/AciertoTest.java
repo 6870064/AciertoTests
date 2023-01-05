@@ -1,7 +1,6 @@
 package com.itechart.tests;
 
 import com.itechart.base.BaseTest;
-import io.github.dzmitryrak.enums.SortOrder;
 import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +11,7 @@ public class AciertoTest extends BaseTest {
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";
     private final String EMAIL = "acierto1@mailinator.com";
-    private String randomStr = String.valueOf((int) (Math.random() * 1000));
-    private final String PHONE = String.format("921002%s", randomStr);
+    private final String PHONE = String.format("921002%s", RANDOMSTR);
     private final String EXPECTED_PHONE = String.format("+34%s", PHONE);
     private final String INSURANCE_PERIOD = "Anual";
     private final String PERSON_GENDER = "Hombre";
@@ -30,7 +28,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -42,7 +40,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -53,8 +51,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
@@ -82,7 +80,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(2)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -93,8 +91,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle,SortOrder.DESC);
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle,SortOrder.DESC);
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
@@ -117,7 +115,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(3)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -128,8 +126,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
@@ -152,7 +150,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(4)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -163,8 +161,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
@@ -187,7 +185,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(5)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -198,8 +196,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
@@ -222,7 +220,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(6)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -233,8 +231,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
@@ -257,7 +255,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(7)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -268,8 +266,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
@@ -292,7 +290,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
                 .imInterestedButtonClick(8)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -303,8 +301,8 @@ public class AciertoTest extends BaseTest {
         listView.open("Case");
         listView.clickSwitcher();
         listView.selectFilter(selectFilterValue);
-        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
-        listView.openObjectFromList(1);
+//        listView.sortBy(columnTitle, SortOrder.valueOf(SortOrder.DESC.getText()));
+//        listView.openObjectFromList(1);
         detailsPage.waitTillOpened();
         detailsPage.clickTab(tabName);
         Map<String, String> userdata = new HashMap<>() {
