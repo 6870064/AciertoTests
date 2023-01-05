@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class AciertoTest extends BaseTest {
 
-    private final String ZIPCODE = "22007";
+    private final String ZIPCODE = "28012";
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";
     private final String EMAIL = "acierto1@mailinator.com";
