@@ -1,9 +1,11 @@
 package com.itechart.base;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.itechart.pages.*;
 import io.github.dzmitryrak.pages.*;
 import com.itechart.utils.PropertyReader;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
@@ -29,6 +31,10 @@ public abstract class BaseTest {
 
     @BeforeMethod(description = "Open browser")
     public void setUp() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .includeSelenideSteps(false)
+                .savePageSource(false));
         Configuration.baseUrl = propertyReader.getPropertyValueByKey("base.url");
         Configuration.timeout = 5000;
         Configuration.browser = "chrome";
