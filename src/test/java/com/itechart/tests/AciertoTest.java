@@ -29,7 +29,8 @@ public class AciertoTest extends BaseTest {
     @Test(description = "Creation of the insurance record")
     public void acierto() {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
-                .imInterestedButtonClick(1)
+                .scrollTillImInterestedButtonIsVisible(8)
+                .imInterestedButtonClick(8)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();
@@ -321,7 +322,7 @@ public class AciertoTest extends BaseTest {
     @Test(description = "Creation of the insurance record with provider 'Allianz Vida Riesgo' and validation it in Salesforce")
     public void aciertoTestAllianzVidaRiesgoValidation() {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
-                .imInterestedButtonClick(8)
+                .imInterestedButtonClick(8  )
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
                 .isGratitudeModalDisplayed();

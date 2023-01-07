@@ -63,7 +63,14 @@ public class AciertoPage extends BasePage {
         return this;
     }
 
-    @Step("Click on the button [I'm Interested] bith the index {index}")
+    @Step("Scroll the page till the button [I'm Interested] is visible")
+    public AciertoPage scrollTillImInterestedButtonIsVisible(int index) {
+        log.info("Scroll till [I'm interested] button with {} index is visible", index);
+        $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))).scrollIntoView(true);
+        return this;
+    }
+
+    @Step("Click on the button [I'm Interested] with the index {index}")
     public AciertoPage imInterestedButtonClick(int index) {
         log.info("Click on I'm interested button with {} index", index);
         $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))).shouldBe(visible, Duration.ofSeconds(25)).click();
