@@ -4,7 +4,6 @@ import com.itechart.base.BaseTest;
 import com.itechart.pages.CaseDetailsPage;
 import io.github.dzmitryrak.enums.SortOrder;
 import org.testng.annotations.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,8 +13,7 @@ public class AciertoTest extends BaseTest {
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";
     private final String EMAIL = "acierto1@mailinator.com";
-    private final String PHONE = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
-    private final String EXPECTED_PHONE = String.format("+34%s", PHONE);
+    private final String EXPECTED_PHONE = String.format("+34%s", phone);
     private final String PERSONAL_DATA_PAGE = "Fecha de nacimiento";
     private final String INSURANCE_PERIOD = "Anual";
     private final String PERSON_GENDER = "Hombre";
@@ -24,13 +22,11 @@ public class AciertoTest extends BaseTest {
             "FIATC Vida", "Previs Vida", "Allianz Vida Riesgo", "Santalucía Vida"};
     String NEW_INSURANCE_AMOUNT = INSURANCE_AMOUNT.replace("€", "");
     String NEW_INSURANCE_PERIOD = INSURANCE_PERIOD.replace("Anual", "Yearly");
-    private final String tabName = "Detalles";
-    private final String selectFilterValue = "Cases Created Today";
     private final String columnTitle = "Número del caso";
 
     @Test(description = "Creation of the insurance record")
     public void aciertoTest() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -42,7 +38,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record")
     public void aciertoWeCallYouFreeTest() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -54,7 +50,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider AsisaVida and validation it in Salesforce")
     public void aciertoTestAxaVidaProtecValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -94,7 +90,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Axa Vida Protec' and validation it in Salesforce")
     public void aciertoTestAsisaVidaValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(2)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -134,7 +130,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Santalucía Vida' and validation it in Salesforce")
     public void aciertoTestCreditAndorraLifeVidaValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(3)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -174,7 +170,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'FIATC Vida' and validation it in Salesforce")
     public void aciertoTestZurichVidaValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(4)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -214,7 +210,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Credit Andorra Life' and validation it in Salesforce")
     public void aciertoTestFIATCVidaValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(5)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -254,7 +250,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Zurich Vida' and validation it in Salesforce")
     public void aciertoTestPrevisVidaValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(6)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -294,7 +290,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Previs Vida' and validation it in Salesforce")
     public void aciertoTestAllianzVidaRiesgoValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(7)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -334,7 +330,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Allianz Vida Riesgo' and validation it in Salesforce")
     public void aciertoTestSantalucíaVidaValidation() {
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, PHONE)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)

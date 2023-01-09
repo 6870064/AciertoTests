@@ -26,7 +26,7 @@ public class AciertoPage extends BasePage {
     private static final By FUNNEL_CALL_MODAL = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__content')]");
     private static final String CALL_ME_ON_THIS_PHONE_BUTTON = "(//button[contains(@data-gtm, 'call-me')])[%s]";
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
-    private static final By CLOSE_BUTTON = By.xpath("//*[contains(@class, 'it-btn it-btn--button-48 it-btn--primary')]");
+    private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
     private static final By FUNNEL_CALL_PHONE = By.xpath("//input[@data-gtm='phone']");
     private static By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
 

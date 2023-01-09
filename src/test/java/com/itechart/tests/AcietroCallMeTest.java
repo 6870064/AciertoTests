@@ -3,7 +3,6 @@ package com.itechart.tests;
 import com.itechart.base.BaseTest;
 import io.github.dzmitryrak.enums.SortOrder;
 import org.testng.annotations.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,11 +10,8 @@ import static org.testng.Assert.assertEquals;
 
 public class AcietroCallMeTest extends BaseTest {
     private String columnTitle = "Número del caso";
-    private String selectFilterValue = "Cases Created Today";
-    private final String phone = String.format("921002%s", randomStr);
     private final String columnNameOwner = "Alias del propietario del caso";
     private final String columnEmail = "Correo electrónico Web";
-    private String tabName = "Detalles";
 
     @Test(description = "Creation of the insurance record")
     public void acietroCallMeFirstPage() {
@@ -24,8 +20,8 @@ public class AcietroCallMeTest extends BaseTest {
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
                 .callMeOnThisPhoneButtonClick(2)
-                .isGratitudeModalDisplayed();
-        aciertoPage.closeCurrentWindow();
+                .closeButtonClick()
+                .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD)
                 .isPageOpened();
