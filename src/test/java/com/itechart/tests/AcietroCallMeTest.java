@@ -24,8 +24,8 @@ public class AcietroCallMeTest extends BaseTest {
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
                 .callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
-                .closeCurrentWindow();
+                .isGratitudeModalDisplayed();
+        aciertoPage.closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD)
                 .isPageOpened();
