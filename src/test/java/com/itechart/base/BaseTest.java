@@ -27,7 +27,11 @@ public abstract class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = System.getProperty("username", propertyReader.getPropertyValueByKey("username"));
     protected final String PASSWORD = System.getProperty("password", propertyReader.getPropertyValueByKey("password"));
-    protected String randomSTR = String.valueOf((int) (Math.random() * 1000));
+    protected String randomStr = String.valueOf((int) (Math.random() * 10));
+    public String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+    public String tabName = "Detalles";
+    public String selectFilterValue = "Cases Created Today";
+    public String columnTitle = "Número del caso";
 
     @BeforeMethod(description = "Open browser")
     public void setUp() {
