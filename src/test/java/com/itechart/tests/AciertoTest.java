@@ -22,7 +22,6 @@ public class AciertoTest extends BaseTest {
             "FIATC Vida", "Previs Vida", "Allianz Vida Riesgo", "Santalucía Vida"};
     String NEW_INSURANCE_AMOUNT = INSURANCE_AMOUNT.replace("€", "");
     String NEW_INSURANCE_PERIOD = INSURANCE_PERIOD.replace("Anual", "Yearly");
-    private final String columnTitle = "Número del caso";
 
     @Test(description = "Creation of the insurance record")
     public void aciertoTest() {

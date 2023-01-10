@@ -9,7 +9,6 @@ import java.util.Map;
 import static org.testng.Assert.assertEquals;
 
 public class AcietroCallMeTest extends BaseTest {
-    private String columnTitle = "Número del caso";
     private final String columnNameOwner = "Alias del propietario del caso";
     private final String columnEmail = "Correo electrónico Web";
 
