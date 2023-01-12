@@ -16,7 +16,7 @@ public class AcietroCallMeTest extends BaseTest {
     public void acietroCallMeFirstPage() {
 
         String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = String.format("92%s10%s02%s", randomStr+1,randomStr+2,randomStr+3);
         aciertoPage.open()
                 .callMeOnThisPhoneButtonClick(1)
                 .isFunnelCallModalDisplayed();
