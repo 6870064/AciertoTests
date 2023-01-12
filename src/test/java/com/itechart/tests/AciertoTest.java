@@ -13,7 +13,6 @@ public class AciertoTest extends BaseTest {
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";
     private final String EMAIL = "acierto1@mailinator.com";
-    private final String EXPECTED_PHONE = String.format("+34%s", phone);
     private final String PERSONAL_DATA_PAGE = "Fecha de nacimiento";
     private final String INSURANCE_PERIOD = "Anual";
     private final String PERSON_GENDER = "Hombre";
@@ -25,6 +24,8 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record")
     public void aciertoTest() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
@@ -37,6 +38,8 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record")
     public void aciertoWeCallYouFreeTest() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
@@ -49,6 +52,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider AsisaVida and validation it in Salesforce")
     public void aciertoTestAxaVidaProtecValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
@@ -71,7 +77,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente", expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
@@ -89,6 +95,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Axa Vida Protec' and validation it in Salesforce")
     public void aciertoTestAsisaVidaValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(2)
                 .isFinalModalDisplayed();
@@ -111,7 +120,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente", expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
@@ -129,6 +138,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Santalucía Vida' and validation it in Salesforce")
     public void aciertoTestCreditAndorraLifeVidaValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(3)
                 .isFinalModalDisplayed();
@@ -151,7 +163,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente", expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
@@ -169,6 +181,10 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'FIATC Vida' and validation it in Salesforce")
     public void aciertoTestZurichVidaValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
+
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(4)
                 .isFinalModalDisplayed();
@@ -191,7 +207,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente", expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
@@ -209,6 +225,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Credit Andorra Life' and validation it in Salesforce")
     public void aciertoTestFIATCVidaValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(5)
                 .isFinalModalDisplayed();
@@ -231,7 +250,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente", expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
@@ -249,6 +268,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Zurich Vida' and validation it in Salesforce")
     public void aciertoTestPrevisVidaValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(6)
                 .isFinalModalDisplayed();
@@ -271,7 +293,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente", expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
@@ -283,12 +305,15 @@ public class AciertoTest extends BaseTest {
 //                put("Nombre del producto", companiesArray[5]);
 //            }
 //        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", EXPECTED_PHONE);
+//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono",  expectedPhone);
 //        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Previs Vida' and validation it in Salesforce")
     public void aciertoTestAllianzVidaRiesgoValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .imInterestedButtonClick(7)
                 .isFinalModalDisplayed();
@@ -311,7 +336,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente", expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
@@ -323,12 +348,15 @@ public class AciertoTest extends BaseTest {
 //                put("Nombre del producto", companiesArray[6]);
 //            }
 //        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", EXPECTED_PHONE);
+//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono",  expectedPhone);
 //        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Allianz Vida Riesgo' and validation it in Salesforce")
     public void aciertoTestSantalucíaVidaValidation() {
+        String randomStr = String.valueOf((int) (Math.random() * 10));
+        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
@@ -351,7 +379,7 @@ public class AciertoTest extends BaseTest {
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", EMAIL);
-                put("Teléfono del cliente", EXPECTED_PHONE);
+                put("Teléfono del cliente",  expectedPhone);
             }
         };
         //TODO раскомментировать после фикса методов валидиции полей
