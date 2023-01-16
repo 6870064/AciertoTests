@@ -143,8 +143,9 @@ public class AciertoPage extends BasePage {
         return $(FUNNEL_CALL_MODAL).isDisplayed();
     }
 
-    @Step
+    @Step("Entering mobile phone number: {phone}")
     public AciertoPage enterPhoneFunnelCall(String phone){
+        log.info("Entering mobile phone number: {phone}");
         $(FUNNEL_CALL_PHONE).setValue(phone);
         $(FUNNEL_CALL_AGREEMENT).click();
         return this;

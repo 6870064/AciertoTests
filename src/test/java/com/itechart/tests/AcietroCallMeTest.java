@@ -15,8 +15,7 @@ public class AcietroCallMeTest extends BaseTest {
     @Test(description = "Creation of the insurance record")
     public void acietroCallMeFirstPage() {
 
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         aciertoPage.open()
                 .callMeOnThisPhoneButtonClick(1)
                 .isFunnelCallModalDisplayed();

@@ -1,5 +1,6 @@
 package com.itechart.tests;
 
+import com.github.javafaker.Faker;
 import com.itechart.base.BaseTest;
 import com.itechart.pages.CaseDetailsPage;
 import io.github.dzmitryrak.enums.SortOrder;
@@ -12,7 +13,7 @@ public class AciertoTest extends BaseTest {
     private final String ZIPCODE = "28012";
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";
-    private final String EMAIL = "acierto1@mailinator.com";
+    String email = new Faker().internet().emailAddress();
     private final String PERSONAL_DATA_PAGE = "Fecha de nacimiento";
     private final String INSURANCE_PERIOD = "Anual";
     private final String PERSON_GENDER = "Hombre";
@@ -24,9 +25,8 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record")
     public void aciertoTest() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        String phone = phoneGenerator();
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -38,9 +38,8 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record")
     public void aciertoWeCallYouFreeTest() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        String phone = phoneGenerator();
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -52,10 +51,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider AsisaVida and validation it in Salesforce")
     public void aciertoTestAxaVidaProtecValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -76,7 +74,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente", expectedPhone);
             }
         };
@@ -95,10 +93,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Axa Vida Protec' and validation it in Salesforce")
     public void aciertoTestAsisaVidaValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(2)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -119,7 +116,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente", expectedPhone);
             }
         };
@@ -138,10 +135,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Santalucía Vida' and validation it in Salesforce")
     public void aciertoTestCreditAndorraLifeVidaValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(3)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -162,7 +158,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente", expectedPhone);
             }
         };
@@ -181,11 +177,10 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'FIATC Vida' and validation it in Salesforce")
     public void aciertoTestZurichVidaValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
 
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(4)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -206,7 +201,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente", expectedPhone);
             }
         };
@@ -225,10 +220,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Credit Andorra Life' and validation it in Salesforce")
     public void aciertoTestFIATCVidaValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(5)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -249,7 +243,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente", expectedPhone);
             }
         };
@@ -268,10 +262,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Zurich Vida' and validation it in Salesforce")
     public void aciertoTestPrevisVidaValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(6)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -292,7 +285,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente", expectedPhone);
             }
         };
@@ -311,10 +304,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Previs Vida' and validation it in Salesforce")
     public void aciertoTestAllianzVidaRiesgoValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(7)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -335,7 +327,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente", expectedPhone);
             }
         };
@@ -354,10 +346,9 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Allianz Vida Riesgo' and validation it in Salesforce")
     public void aciertoTestSantalucíaVidaValidation() {
-        String randomStr = String.valueOf((int) (Math.random() * 10));
-        String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
+        String phone = phoneGenerator();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, EMAIL, phone)
+        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -378,7 +369,7 @@ public class AciertoTest extends BaseTest {
         CaseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
-                put("Correo electrónico Web", EMAIL);
+                put("Correo electrónico Web", email);
                 put("Teléfono del cliente",  expectedPhone);
             }
         };

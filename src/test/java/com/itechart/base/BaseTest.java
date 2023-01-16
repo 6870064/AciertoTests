@@ -67,4 +67,11 @@ public abstract class BaseTest {
             log.debug(ex.getStackTrace());
         }
     }
+
+    public String phoneGenerator() {
+        String phone = String.format("92%03d%04d",
+                (int) Math.floor(999*Math.random()),
+                (int) Math.floor(9999*Math.random()));
+        return phone;
+    }
 }
