@@ -2,11 +2,9 @@ package com.itechart.tests;
 
 import com.github.javafaker.Faker;
 import com.itechart.base.BaseTest;
-import com.itechart.pages.AciertoPage;
 import io.github.dzmitryrak.enums.SortOrder;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,8 +27,7 @@ public class AcietroCallMeTest extends BaseTest {
         aciertoPage.open()
                 .callMeOnThisPhoneButtonClick(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick(2)
+        aciertoPage.fillInPhoneFunnelCallForm(phone)
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
@@ -68,8 +65,7 @@ public class AcietroCallMeTest extends BaseTest {
                 .clickContinueButton()
                 .callMeOnThisPhoneButtonClick(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick(2)
+        aciertoPage.fillInPhoneFunnelCallForm(phone)
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
@@ -111,8 +107,7 @@ public class AcietroCallMeTest extends BaseTest {
                 .clickContinueButton()
                 .callMeOnThisPhoneButtonClick(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick(2)
+        aciertoPage.fillInPhoneFunnelCallForm(phone)
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()

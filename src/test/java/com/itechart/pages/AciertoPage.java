@@ -7,9 +7,7 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
-import javax.lang.model.element.Element;
 import java.time.Duration;
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
@@ -155,9 +153,10 @@ public class AciertoPage extends BasePage {
     }
 
     @Step
-    public AciertoPage enterPhoneFunnelCall(String phone){
+    public AciertoPage fillInPhoneFunnelCallForm(String phone){
         $(FUNNEL_CALL_PHONE).setValue(phone);
         $(FUNNEL_CALL_AGREEMENT).click();
+        $(By.xpath(String.format(CALL_ME_ON_THIS_PHONE_BUTTON,2))).click();
         return this;
     }
 
