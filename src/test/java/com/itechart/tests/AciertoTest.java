@@ -25,7 +25,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record")
     public void aciertoTest() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
@@ -38,7 +38,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record")
     public void aciertoWeCallYouFreeTest() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
@@ -51,7 +51,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider AsisaVida and validation it in Salesforce")
     public void aciertoTestAxaVidaProtecValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(1)
@@ -93,7 +93,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Axa Vida Protec' and validation it in Salesforce")
     public void aciertoTestAsisaVidaValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(2)
@@ -135,7 +135,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Santalucía Vida' and validation it in Salesforce")
     public void aciertoTestCreditAndorraLifeVidaValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(3)
@@ -177,7 +177,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'FIATC Vida' and validation it in Salesforce")
     public void aciertoTestZurichVidaValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
 
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
@@ -220,7 +220,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Credit Andorra Life' and validation it in Salesforce")
     public void aciertoTestFIATCVidaValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(5)
@@ -262,7 +262,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Zurich Vida' and validation it in Salesforce")
     public void aciertoTestPrevisVidaValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(6)
@@ -304,7 +304,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Previs Vida' and validation it in Salesforce")
     public void aciertoTestAllianzVidaRiesgoValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(7)
@@ -346,7 +346,7 @@ public class AciertoTest extends BaseTest {
 
     @Test(description = "Creation of the insurance record with provider 'Allianz Vida Riesgo' and validation it in Salesforce")
     public void aciertoTestSantalucíaVidaValidation() {
-        String phone = phoneGenerator();
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .weCallYouForFreeButton(1)
