@@ -1,5 +1,6 @@
 package com.itechart.tests;
 
+import com.github.javafaker.Faker;
 import com.itechart.base.BaseTest;
 import com.itechart.pages.CaseDetailsPage;
 import io.github.dzmitryrak.enums.SortOrder;
@@ -12,7 +13,7 @@ public class AciertoTest extends BaseTest {
     private final String ZIPCODE = "28012";
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";
-    private final String EMAIL = "acierto1@mailinator.com";
+    private final String EMAIL = new Faker().internet().emailAddress();
     private final String EXPECTED_PHONE = String.format("+34%s", phone);
     private final String PERSONAL_DATA_PAGE = "Fecha de nacimiento";
     private final String INSURANCE_PERIOD = "Anual";
