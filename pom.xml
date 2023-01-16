@@ -24,10 +24,9 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <rest-assured.version>5.3.0</rest-assured.version>
         <selenide.version>6.10.1</selenide.version>
-        <ssc.version>0.2.0</ssc.version>
+        <ssc.version>0.2.1</ssc.version>
         <testng.version>7.6.1</testng.version>
         <webdrivermanager.version>5.3.0</webdrivermanager.version>
-
     </properties>
 
     <build>
@@ -132,5 +131,4 @@
             <version>${ssc.version}</version>
         </dependency>
     </dependencies>
-
 </project>

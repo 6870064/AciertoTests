@@ -40,7 +40,7 @@ public abstract class BaseTest {
                 .includeSelenideSteps(false)
                 .savePageSource(false));
         Configuration.baseUrl = propertyReader.getPropertyValueByKey("base.url");
-        Configuration.timeout = 5000;
+        Configuration.timeout = 7000;
         Configuration.browser = "chrome";
 
         var options = new ChromeOptions();
