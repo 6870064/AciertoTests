@@ -1,6 +1,7 @@
 package com.itechart.base;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import com.itechart.pages.*;
 import io.github.dzmitryrak.pages.*;
 import com.itechart.utils.PropertyReader;
@@ -73,5 +74,10 @@ public abstract class BaseTest {
                 (int) Math.floor(999*Math.random()),
                 (int) Math.floor(9999*Math.random()));
         return phone;
+    }
+
+    public String getRandomEmail() {
+        String email = new Faker().internet().emailAddress();
+        return email;
     }
 }
