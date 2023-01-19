@@ -2,6 +2,7 @@ package com.itechart.base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.github.javafaker.Faker;
 import com.itechart.pages.*;
 import io.github.dzmitryrak.pages.*;
 import com.itechart.utils.PropertyReader;
@@ -27,8 +28,6 @@ public abstract class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = System.getProperty("username", propertyReader.getPropertyValueByKey("username"));
     protected final String PASSWORD = System.getProperty("password", propertyReader.getPropertyValueByKey("password"));
-    protected String randomStr = String.valueOf((int) (Math.random() * 10));
-    public String phone = String.format("92%s10%s02%s", randomStr,randomStr,randomStr);
     public String tabName = "Detalles";
     public String selectFilterValue = "Cases Created Today";
     public String columnTitle = "Número del caso";
@@ -72,5 +71,17 @@ public abstract class BaseTest {
             log.warn(ex.getMessage());
             log.debug(ex.getStackTrace());
         }
+    }
+
+    public String getRandomPhone() {
+        String phone = String.format("92%03d%04d",
+                (int) Math.floor(999*Math.random()),
+                (int) Math.floor(9999*Math.random()));
+        return phone;
+    }
+
+    public String getRandomEmail() {
+        String email = new Faker().internet().emailAddress();
+        return email;
     }
 }
