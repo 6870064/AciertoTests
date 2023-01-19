@@ -22,7 +22,6 @@ public abstract class BaseTest {
     protected LoginPage loginPage;
     protected HomePage homePage;
     protected DetailsPage detailsPage;
-    protected DetailPage detailPage;
     protected ListView listView;
     protected NewObjectModal newObjectModal;
     protected AciertoPage aciertoPage;
@@ -62,7 +61,6 @@ public abstract class BaseTest {
         listView = new ListView();
         newObjectModal = new NewObjectModal();
         aciertoPage = new AciertoPage();
-        detailPage = new DetailPage();
     }
 
     @AfterMethod(alwaysRun = true, description = "Close browser")
