@@ -156,6 +156,7 @@ public class AciertoPage extends BasePage {
 
     @Step
     public AciertoPage enterPhoneFunnelCall(String phone){
+        log.info("Enter phone: {}", phone);
         $(FUNNEL_CALL_PHONE).setValue(phone);
         $(FUNNEL_CALL_AGREEMENT).click();
         return this;
