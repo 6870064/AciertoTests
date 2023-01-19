@@ -1,6 +1,5 @@
 package com.itechart.tests;
 
-import com.github.javafaker.Faker;
 import com.itechart.base.BaseTest;
 import com.itechart.pages.CaseDetailsPage;
 import io.github.dzmitryrak.enums.SortOrder;
@@ -9,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AciertoTest extends BaseTest {
-
     private final String ZIPCODE = "28012";
     private final String DATE_OF_BIRTH = "11/10/1967";
     private final String INSURANCE_AMOUNT = "90.000€";

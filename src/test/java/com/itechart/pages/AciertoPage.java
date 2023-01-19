@@ -1,24 +1,26 @@
 package com.itechart.pages;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import io.github.dzmitryrak.pages.BasePage;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
+import javax.lang.model.element.Element;
 import java.time.Duration;
-import java.util.Random;
+import java.util.List;
 
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.actions;
 
 @Log4j2
 public class AciertoPage extends BasePage {
-
     private final String ACIERTO_URL = "https://stg.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
     private static final String DATA_LOCATOR = "[data-gtm=%s]";
+    private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
     private static final String IM_INTERESTED_BUTTON = "(//*[contains(@class, 'it-btn it-btn--block it-btn--button-44 it-btn--primary large-card__button')])[%s]";
     private static final String WE_CALL_YOU_FREE_BUTTON = "(//*[contains(@class, 'it-btn it-btn--button-44 it-btn--primary mb-3')])[%s]";
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
@@ -29,6 +31,8 @@ public class AciertoPage extends BasePage {
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
     private static final By FUNNEL_CALL_PHONE = By.xpath("//input[@data-gtm='phone']");
     private static By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
+    String checkbox= "(//label[@class='checkbox']//input)[%s]";
+    String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
 
     @Step("Open Acierto Main Page")
     public AciertoPage open() {
@@ -67,8 +71,8 @@ public class AciertoPage extends BasePage {
 
     @Step("Check that the page with the text {data} is opened")
     public AciertoPage isPageOpened(String data) {
-      log.info("Checking that personal data page is opened");
-        $(By.xpath(String.format(TEXT_INFO_LOCATOR, data))).shouldBe(visible, Duration.ofSeconds(10));
+        log.info("Checking that personal data page is opened");
+        $(By.xpath(String.format(TEXT_INFO_LOCATOR, data))).shouldBe(visible, Duration.ofSeconds(30));
         return this;
     }
 
@@ -83,6 +87,13 @@ public class AciertoPage extends BasePage {
     public AciertoPage weCallYouForFreeButton(int index) {
         $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(30));
         Selenide.executeJavaScript("arguments[0].click();",$(By.xpath(String.format(WE_CALL_YOU_FREE_BUTTON, index))));
+        return this;
+    }
+
+    @Step("Click on the button [See details] bith the index {index}")
+    public AciertoPage seeDetailsButtonClick(int index) {
+        log.info("Click on I'm interested button with {} index", index);
+        $(By.xpath(String.format(DETAIL_BUTTON, index))).shouldBe(visible, Duration.ofSeconds(30)).click();
         return this;
     }
 
@@ -101,7 +112,7 @@ public class AciertoPage extends BasePage {
     @Step
     public AciertoPage callMeOnThisPhoneButtonClick(int indexButton) {
         log.info("Click on [Call Me On This Phone] button");
-        $(By.xpath(String.format(CALL_ME_ON_THIS_PHONE_BUTTON,indexButton))).click();
+        $(By.xpath(String.format(CALL_ME_ON_THIS_PHONE_BUTTON,indexButton))).shouldBe(visible,Duration.ofSeconds(30)).click();
         return this;
     }
 
@@ -143,11 +154,26 @@ public class AciertoPage extends BasePage {
         return $(FUNNEL_CALL_MODAL).isDisplayed();
     }
 
-    @Step("Entering mobile phone number: {phone}")
+    @Step
     public AciertoPage enterPhoneFunnelCall(String phone){
-        log.info("Entering mobile phone number: {phone}");
         $(FUNNEL_CALL_PHONE).setValue(phone);
         $(FUNNEL_CALL_AGREEMENT).click();
+        return this;
+    }
+
+    @Step("Select {index} record")
+    public AciertoPage selectProduct(int index) {
+        $(By.xpath(String.format(checkbox,1))).shouldBe(exist,Duration.ofSeconds(30));
+        for (int i = 1; i <= index; i++) {
+            SelenideElement ch = $(By.xpath(String.format(checkbox,i)));
+            Selenide.executeJavaScript("arguments[0].click();", ch);
+        }
+        return this;
+    }
+
+    @Step("Click [Comparar] button")
+    public AciertoPage comparisonButtonClick(){
+        $(By.xpath(String.format(comparisonButton,"Comparar"))).click();
         return this;
     }
 }

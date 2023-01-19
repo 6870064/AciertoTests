@@ -26,8 +26,6 @@ public abstract class BaseTest {
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = System.getProperty("username", propertyReader.getPropertyValueByKey("username"));
     protected final String PASSWORD = System.getProperty("password", propertyReader.getPropertyValueByKey("password"));
-
-
     public String tabName = "Detalles";
     public String selectFilterValue = "Cases Created Today";
     public String columnTitle = "Número del caso";
