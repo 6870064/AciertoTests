@@ -22,6 +22,7 @@ public abstract class BaseTest {
     protected LoginPage loginPage;
     protected HomePage homePage;
     protected DetailsPage detailsPage;
+    protected DetailPage detailPage;
     protected ListView listView;
     protected NewObjectModal newObjectModal;
     protected AciertoPage aciertoPage;
@@ -43,6 +44,7 @@ public abstract class BaseTest {
         Configuration.browser = "chrome";
 
         var options = new ChromeOptions();
+        options.addArguments("--start-maximized");
         options.addArguments("--disable-notifications");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
@@ -60,6 +62,7 @@ public abstract class BaseTest {
         listView = new ListView();
         newObjectModal = new NewObjectModal();
         aciertoPage = new AciertoPage();
+        detailPage = new DetailPage();
     }
 
     @AfterMethod(alwaysRun = true, description = "Close browser")

@@ -159,6 +159,14 @@ public class AciertoPage extends BasePage {
         log.info("Enter phone: {}", phone);
         $(FUNNEL_CALL_PHONE).setValue(phone);
         $(FUNNEL_CALL_AGREEMENT).click();
+        try {
+            callMeOnThisPhoneButtonClick(2);
+        }
+        catch (Exception e) {
+            log.warn("[CallMeButton] is not clickable");
+            $(FUNNEL_CALL_PHONE).setValue(phone);
+            callMeOnThisPhoneButtonClick(2);
+        }
         return this;
     }
 
