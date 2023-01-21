@@ -29,7 +29,7 @@ public class AciertoPage extends BasePage {
     private static final String CALL_ME_ON_THIS_PHONE_BUTTON = "(//button[contains(@data-gtm, 'call-me')])[%s]";
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
-    private static final By FUNNEL_CALL_PHONE = By.xpath("//input[@data-gtm='phone']");
+    private static final By X_BUTTON = By.cssSelector("[id = 'x']");
     private static By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
     String checkbox= "(//label[@class='checkbox']//input)[%s]";
     String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
@@ -157,7 +157,7 @@ public class AciertoPage extends BasePage {
     @Step
     public AciertoPage enterPhoneFunnelCall(String phone){
         log.info("Enter phone: {}", phone);
-        $(FUNNEL_CALL_PHONE).setValue(phone);
+        setPersonData("phone", phone);
         $(FUNNEL_CALL_AGREEMENT).click();
         return this;
     }
@@ -165,18 +165,12 @@ public class AciertoPage extends BasePage {
     @Step
     public AciertoPage fillPhoneFunnelCall(String phone){
         log.info("Enter phone: {}", phone);
-        $(FUNNEL_CALL_PHONE).setValue(phone);
-        $(FUNNEL_CALL_AGREEMENT).click();
+        setPersonData("phone", phone);
+        $(X_BUTTON).click();
+        callMeOnThisPhoneButtonClick(1);
+        setPersonData("phone", phone);
         callMeOnThisPhoneButtonClick(2);
-        try {
-            closeButtonClick();
-        }
-        catch (Exception e) {
-            log.warn("[CallMeButton] is not clickable");
-            $(FUNNEL_CALL_PHONE).setValue(phone);
-            callMeOnThisPhoneButtonClick(2);
-            closeButtonClick();
-        }
+        closeButtonClick();
         return this;
     }
 
