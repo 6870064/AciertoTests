@@ -162,6 +162,24 @@ public class AciertoPage extends BasePage {
         return this;
     }
 
+    @Step
+    public AciertoPage fillPhoneFunnelCall(String phone){
+        log.info("Enter phone: {}", phone);
+        $(FUNNEL_CALL_PHONE).setValue(phone);
+        $(FUNNEL_CALL_AGREEMENT).click();
+        callMeOnThisPhoneButtonClick(2);
+        try {
+            closeButtonClick();
+        }
+        catch (Exception e) {
+            log.warn("[CallMeButton] is not clickable");
+            $(FUNNEL_CALL_PHONE).setValue(phone);
+            callMeOnThisPhoneButtonClick(2);
+            closeButtonClick();
+        }
+        return this;
+    }
+
     @Step("Select {index} record")
     public AciertoPage selectProduct(int index) {
         $(By.xpath(String.format(checkbox,1))).shouldBe(exist,Duration.ofSeconds(30));
