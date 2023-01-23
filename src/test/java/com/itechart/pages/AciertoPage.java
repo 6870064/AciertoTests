@@ -169,7 +169,7 @@ public class AciertoPage extends BasePage {
         try {
             callMeOnThisPhoneButtonClick(2);
             closeButtonClick();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             log.info("CallMe button is grey ");
             setPersonData("phone", phone);
             callMeOnThisPhoneButtonClick(2);
