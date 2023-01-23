@@ -166,11 +166,15 @@ public class AciertoPage extends BasePage {
     public AciertoPage fillPhoneFunnelCall(String phone){
         log.info("Enter phone: {}", phone);
         setPersonData("phone", phone);
-        $(X_BUTTON).click();
-        callMeOnThisPhoneButtonClick(1);
-        setPersonData("phone", phone);
-        callMeOnThisPhoneButtonClick(2);
-        closeButtonClick();
+        try {
+            callMeOnThisPhoneButtonClick(2);
+            closeButtonClick();
+        } catch (Exception e) {
+            log.info("CallMe button is grey ");
+            setPersonData("phone", phone);
+            callMeOnThisPhoneButtonClick(2);
+            closeButtonClick();
+        }
         return this;
     }
 
