@@ -29,7 +29,7 @@ public class AciertoPage extends BasePage {
     private static final String CALL_ME_ON_THIS_PHONE_BUTTON = "(//button[contains(@data-gtm, 'call-me')])[%s]";
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
-    private static final By X_BUTTON = By.cssSelector("[id = 'x']");
+    private static final By FUNNEL_CALL_PHONE = By.xpath(FUNNEL_CALL_MODAL + "//input[@data-gtm='phone']");
     private static By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
     String checkbox= "(//label[@class='checkbox']//input)[%s]";
     String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
@@ -165,13 +165,13 @@ public class AciertoPage extends BasePage {
     @Step
     public AciertoPage fillPhoneFunnelCall(String phone){
         log.info("Enter phone: {}", phone);
-        setPersonData("phone", phone);
+        $(FUNNEL_CALL_PHONE).setValue(phone);
         try {
             callMeOnThisPhoneButtonClick(2);
             closeButtonClick();
         } catch (Throwable e) {
             log.info("CallMe button is grey ");
-            setPersonData("phone", phone);
+            $(FUNNEL_CALL_PHONE).setValue(phone);
             callMeOnThisPhoneButtonClick(2);
             closeButtonClick();
         }
