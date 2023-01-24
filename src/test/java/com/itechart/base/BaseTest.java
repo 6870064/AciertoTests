@@ -25,9 +25,11 @@ public abstract class BaseTest {
     protected ListView listView;
     protected NewObjectModal newObjectModal;
     protected AciertoPage aciertoPage;
+
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = System.getProperty("username", propertyReader.getPropertyValueByKey("username"));
     protected final String PASSWORD = System.getProperty("password", propertyReader.getPropertyValueByKey("password"));
+
     public String tabName = "Detalles";
     public String selectFilterValue = "Cases Created Today";
     public String columnTitle = "Número del caso";
@@ -38,6 +40,7 @@ public abstract class BaseTest {
                 .screenshots(true)
                 .includeSelenideSteps(false)
                 .savePageSource(false));
+
         Configuration.baseUrl = propertyReader.getPropertyValueByKey("base.url");
         Configuration.timeout = 7000;
         Configuration.browser = "chrome";
@@ -46,6 +49,7 @@ public abstract class BaseTest {
         options.addArguments("--disable-notifications");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+
         if (propertyReader.getPropertyValueByKey("headless").equals("true")) {
             options.addArguments("--headless");
         }

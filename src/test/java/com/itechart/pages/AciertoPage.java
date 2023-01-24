@@ -1,5 +1,6 @@
 package com.itechart.pages;
 
+import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.github.dzmitryrak.pages.BasePage;
@@ -7,9 +8,7 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
-import javax.lang.model.element.Element;
 import java.time.Duration;
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
@@ -29,9 +28,9 @@ public class AciertoPage extends BasePage {
     private static final String CALL_ME_ON_THIS_PHONE_BUTTON = "(//button[contains(@data-gtm, 'call-me')])[%s]";
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
-    private static final By FUNNEL_CALL_PHONE = By.xpath("//input[@data-gtm='phone']");
+    private static final By FUNNEL_CALL_PHONE = By.xpath("//form//input[@data-gtm='phone']");
     private static By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
-    String checkbox= "(//label[@class='checkbox']//input)[%s]";
+    String checkbox = "(//label[@class='checkbox']//input)[%s]";
     String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
 
     @Step("Open Acierto Main Page")
@@ -44,7 +43,7 @@ public class AciertoPage extends BasePage {
     @Step("Choose insurance details")
     public AciertoPage insuranceDetailsClick(String locator){
         log.info(String.format("Choosing %s as data for filling for and clicking on it", locator));
-        $(By.xpath(String.format(TEXT_INFO_LOCATOR, locator))).click();
+        $(By.xpath(String.format(TEXT_INFO_LOCATOR, locator))).click(ClickOptions.usingJavaScript());;
         return this;
     }
 
@@ -164,9 +163,9 @@ public class AciertoPage extends BasePage {
 
     @Step("Select {index} record")
     public AciertoPage selectProduct(int index) {
-        $(By.xpath(String.format(checkbox,1))).shouldBe(exist,Duration.ofSeconds(30));
+        $(By.xpath(String.format(checkbox, 1))).shouldBe(exist,Duration.ofSeconds(30));
         for (int i = 1; i <= index; i++) {
-            SelenideElement ch = $(By.xpath(String.format(checkbox,i)));
+            SelenideElement ch = $(By.xpath(String.format(checkbox, i)));
             Selenide.executeJavaScript("arguments[0].click();", ch);
         }
         return this;

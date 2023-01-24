@@ -113,7 +113,6 @@ public class AcietroCallMeTest extends BaseTest {
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
                 .callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD)
