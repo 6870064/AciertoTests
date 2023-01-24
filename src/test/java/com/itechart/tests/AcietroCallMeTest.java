@@ -22,9 +22,7 @@ public class AcietroCallMeTest extends BaseTest {
 
     @Test(description = "Click Call Me on the 1st step of the web funnel form (product is not selected)")
     public void acietroCallMeFirstPage() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
                 .callMeOnThisPhoneButtonClick(1)
@@ -58,9 +56,7 @@ public class AcietroCallMeTest extends BaseTest {
 
     @Test(description = "Click Call Me on the 2nd step of web funnel form (product is not selected)")
     public void acietroCallMeSecondPage() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
                 .insuranceDetailsClick(amount)
@@ -97,9 +93,7 @@ public class AcietroCallMeTest extends BaseTest {
 
     @Test(description = "Click Call Me on the 3d step of web funnel form (product is not selected)")
     public void acietroCallMeThirdPage() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
                 .insuranceDetailsClick(amount)
@@ -111,9 +105,7 @@ public class AcietroCallMeTest extends BaseTest {
                 .clickContinueButton()
                 .callMeOnThisPhoneButtonClick(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
+        aciertoPage.fillPhoneFunnelCall(phone)
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD)
@@ -140,11 +132,9 @@ public class AcietroCallMeTest extends BaseTest {
 
     @Test(description = "Click Call Me on the 4th step of the web funnel (where a result list is present), when product is not selected")
     public void acietroCallMe4PageNotProduct() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        String email = new Faker().internet().emailAddress();
+        String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .isPageOpened("Fallecimiento");
         aciertoPage.callMeOnThisPhoneButtonClick(1)
@@ -178,11 +168,9 @@ public class AcietroCallMeTest extends BaseTest {
 
     @Test(description = "Click Call Me on the 4th step of the web funnel (where a result list is present), when product is selected")
     public void acietroCallMe4PageProduct() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        String email = new Faker().internet().emailAddress();
+        String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .imInterestedButtonClick(1)
                 .isFunnelCallModalDisplayed();
@@ -219,11 +207,9 @@ public class AcietroCallMeTest extends BaseTest {
 
     @Test(description = "Click Call Me on product detail page")
     public void acietroCallMeDetailPage() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        String email = new Faker().internet().emailAddress();
+        String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .seeDetailsButtonClick(1)
                 .callMeOnThisPhoneButtonClick(1)
@@ -257,11 +243,9 @@ public class AcietroCallMeTest extends BaseTest {
 
     @Test(description = "Click Call Me on comparison detail page")
     public void acietroCallMeComparisonPage() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+        String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        String email = new Faker().internet().emailAddress();
+        String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .selectProduct(2)
                 .comparisonButtonClick()
