@@ -1,18 +1,15 @@
 package com.itechart.tests;
 
-import com.github.javafaker.Faker;
 import com.itechart.base.BaseTest;
-import com.itechart.pages.AciertoPage;
 import io.github.dzmitryrak.enums.SortOrder;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
-public class AcietroCallMeTest extends BaseTest {
+public class AciertoCallMeTest extends BaseTest {
     String amount = "90.000€";
     String period = "Anual";
     String gender = "Hombre";
@@ -34,12 +31,14 @@ public class AcietroCallMeTest extends BaseTest {
         loginPage.open()
                 .login(USERNAME, PASSWORD)
                 .isPageOpened();
-        listView.open("Case")
+        String caseNumber = listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
                 .table()
                 .sortBy(columnTitle, SortOrder.DESC)
-                .clickCell(columnTitle, 1);
+                .getTextFromCell(columnTitle,1);
+        listView.table().clickCell(columnTitle, 1);
+        detailsPage.validate("Caso",caseNumber);
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {

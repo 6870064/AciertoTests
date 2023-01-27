@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Build Verification Test" parallel="tests">
+    <listeners>
+        <listener class-name="com.itechart.base.AnnotationTransformer"></listener>
+    </listeners>
+    <test name="Validate the standard test case creation">
+        <classes>
+            <class name="com.itechart.tests.AciertoTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Validate the test creation throw CallMe form">
+        <classes>
+            <class name="com.itechart.tests.AciertoCallMeTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
