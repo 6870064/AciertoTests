@@ -38,6 +38,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .getTextFromCell(columnTitle,1);
         listView.table().clickCell(columnTitle, 1);
+        aciertoPage.isPageOpened("Detalles");
         detailsPage.validate("Caso",caseNumber);
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {

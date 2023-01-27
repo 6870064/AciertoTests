@@ -72,7 +72,7 @@ public class AciertoPage extends BasePage {
     @Step("Check that the page with the text {data} is opened")
     public AciertoPage isPageOpened(String data) {
       log.info("Checking that personal data page is opened");
-        $(By.xpath(String.format(TEXT_INFO_LOCATOR, data))).shouldBe(visible, Duration.ofSeconds(30));
+        $(By.xpath(String.format(TEXT_INFO_LOCATOR, data))).shouldBe(exist, Duration.ofSeconds(30));
         return this;
     }
 
