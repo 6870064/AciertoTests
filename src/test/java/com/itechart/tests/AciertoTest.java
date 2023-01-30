@@ -1,10 +1,9 @@
 package com.itechart.tests;
 
-import com.github.javafaker.Faker;
 import com.itechart.base.BaseTest;
-import com.itechart.pages.CaseDetailsPage;
 import io.github.dzmitryrak.enums.SortOrder;
 import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,7 +71,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);
@@ -115,7 +114,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);
@@ -158,7 +157,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);
@@ -201,7 +200,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);
@@ -244,7 +243,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);
@@ -287,7 +286,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);
@@ -330,7 +329,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);
@@ -373,7 +372,7 @@ public class AciertoTest extends BaseTest {
                 .sortBy(columnTitle, SortOrder.DESC)
                 .clickCell(columnNameOwner, 1);
         detailsPage.clickTab(tabName);
-        CaseDetailsPage.waitTillOpened(tabName);
+        caseDetailsPage.waitTillOpened(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
                 put("Correo electrónico Web", email);

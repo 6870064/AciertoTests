@@ -7,8 +7,6 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
-
 public class AciertoCallMeTest extends BaseTest {
     String amount = "90.000€";
     String period = "Anual";
@@ -36,10 +34,10 @@ public class AciertoCallMeTest extends BaseTest {
                 .selectFilter(selectFilterValue)
                 .table()
                 .sortBy(columnTitle, SortOrder.DESC)
-                .getTextFromCell(columnTitle,1);
+                .getTextFromCell(columnTitle, 1);
         listView.table().clickCell(columnTitle, 1);
         aciertoPage.isPageOpened("Detalles");
-        detailsPage.validate("Caso",caseNumber);
+        detailsPage.validate("Caso", caseNumber);
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
             {
@@ -150,7 +148,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .selectFilter(selectFilterValue)
                 .table()
                 .sortBy(columnTitle, SortOrder.DESC)
-                .getTextFromCell(columnTitle,2);
+                .getTextFromCell(columnTitle, 2);
         listView.table().clickCell(columnTitle, 1);
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
@@ -189,7 +187,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .selectFilter(selectFilterValue)
                 .table()
                 .sortBy(columnTitle, SortOrder.DESC)
-                .getTextFromCell(columnTitle,2);
+                .getTextFromCell(columnTitle, 2);
         listView.table().clickCell(columnTitle, 1);
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
@@ -225,7 +223,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .selectFilter(selectFilterValue)
                 .table()
                 .sortBy(columnTitle, SortOrder.DESC)
-                .getTextFromCell(columnTitle,2);
+                .getTextFromCell(columnTitle, 2);
         listView.table().clickCell(columnTitle, 1);
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
@@ -262,7 +260,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .selectFilter(selectFilterValue)
                 .table()
                 .sortBy(columnTitle, SortOrder.DESC)
-                .getTextFromCell(columnTitle,2);
+                .getTextFromCell(columnTitle, 2);
         listView.table().clickCell(columnTitle, 1);
         detailsPage.clickTab(tabName);
         Map<String, String> userDetailsData = new HashMap<>() {
