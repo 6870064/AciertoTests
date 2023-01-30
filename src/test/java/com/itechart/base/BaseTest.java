@@ -3,9 +3,10 @@ package com.itechart.base;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
-import com.itechart.pages.*;
-import io.github.dzmitryrak.pages.*;
+import com.itechart.pages.AciertoPage;
+import com.itechart.pages.CaseDetailsPage;
 import com.itechart.utils.PropertyReader;
+import io.github.dzmitryrak.pages.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,6 +26,7 @@ public abstract class BaseTest {
     protected ListView listView;
     protected NewObjectModal newObjectModal;
     protected AciertoPage aciertoPage;
+    protected CaseDetailsPage caseDetailsPage;
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = System.getProperty("username", propertyReader.getPropertyValueByKey("username"));
     protected final String PASSWORD = System.getProperty("password", propertyReader.getPropertyValueByKey("password"));
@@ -60,6 +62,7 @@ public abstract class BaseTest {
         listView = new ListView();
         newObjectModal = new NewObjectModal();
         aciertoPage = new AciertoPage();
+        caseDetailsPage = new CaseDetailsPage();
     }
 
     @AfterMethod(alwaysRun = true, description = "Close browser")
@@ -75,8 +78,8 @@ public abstract class BaseTest {
 
     public String getRandomPhone() {
         String phone = String.format("92%03d%04d",
-                (int) Math.floor(999*Math.random()),
-                (int) Math.floor(9999*Math.random()));
+                (int) Math.floor(999 * Math.random()),
+                (int) Math.floor(9999 * Math.random()));
         return phone;
     }
 
