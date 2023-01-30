@@ -3,7 +3,6 @@ package com.itechart.base;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-//TODO add usage into bvt.xml or delete
 public class Retry implements IRetryAnalyzer {
 
     private static final int MAX_RETRY = 3;
