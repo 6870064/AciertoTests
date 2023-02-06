@@ -14,7 +14,9 @@ import static com.codeborne.selenide.Selenide.$;
 public class QuestionnairePage extends BasePage {
 
     private static final By ACTUAL_PRICE_LOCATOR = By.xpath("//span[text() ='Tarificación Real']");
-    //input[@name='Fecha_de_efecto']
+    private static final String INPUT_LOCATOR = "//input[@name='%s']";
+
+    private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
 
     public QuestionnairePage openCase() {
 
@@ -26,6 +28,20 @@ public class QuestionnairePage extends BasePage {
     public QuestionnairePage isQuestionnairePageOpened() {
         log.info("The page with options for insurance services is opened");
         $(ACTUAL_PRICE_LOCATOR).shouldBe(visible, Duration.ofSeconds(5));
+        return this;
+    }
+
+    @Step("Entering '{value}' in {input} field")
+    public QuestionnairePage setValue(String input, String value) {
+        log.info("Entering '{value}' in {input} field");
+        $(String.format(INPUT_LOCATOR, input)).setValue(value);
+        return this;
+    }
+
+    @Step("Clicking on Charge Price button")
+    public QuestionnairePage clickChargePriceButton() {
+        log.info("Clicking on Charge Price button");
+        $(CALCULATE_BUTTON).click();
         return this;
     }
 }
