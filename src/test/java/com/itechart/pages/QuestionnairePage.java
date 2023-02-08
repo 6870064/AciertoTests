@@ -14,13 +14,20 @@ import static com.codeborne.selenide.Selenide.$;
 public class QuestionnairePage extends BasePage {
 
     private static final By ACTUAL_PRICE_LOCATOR = By.xpath("//span[text() ='Tarificación Real']");
-    private static final String INPUT_LOCATOR = "//input[@name='%s']";
+    private static final String INPUT_LOCATOR = "//*[@name='%s']";
+    private static final String DROPDOWN_LOCATOR = "(//*[contains(@class, 'slds-input slds-combobox__input slds-combobox__input-value')])[%s]";
+    private static final String DROPDOWN_VALUE_LOCATOR = "(//*[contains(@class, 'slds-media slds-media_center slds-p-around_xx-small')][%s]";
+    private static final String FRACCIONAMIENTO_VALUE_LOCATOR = "(//*[@name='%s']//option)[%s]";
+    private static final String FALLECIMIENTO_VALUE_LOCATOR =  "//*[@name='%s']//span";
+    private static final By INFO_TEXT_LOCATOR = By.xpath("//*[text()='Se está calculando el precio. Por favor, espere unos segundos.']");
+
+
 
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
 
     public QuestionnairePage openCase() {
 
-        Selenide.open("https://bauerocp--staging.sandbox.lightning.force.com/lightning/r/Case/5001w00000Ag8AsAAJ/view");
+        Selenide.open("https://bauerocp--staging.sandbox.lightning.force.com/lightning/r/Case/5001w00000AgKB0AAN/view");
         return this;
     }
 
@@ -37,6 +44,34 @@ public class QuestionnairePage extends BasePage {
         $(String.format(INPUT_LOCATOR, input)).setValue(value);
         return this;
     }
+
+    @Step("Choosing value from dropdown list")
+    public QuestionnairePage setDropdownValue(int fieldIndex, int dropdownValueIndex) {
+        log.info("Choosing value from dropdown list");
+        $(String.format(DROPDOWN_LOCATOR, fieldIndex)).click();
+        $(String.format(DROPDOWN_VALUE_LOCATOR,dropdownValueIndex)).shouldBe(visible);
+        $(String.format(DROPDOWN_VALUE_LOCATOR,dropdownValueIndex)).click();
+        return this;
+    }
+
+    @Step("Choosing value from FraccionamientoDropdown field list")
+    public QuestionnairePage setFraccionamientoDropdownValue(String dropDownTitle, int dropdownValueIndex) {
+        log.info("Choosing value from Fraccionamiento dropdown list");
+        $(String.format(INPUT_LOCATOR, dropDownTitle)).click();
+        $(String.format(FRACCIONAMIENTO_VALUE_LOCATOR, dropdownValueIndex)).shouldBe(visible);
+        $(String.format(FRACCIONAMIENTO_VALUE_LOCATOR, dropdownValueIndex)).click();
+        return this;
+    }
+
+    @Step("Choosing value from FallecimientoDropdown field list")
+    public QuestionnairePage setFallecimientoDropdownValue(String dropDownTitle) {
+        log.info("Choosing value from Fallecimiento dropdown list");
+        $(String.format(INPUT_LOCATOR, dropDownTitle)).click();
+        $(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle)).shouldBe(visible);
+        $(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle)).click();
+        return this;
+    }
+
 
     @Step("Clicking on Charge Price button")
     public QuestionnairePage clickChargePriceButton() {
