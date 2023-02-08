@@ -24,8 +24,5 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setFallecimientoDropdownValue(dropdownFalleciTitle);
         questionnairePage.clickChargePriceButton();
 
-
-        Se está calculando el precio. Por favor, espere unos segundos.
-
     }
 }
