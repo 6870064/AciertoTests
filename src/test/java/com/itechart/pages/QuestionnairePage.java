@@ -22,8 +22,6 @@ public class QuestionnairePage extends BasePage {
     private static final By PRICE_IS_CALCULATING_LOCATOR = By.xpath("//*[text()='Se está calculando el precio. Por favor, espere unos segundos.']");
     private static final By NEXT_BUTTON = By.xpath("//button[@value='Next']");
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
-    // //button[text()='Siguiente']
-
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
 
     public QuestionnairePage openCase() {
