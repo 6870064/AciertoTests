@@ -17,10 +17,12 @@ public class QuestionnairePage extends BasePage {
     private static final String INPUT_LOCATOR = "//*[@name='%s']";
     private static final String DROPDOWN_LOCATOR = "(//*[contains(@class, 'slds-input slds-combobox__input slds-combobox__input-value')])[%s]";
     private static final String DROPDOWN_VALUE_LOCATOR = "(//*[contains(@class, 'slds-media slds-media_center slds-p-around_xx-small')][%s]";
-    private static final String FRACCIONAMIENTO_VALUE_LOCATOR = "(//*[@name='%s']//option)[%s]";
+    private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR =  "//*[@name='%s']//span";
     private static final By PRICE_IS_CALCULATING_LOCATOR = By.xpath("//*[text()='Se está calculando el precio. Por favor, espere unos segundos.']");
     private static final By NEXT_BUTTON = By.xpath("//button[@value='Next']");
+    private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
+    // //button[text()='Siguiente']
 
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
 
@@ -53,12 +55,12 @@ public class QuestionnairePage extends BasePage {
         return this;
     }
 
-    @Step("Choosing value from FraccionamientoDropdown field list")
-    public QuestionnairePage setFraccionamientoDropdownValue(String dropDownTitle, int dropdownValueIndex) {
+    @Step("Choosing value from OptionDropdown list")
+    public QuestionnairePage setOptionDropdownValue(String dropDownTitle, String dropdownValue) {
         log.info("Choosing value from Fraccionamiento dropdown list");
         $(String.format(INPUT_LOCATOR, dropDownTitle)).click();
-        $(String.format(FRACCIONAMIENTO_VALUE_LOCATOR, dropdownValueIndex)).shouldBe(visible);
-        $(String.format(FRACCIONAMIENTO_VALUE_LOCATOR, dropdownValueIndex)).click();
+        $(String.format(OPTION_VALUE_LOCATOR, dropdownValue)).shouldBe(visible);
+        $(String.format(OPTION_VALUE_LOCATOR, dropdownValue)).click();
         return this;
     }
 
@@ -80,8 +82,15 @@ public class QuestionnairePage extends BasePage {
 
     @Step("Clicking on Next button")
     public QuestionnairePage nextButtonClick() {
-        log.info("Clicking on Charge Price button");
+        log.info("Clicking on Next button");
         $(NEXT_BUTTON).click();
+        return this;
+    }
+
+    @Step("Clicking on Next Charter button")
+    public QuestionnairePage nextCharterButtonClick() {
+        log.info("Clicking on Next Charter button");
+        $(NEXT_CHARTER_BUTTON).click();
         return this;
     }
 
