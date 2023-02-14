@@ -23,6 +23,9 @@ public class QuestionnairePage extends BasePage {
     private static final By NEXT_BUTTON = By.xpath("//button[@value='Next']"); //Siguiente button
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
+    private static final By CHECK_INCOME_TITLE = By.xpath("//*[text()='Blanqueo de capitales']");
+    private static final String CHECKBOX_VALUE = "//*[text()='%s']";
+    private static final String CHECKBOX_INCOME_PAGE = "//*[@name='%s' and @value='%s']";
 
     public QuestionnairePage openCase() {
 
@@ -97,4 +100,27 @@ public class QuestionnairePage extends BasePage {
         log.info("Price is calculating message is displaying");
         return $(PRICE_IS_CALCULATING_LOCATOR).isDisplayed();
     }
+
+    @Step("Check that Blanqueo de capitales screen is opened")
+    public boolean isBlanqueroDeCapitalesScreenOpened(){
+        log.info("Check that Blanqueo de capitales screen is opened");
+        return $(CHECK_INCOME_TITLE).isDisplayed();
+    }
+
+    @Step("Clicking on checkbox with value {checkboxValue}")
+    public QuestionnairePage checkboxValueClick(String checkboxValue) {
+        log.info("Clicking on checkbox with value {checkboxValue}");
+        $(String.format(CHECKBOX_VALUE, checkboxValue)).click();
+        return this;
+    }
+
+    @Step("Clicking on checkbox with name {checkboxName} and value {checkboxValue}")
+    public QuestionnairePage checkboxIncomeValueClick(String checkboxName, String checkboxValue) {
+        log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
+        $(String.format(CHECKBOX_INCOME_PAGE, checkboxName, checkboxValue)).click();
+        return this;
+    }
+
+
+
 }

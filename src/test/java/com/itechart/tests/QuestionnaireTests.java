@@ -23,7 +23,7 @@ public class QuestionnaireTests extends BaseTest {
     public String docTypeDropdownTitle = "TipoDocumentoPolicyHInsured";
     public String docTypeDropdownValue = "NationalIdNumber";
     public String docNumberFieldTitle = "NumeroDocumentoPolicyHolderInsured";
-    public String docNumberFieldValue = "MP45432154";
+    public String docNumberFieldValue = "18613301E";
     public String expirationDateFieldTitle = "FechaVencimientoDocPHolderInsured";
     public String expirationDateFieldValue = "30.09.2035";
     public String civilStatusDropdownTitle = "CivilStatusPolicyHolderInsured";
@@ -45,6 +45,26 @@ public class QuestionnaireTests extends BaseTest {
     public String florFieldValue = "3";
     public String populationFieldTitle = "CityPolicyHolderInsured";
     public String populationFieldValue = "35000";
+    public String incomeFieldTitle = "Income";
+    public String incomeFieldValue = "50000";
+    public String contractReasonDropdownTitle = "Hiring_Policy_Reason";
+    public String contractReasonDropdownValue = "ProteccionFamiliar";
+    public String incomeType = "Neto";
+    public String incomePeriodType = "Mensual";
+    public String responsibilityCheckboxTitle = "Public_Responsibility1";
+    public String incomeCheckboxValue = "YesResource";
+    public String fundsSourceDropdownTitle = "Source_of_Funds";
+    public String fundsSourceDropdownValue = "SalriosYRentasProfesionales";
+    public String selfEmployedDropdownTitle = "Self_Employed";
+    public String selfEmployedDropdownValue = "PorCuentaPropia";
+    public String companyNameFieldTitle = "Company_Name";
+    public String companyNameFieldValue = "Apple corporation";
+    public String jobPositionFieldTitle = "Position_in_Company";
+    public String jobPositionFieldValue = "Lead QA Engineer";
+    public String workExperienceFieldTitle = "CompanySeniority";
+    public String workExperienceFieldValue = "01.01.2020";
+    public String selfEmploymentCheckboxTitle = "Es_trabajador_aut_nomo";
+
 
     @Test(description = "Filling the Questionnaire")
     public void questionnaireTest() {
@@ -76,7 +96,7 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(regionOfBirthFieldTitle, regionOfBirthFieldValue); //Provincia de nacimiento field
         questionnairePage.setValue(placeOfBirthFieldTitle, placeOfBirthFieldValue); //Localidad de nacimiento field
         //TODO País de nacimiento dropdown
-        //4 checkbox No
+        //TODO checkbox No
         questionnairePage.setOptionDropdownValue(apartmentTypeFieldTitle, apartmentTypeFieldValue); //Tipo de via dropdown
         questionnairePage.setValue(streetNameFieldTitle, streetNameFieldValue); //Nombre de la calle field
         questionnairePage.setValue(streetNumberFieldTitle, streetNumberFieldValue); //Número field
@@ -84,6 +104,27 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(populationFieldTitle, populationFieldValue); //Población field
         //TODO Población dropdown
         questionnairePage.nextButtonClick();
+        // Третья вкладка
+        questionnairePage.isBlanqueroDeCapitalesScreenOpened(); // "Blanqueo de capitales" is opened
+        questionnairePage.setValue(incomeFieldTitle,incomeFieldValue); //Nivel ingresos/facturación field
+        questionnairePage.checkboxValueClick(incomeType); //Tipo de ingresos/facturación checkbox
+        questionnairePage.checkboxValueClick(incomePeriodType); //¿Ingreso anual o mensual? checkbox
+        questionnairePage.setOptionDropdownValue(contractReasonDropdownTitle, contractReasonDropdownValue); //Motivo contratación de la póliza dropdown
+        questionnairePage.checkboxIncomeValueClick(responsibilityCheckboxTitle, incomeCheckboxValue); // *¿Es o ha sido usted, o algunos de sus familiares una persona de responsabilidad publica? checkbox
+        questionnairePage.setOptionDropdownValue(fundsSourceDropdownTitle, fundsSourceDropdownValue); //Origen de los fondos dropdown
+        questionnairePage.setOptionDropdownValue(selfEmployedDropdownTitle, selfEmployedDropdownValue); // ¿Trabaja por cuenta propia o ajena? dropdown
+        questionnairePage.setValue(companyNameFieldTitle, companyNameFieldValue); // Nombre de la empresa en la que trabaja field
+        questionnairePage.setValue(jobPositionFieldTitle, jobPositionFieldValue); //Cargo en la empresa field
+        questionnairePage.setValue(workExperienceFieldTitle, workExperienceFieldValue); //Antigüedad en la empresa field
+        //TODO País de residencia fiscal* dropdown
+        questionnairePage.checkboxIncomeValueClick(selfEmploymentCheckboxTitle,incomeCheckboxValue); // ¿Es trabajador autónomo? checkbox
+        questionnairePage.nextButtonClick();
+        // Четвертая вкладка
+
+
+
+
+
         //TODO Третья страница и погнал дальше
 
 
