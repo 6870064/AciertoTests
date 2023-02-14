@@ -5,6 +5,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import com.itechart.pages.AciertoPage;
 import com.itechart.pages.CaseDetailsPage;
+import com.itechart.pages.QuestionnairePage;
 import com.itechart.utils.PropertyReader;
 import io.github.dzmitryrak.pages.*;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -27,6 +28,7 @@ public abstract class BaseTest {
     protected NewObjectModal newObjectModal;
     protected AciertoPage aciertoPage;
     protected CaseDetailsPage caseDetailsPage;
+    protected QuestionnairePage questionnairePage;
     protected PropertyReader propertyReader = new PropertyReader("src/test/resources/configuration.properties");
     protected final String USERNAME = System.getProperty("username", propertyReader.getPropertyValueByKey("username"));
     protected final String PASSWORD = System.getProperty("password", propertyReader.getPropertyValueByKey("password"));
@@ -63,6 +65,8 @@ public abstract class BaseTest {
         newObjectModal = new NewObjectModal();
         aciertoPage = new AciertoPage();
         caseDetailsPage = new CaseDetailsPage();
+        questionnairePage = new QuestionnairePage();
+
     }
 
     @AfterMethod(alwaysRun = true, description = "Close browser")
