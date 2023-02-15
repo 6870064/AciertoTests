@@ -52,7 +52,8 @@ public class QuestionnaireTests extends BaseTest {
     public String incomeType = "Neto";
     public String incomePeriodType = "Mensual";
     public String responsibilityCheckboxTitle = "Public_Responsibility1";
-    public String incomeCheckboxValue = "YesResource";
+    public String positiveCheckboxValue = "YesResource";
+    public String negativeCheckboxValue = "NoResource";
     public String fundsSourceDropdownTitle = "Source_of_Funds";
     public String fundsSourceDropdownValue = "SalriosYRentasProfesionales";
     public String selfEmployedDropdownTitle = "Self_Employed";
@@ -68,6 +69,25 @@ public class QuestionnaireTests extends BaseTest {
     public String setAsideCapitalCheckboxTitle = "CapitalDestinedMortgage";
     public String negativeAnswerCheckboxValue = "NoChoice";
     public String beneficiariesFieldValue = "Sergey Sergeevich Sergeev";
+    public String bankFieldTitle = "Entidad_bancaria";
+    public String bankFieldValue = "Banco Bilbao Vizcaya Argentaria";
+    public String ibanFieldTitle = "IBAN";
+    public String ibanFieldValue = "ES2001389232112354724274";
+    public String agreeCheckboxTitle = "Agree";
+    public String heightFieldTitle = "AlturaCalc";
+    public String heightFieldValue = "190";
+    public String weightFieldTitle = "PesoCalc";
+    public String weightFieldValue = "93";
+    public String fiveYearsIllnessCheckboxTitle = "En_los_ltimos_5_a_os_ha_padecido_o_padece_alg_n_tipo_de_enfermedad_incapacidad_o";
+    public String hospitalizationCheckboxTitle = "Hospitalizado_Zurich";
+    public String visitSpecialistCheckboxTitle = "Especialista_Zurich";
+    public String medicRecomendationCheckboxTitle = "Consejo_Medico_Zurich";
+    public String symptomsCheckboxTitle = "Alteraciones_Zurich";
+    public String unemploymentCheckboxTitle = "Incapacitado_15_dias_Zurich";
+    public String drugsCheckboxTitle = "Medicacion_Prescrita_Zurich";
+    public String declainedInsuranceCheckboxTitle = "Seguro_Vida_Zurich";
+
+
 
 
     @Test(description = "Filling the Questionnaire")
@@ -114,14 +134,14 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickCheckboxValue(incomeType); //Tipo de ingresos/facturación checkbox
         questionnairePage.clickCheckboxValue(incomePeriodType); //¿Ingreso anual o mensual? checkbox
         questionnairePage.setOptionDropdownValue(contractReasonDropdownTitle, contractReasonDropdownValue); //Motivo contratación de la póliza dropdown
-        questionnairePage.clickCheckboxWithNameAndValue(responsibilityCheckboxTitle, incomeCheckboxValue); // *¿Es o ha sido usted, o algunos de sus familiares una persona de responsabilidad publica? checkbox
+        questionnairePage.clickCheckboxWithNameAndValue(responsibilityCheckboxTitle, positiveCheckboxValue); // *¿Es o ha sido usted, o algunos de sus familiares una persona de responsabilidad publica? checkbox
         questionnairePage.setOptionDropdownValue(fundsSourceDropdownTitle, fundsSourceDropdownValue); //Origen de los fondos dropdown
         questionnairePage.setOptionDropdownValue(selfEmployedDropdownTitle, selfEmployedDropdownValue); // ¿Trabaja por cuenta propia o ajena? dropdown
         questionnairePage.setValue(companyNameFieldTitle, companyNameFieldValue); // Nombre de la empresa en la que trabaja field
         questionnairePage.setValue(jobPositionFieldTitle, jobPositionFieldValue); //Cargo en la empresa field
         questionnairePage.setValue(workExperienceFieldTitle, workExperienceFieldValue); //Antigüedad en la empresa field
         //TODO País de residencia fiscal* dropdown
-        questionnairePage.clickCheckboxWithNameAndValue(selfEmploymentCheckboxTitle,incomeCheckboxValue); // ¿Es trabajador autónomo? checkbox
+        questionnairePage.clickCheckboxWithNameAndValue(selfEmploymentCheckboxTitle, positiveCheckboxValue); // ¿Es trabajador autónomo? checkbox
         questionnairePage.clickNextButton();
         // Четвертая вкладка
         questionnairePage.isSafeDataButtonDisplayed();
@@ -129,12 +149,29 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickCheckboxWithNameAndValue(setAsideCapitalCheckboxTitle, negativeAnswerCheckboxValue); // ¿Querría destinar el capital para reembolsar una hipoteca o préstamo? checkbox
         questionnairePage.setBeneficiariesValue(beneficiariesFieldValue); //Beneficiarios field
         questionnairePage.clickSaveDataButton();
-
-
-
-
-
-        //TODO Третья страница и погнал дальше
+        //пятая вкладка
+        questionnairePage.isNextButtonDisplayed();
+        questionnairePage.setValue(bankFieldTitle, bankFieldValue); // Entidad bancaria field
+        questionnairePage.setValue(ibanFieldTitle, ibanFieldValue); // IBAN field
+        questionnairePage.clickNextButton();
+        //шестая вкладка
+        questionnairePage.isNextButtonDisplayed();
+        questionnairePage.clickCheckboxWithNameAndValue(agreeCheckboxTitle, positiveCheckboxValue); //¿Estás de acuerdo? checkbox
+        questionnairePage.clickNextButton();
+        questionnairePage.setValue(heightFieldTitle, heightFieldValue); //Altura (CM) field
+        questionnairePage.setValue(weightFieldTitle, weightFieldValue); //Peso (Kg)
+        questionnairePage.isNextButtonDisplayed();
+        questionnairePage.clickCheckboxWithNameAndValue(fiveYearsIllnessCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(hospitalizationCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(visitSpecialistCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(medicRecomendationCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(symptomsCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(unemploymentCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(drugsCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(declainedInsuranceCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickNextButton();
+        questionnairePage.isRecalculateButtonDisplayed();
+        questionnairePage.clickRecalculateButton();
 
 
 

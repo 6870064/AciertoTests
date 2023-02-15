@@ -5,6 +5,8 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -18,7 +20,7 @@ public class QuestionnairePage extends BasePage {
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR =  "//*[@name='%s']//span";
     private static final By PRICE_IS_CALCULATING_LOCATOR = By.xpath("//*[text()='Se está calculando el precio. Por favor, espere unos segundos.']");
-    private static final By NEXT_BUTTON = By.xpath("//button[@value='Next']"); //Siguiente button
+    private static final By NEXT_BUTTON = By.xpath("//button[text()='Siguiente']"); //Siguiente button
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
     private static final By CHECK_INCOME_TITLE = By.xpath("//*[text()='Blanqueo de capitales']");
@@ -26,6 +28,7 @@ public class QuestionnairePage extends BasePage {
     private static final String CHECKBOX_VALUE_LOCATOR = "//*[@name='%s' and @value='%s']";
     private static final By SAVE_DATA_BUTTON = By.xpath("//button[text()='GUARDAR DATOS']");
     private static final By BENEFICIARIES_FIELD_LOCATOR = By.xpath("//*[contains(@class, 'slds-textarea')]");
+    private static final By RECALCULATE_BUTTON = By.xpath("//button[text()='Recalculate']");
 
     public QuestionnairePage openCase() {
 
@@ -81,11 +84,17 @@ public class QuestionnairePage extends BasePage {
         return this;
     }
 
-    @Step("Clicking on Next button")
+    @Step("Clicking on Next button 'Siguiente'")
     public QuestionnairePage clickNextButton() {
-        log.info("Clicking on Next button");
+        log.info("Clicking on Next button 'Siguiente'");
         $(NEXT_BUTTON).click();
         return this;
+    }
+
+    @Step("Check thar Next button 'Siguiente' is displayed")
+    public boolean isNextButtonDisplayed() {
+        log.info("Check thar Next button 'Siguiente' is displayed");
+        return $(NEXT_BUTTON).isDisplayed();
     }
 
     @Step("Clicking on Next Charter button")
@@ -141,6 +150,19 @@ public class QuestionnairePage extends BasePage {
         return this;
     }
 
+    @Step("Wait till [Recalculate] button is displayed")
+    public QuestionnairePage isRecalculateButtonDisplayed () {
+        log.info("Wait till [Recalculate] button is displayed");
+        $(RECALCULATE_BUTTON).shouldBe(visible, Duration.ofSeconds(15));
+        return this;
+    }
+
+    @Step("Clicking on [Recalculate] button")
+    public QuestionnairePage clickRecalculateButton() {
+        log.info("Clicking on [Recalculate] button");
+        $(RECALCULATE_BUTTON).click();
+        return this;
+    }
 
 
 }
