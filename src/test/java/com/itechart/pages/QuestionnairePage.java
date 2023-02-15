@@ -1,12 +1,10 @@
 package com.itechart.pages;
-
 import com.codeborne.selenide.Selenide;
 import io.github.dzmitryrak.pages.BasePage;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -25,7 +23,9 @@ public class QuestionnairePage extends BasePage {
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
     private static final By CHECK_INCOME_TITLE = By.xpath("//*[text()='Blanqueo de capitales']");
     private static final String CHECKBOX_VALUE = "//*[text()='%s']";
-    private static final String CHECKBOX_INCOME_PAGE = "//*[@name='%s' and @value='%s']";
+    private static final String CHECKBOX_VALUE_LOCATOR = "//*[@name='%s' and @value='%s']";
+    private static final By SAVE_DATA_BUTTON = By.xpath("//button[text()='GUARDAR DATOS']");
+    private static final By BENEFICIARIES_FIELD_LOCATOR = By.xpath("//*[contains(@class, 'slds-textarea')]");
 
     public QuestionnairePage openCase() {
 
@@ -75,21 +75,21 @@ public class QuestionnairePage extends BasePage {
     }
 
     @Step("Clicking on Charge Price button")
-    public QuestionnairePage chargePriceButtonClick() {
+    public QuestionnairePage clickChargePriceButton() {
         log.info("Clicking on Charge Price button");
         $(CALCULATE_BUTTON).click();
         return this;
     }
 
     @Step("Clicking on Next button")
-    public QuestionnairePage nextButtonClick() {
+    public QuestionnairePage clickNextButton() {
         log.info("Clicking on Next button");
         $(NEXT_BUTTON).click();
         return this;
     }
 
     @Step("Clicking on Next Charter button")
-    public QuestionnairePage nextCharterButtonClick() {
+    public QuestionnairePage clickNextCharterButton() {
         log.info("Clicking on Next Charter button");
         $(NEXT_CHARTER_BUTTON).click();
         return this;
@@ -108,16 +108,36 @@ public class QuestionnairePage extends BasePage {
     }
 
     @Step("Clicking on checkbox with value {checkboxValue}")
-    public QuestionnairePage checkboxValueClick(String checkboxValue) {
+    public QuestionnairePage clickCheckboxValue(String checkboxValue) {
         log.info("Clicking on checkbox with value {checkboxValue}");
         $(String.format(CHECKBOX_VALUE, checkboxValue)).click();
         return this;
     }
 
     @Step("Clicking on checkbox with name {checkboxName} and value {checkboxValue}")
-    public QuestionnairePage checkboxIncomeValueClick(String checkboxName, String checkboxValue) {
+    public QuestionnairePage clickCheckboxWithNameAndValue(String checkboxName, String checkboxValue) {
         log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
-        $(String.format(CHECKBOX_INCOME_PAGE, checkboxName, checkboxValue)).click();
+        $(String.format(CHECKBOX_VALUE_LOCATOR, checkboxName, checkboxValue)).click();
+        return this;
+    }
+
+    @Step("Check that SAVE DATA button [GUARDAR DATOS] is displayed")
+    public boolean isSafeDataButtonDisplayed(){
+        log.info("Check that SAVE DATA button [GUARDAR DATOS] is displayed");
+        return $(SAVE_DATA_BUTTON).isDisplayed();
+    }
+
+    @Step("Entering '{value}' in 'Beneficiaries' field")
+    public QuestionnairePage setBeneficiariesValue(String value) {
+        log.info("Entering '{value}' in 'Beneficiaries' field");
+        $(BENEFICIARIES_FIELD_LOCATOR).setValue(value);
+        return this;
+    }
+
+    @Step("Clicking on SAVE DATA button [GUARDAR DATOS]")
+    public QuestionnairePage clickSaveDataButton() {
+        log.info("Clicking on SAVE DATA button [GUARDAR DATOS]");
+        $(SAVE_DATA_BUTTON).click();
         return this;
     }
 

@@ -64,6 +64,10 @@ public class QuestionnaireTests extends BaseTest {
     public String workExperienceFieldTitle = "CompanySeniority";
     public String workExperienceFieldValue = "01.01.2020";
     public String selfEmploymentCheckboxTitle = "Es_trabajador_aut_nomo";
+    public String otherInsuranceCheckboxTitle = "El_asegurado_tiene_otros_seguros_de_vida";
+    public String setAsideCapitalCheckboxTitle = "CapitalDestinedMortgage";
+    public String negativeAnswerCheckboxValue = "NoChoice";
+    public String beneficiariesFieldValue = "Sergey Sergeevich Sergeev";
 
 
     @Test(description = "Filling the Questionnaire")
@@ -76,11 +80,11 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setDropdownValue(2, 3);
         questionnairePage.setOptionDropdownValue(fraccioDropdownTitle, fralleciDropdownValue);
         questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle);
-        questionnairePage.chargePriceButtonClick();
+        questionnairePage.clickChargePriceButton();
         questionnairePage.isPriceCalculatingMessageDisplayed();
         //TODO ожидание в 20 секунд
-        questionnairePage.nextButtonClick();
-        questionnairePage.nextCharterButtonClick();
+        questionnairePage.clickNextButton();
+        questionnairePage.clickNextCharterButton();
         //вторая страница
         questionnairePage.setOptionDropdownValue(genderDropdownTitle,genderValue); //Sexo dropdown
         questionnairePage.setValue(nameFieldTitle, nameFieldValue); //Nombre field
@@ -103,23 +107,28 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(floorFieldTitle, florFieldValue); //Piso, puerta, escalera
         questionnairePage.setValue(populationFieldTitle, populationFieldValue); //Población field
         //TODO Población dropdown
-        questionnairePage.nextButtonClick();
+        questionnairePage.clickNextButton();
         // Третья вкладка
         questionnairePage.isBlanqueroDeCapitalesScreenOpened(); // "Blanqueo de capitales" is opened
         questionnairePage.setValue(incomeFieldTitle,incomeFieldValue); //Nivel ingresos/facturación field
-        questionnairePage.checkboxValueClick(incomeType); //Tipo de ingresos/facturación checkbox
-        questionnairePage.checkboxValueClick(incomePeriodType); //¿Ingreso anual o mensual? checkbox
+        questionnairePage.clickCheckboxValue(incomeType); //Tipo de ingresos/facturación checkbox
+        questionnairePage.clickCheckboxValue(incomePeriodType); //¿Ingreso anual o mensual? checkbox
         questionnairePage.setOptionDropdownValue(contractReasonDropdownTitle, contractReasonDropdownValue); //Motivo contratación de la póliza dropdown
-        questionnairePage.checkboxIncomeValueClick(responsibilityCheckboxTitle, incomeCheckboxValue); // *¿Es o ha sido usted, o algunos de sus familiares una persona de responsabilidad publica? checkbox
+        questionnairePage.clickCheckboxWithNameAndValue(responsibilityCheckboxTitle, incomeCheckboxValue); // *¿Es o ha sido usted, o algunos de sus familiares una persona de responsabilidad publica? checkbox
         questionnairePage.setOptionDropdownValue(fundsSourceDropdownTitle, fundsSourceDropdownValue); //Origen de los fondos dropdown
         questionnairePage.setOptionDropdownValue(selfEmployedDropdownTitle, selfEmployedDropdownValue); // ¿Trabaja por cuenta propia o ajena? dropdown
         questionnairePage.setValue(companyNameFieldTitle, companyNameFieldValue); // Nombre de la empresa en la que trabaja field
         questionnairePage.setValue(jobPositionFieldTitle, jobPositionFieldValue); //Cargo en la empresa field
         questionnairePage.setValue(workExperienceFieldTitle, workExperienceFieldValue); //Antigüedad en la empresa field
         //TODO País de residencia fiscal* dropdown
-        questionnairePage.checkboxIncomeValueClick(selfEmploymentCheckboxTitle,incomeCheckboxValue); // ¿Es trabajador autónomo? checkbox
-        questionnairePage.nextButtonClick();
+        questionnairePage.clickCheckboxWithNameAndValue(selfEmploymentCheckboxTitle,incomeCheckboxValue); // ¿Es trabajador autónomo? checkbox
+        questionnairePage.clickNextButton();
         // Четвертая вкладка
+        questionnairePage.isSafeDataButtonDisplayed();
+        questionnairePage.clickCheckboxWithNameAndValue(otherInsuranceCheckboxTitle, negativeAnswerCheckboxValue); // ¿El asegurado tiene otros seguros de vida en vigor? checkbox
+        questionnairePage.clickCheckboxWithNameAndValue(setAsideCapitalCheckboxTitle, negativeAnswerCheckboxValue); // ¿Querría destinar el capital para reembolsar una hipoteca o préstamo? checkbox
+        questionnairePage.setBeneficiariesValue(beneficiariesFieldValue); //Beneficiarios field
+        questionnairePage.clickSaveDataButton();
 
 
 
