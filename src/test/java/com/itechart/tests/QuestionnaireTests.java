@@ -7,6 +7,10 @@ public class QuestionnaireTests extends BaseTest {
 
     public String startOfInsurancePeriod = "01.03.2023";
     public String startOfInsuranceLocator = "Fecha_de_efecto";
+    public String professionDropdownTitle = "Profesión";
+    public String professionDropdownValue = "Almacenista / Operarios";
+    public String hobbiesDropdownTitle = "Aficiones/deportes";
+    public String hobbiesDropdownValue = "Boxeador / Boxeador";
     public String fraccioDropdownTitle = "Fraccionamiento";
     public String fralleciDropdownValue = "FrequencyOfPayment.Yearly";
     public String fallecimientoDropdownTitle = "Fraccionamiento";
@@ -39,7 +43,7 @@ public class QuestionnaireTests extends BaseTest {
     public String apartmentTypeFieldValue = "TipoDeVia.Apartamento";
     public String streetNameFieldTitle = "StreetNamePolicyHInsured";
     public String streetNameFieldValue = "Bialoweska";
-    public String streetNumberFieldTitle =  "StreetNumberPolicyHInsured";
+    public String streetNumberFieldTitle = "StreetNumberPolicyHInsured";
     public String streetNumberFieldValue = "45";
     public String floorFieldTitle = "Piso_puerta_escalera_PolicyHolderInsured";
     public String florFieldValue = "3";
@@ -87,17 +91,15 @@ public class QuestionnaireTests extends BaseTest {
     public String drugsCheckboxTitle = "Medicacion_Prescrita_Zurich";
     public String declainedInsuranceCheckboxTitle = "Seguro_Vida_Zurich";
 
-
-
-
     @Test(description = "Filling the Questionnaire")
     public void questionnaireTest() {
         //TODO добавить часть теста на заполнение асиерто
+        //первая вкладка
         questionnairePage.openCase();
         questionnairePage.isQuestionnairePageOpened();
-        questionnairePage.setValue(startOfInsuranceLocator, startOfInsurancePeriod);
-        questionnairePage.setDropdownValue(1, 10);
-        questionnairePage.setDropdownValue(2, 3);
+        questionnairePage.setValue(startOfInsuranceLocator, startOfInsurancePeriod); // Fecha de efecto field
+        questionnairePage.clickDropdownValue(professionDropdownTitle, professionDropdownValue);  //Profesión dropdown
+        questionnairePage.clickDropdownValue(hobbiesDropdownTitle, hobbiesDropdownValue); //Aficiones/deportes dropdown
         questionnairePage.setOptionDropdownValue(fraccioDropdownTitle, fralleciDropdownValue);
         questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle);
         questionnairePage.clickChargePriceButton();
@@ -105,8 +107,8 @@ public class QuestionnaireTests extends BaseTest {
         //TODO ожидание в 20 секунд
         questionnairePage.clickNextButton();
         questionnairePage.clickNextCharterButton();
-        //вторая страница
-        questionnairePage.setOptionDropdownValue(genderDropdownTitle,genderValue); //Sexo dropdown
+        //вторая вкладка
+        questionnairePage.setOptionDropdownValue(genderDropdownTitle, genderValue); //Sexo dropdown
         questionnairePage.setValue(nameFieldTitle, nameFieldValue); //Nombre field
         questionnairePage.setValue(surnameFieldTitle, surnameFieldValue); //Primer apellido field
         questionnairePage.setValue(secondSurnameFieldTitle, secondSurnameFieldValue); //Segundo apellido field
@@ -115,7 +117,6 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(docNumberFieldTitle, docNumberFieldValue); // Num. documento (sin espacios) field
         questionnairePage.setValue(expirationDateFieldTitle, expirationDateFieldValue); // Fecha vencimiento field
         questionnairePage.setOptionDropdownValue(civilStatusDropdownTitle, civilStatusDropdownValue); //Estado civil dropdown
-        // fields Último trabajo (solo para desempleados) and Motivo (solo para pensionistas) fields are skipped
         questionnairePage.setValue(childrenFieldTitle, childrenFieldValue); //Hijos field
         questionnairePage.setValue(regionOfBirthFieldTitle, regionOfBirthFieldValue); //Provincia de nacimiento field
         questionnairePage.setValue(placeOfBirthFieldTitle, placeOfBirthFieldValue); //Localidad de nacimiento field
@@ -130,7 +131,7 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickNextButton();
         // Третья вкладка
         questionnairePage.isBlanqueroDeCapitalesScreenOpened(); // "Blanqueo de capitales" is opened
-        questionnairePage.setValue(incomeFieldTitle,incomeFieldValue); //Nivel ingresos/facturación field
+        questionnairePage.setValue(incomeFieldTitle, incomeFieldValue); //Nivel ingresos/facturación field
         questionnairePage.clickCheckboxValue(incomeType); //Tipo de ingresos/facturación checkbox
         questionnairePage.clickCheckboxValue(incomePeriodType); //¿Ingreso anual o mensual? checkbox
         questionnairePage.setOptionDropdownValue(contractReasonDropdownTitle, contractReasonDropdownValue); //Motivo contratación de la póliza dropdown
@@ -161,20 +162,17 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(heightFieldTitle, heightFieldValue); //Altura (CM) field
         questionnairePage.setValue(weightFieldTitle, weightFieldValue); //Peso (Kg)
         questionnairePage.isNextButtonDisplayed();
-        questionnairePage.clickCheckboxWithNameAndValue(fiveYearsIllnessCheckboxTitle,negativeCheckboxValue);
-        questionnairePage.clickCheckboxWithNameAndValue(hospitalizationCheckboxTitle,negativeCheckboxValue);
-        questionnairePage.clickCheckboxWithNameAndValue(visitSpecialistCheckboxTitle,negativeCheckboxValue);
-        questionnairePage.clickCheckboxWithNameAndValue(medicRecomendationCheckboxTitle,negativeCheckboxValue);
-        questionnairePage.clickCheckboxWithNameAndValue(symptomsCheckboxTitle,negativeCheckboxValue);
-        questionnairePage.clickCheckboxWithNameAndValue(unemploymentCheckboxTitle,negativeCheckboxValue);
-        questionnairePage.clickCheckboxWithNameAndValue(drugsCheckboxTitle,negativeCheckboxValue);
-        questionnairePage.clickCheckboxWithNameAndValue(declainedInsuranceCheckboxTitle,negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(fiveYearsIllnessCheckboxTitle, negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(hospitalizationCheckboxTitle, negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(visitSpecialistCheckboxTitle, negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(medicRecomendationCheckboxTitle, negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(symptomsCheckboxTitle, negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(unemploymentCheckboxTitle, negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(drugsCheckboxTitle, negativeCheckboxValue);
+        questionnairePage.clickCheckboxWithNameAndValue(declainedInsuranceCheckboxTitle, negativeCheckboxValue);
         questionnairePage.clickNextButton();
         questionnairePage.isRecalculateButtonDisplayed();
         questionnairePage.clickRecalculateButton();
-
-
-
 
 
     }
