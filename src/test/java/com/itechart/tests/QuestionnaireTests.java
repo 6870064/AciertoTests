@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 public class QuestionnaireTests extends BaseTest {
 
+    public String tabTitle = "Cuestionarios";
     public String startOfInsurancePeriod = "01.03.2023";
     public String startOfInsuranceLocator = "Fecha_de_efecto";
     public String professionDropdownTitle = "Profesión";
@@ -14,6 +15,7 @@ public class QuestionnaireTests extends BaseTest {
     public String fraccioDropdownTitle = "Fraccionamiento";
     public String fralleciDropdownValue = "FrequencyOfPayment.Yearly";
     public String fallecimientoDropdownTitle = "Fraccionamiento";
+    public String calculatingPriceMessage = "Se está calculando el precio. Por favor, espere unos segundos.";
     public String genderDropdownTitle = "SexoPolicyHolderInsured";
     public String genderValue = "Hombre";
     public String nameFieldTitle = "NombrePolicyHInsured";
@@ -96,15 +98,16 @@ public class QuestionnaireTests extends BaseTest {
         //TODO добавить часть теста на заполнение асиерто
         //первая вкладка
         questionnairePage.openCase();
+        detailsPage.clickTab(tabTitle);
+        caseDetailsPage.waitTillOpened(tabTitle);
         questionnairePage.isQuestionnairePageOpened();
         questionnairePage.setValue(startOfInsuranceLocator, startOfInsurancePeriod); // Fecha de efecto field
         questionnairePage.clickDropdownValue(professionDropdownTitle, professionDropdownValue);  //Profesión dropdown
         questionnairePage.clickDropdownValue(hobbiesDropdownTitle, hobbiesDropdownValue); //Aficiones/deportes dropdown
-        questionnairePage.setOptionDropdownValue(fraccioDropdownTitle, fralleciDropdownValue);
-        questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle);
-        questionnairePage.clickChargePriceButton();
-        questionnairePage.isPriceCalculatingMessageDisplayed();
-        //TODO ожидание в 20 секунд
+        questionnairePage.setOptionDropdownValue(fraccioDropdownTitle, fralleciDropdownValue); //Fraccionamiento dropdown
+        questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle); //Fallecimiento dropdown
+        questionnairePage.clickChargePriceButton(); //Tarificar button
+        questionnairePage.isTextMessageDisplayed(calculatingPriceMessage);
         questionnairePage.clickNextButton();
         questionnairePage.clickNextCharterButton();
         //вторая вкладка

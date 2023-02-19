@@ -20,7 +20,7 @@ public class QuestionnairePage extends BasePage {
     private static final String DROPDOWN_VALUE_LOCATOR = "(//*[contains(@class, 'slds-media slds-media_center slds-p-around_xx-small')][%s]";
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR = "//*[@name='%s']//span";
-    private static final By PRICE_IS_CALCULATING_LOCATOR = By.xpath("//*[text()='Se está calculando el precio. Por favor, espere unos segundos.']");
+    private static final String TEXT_MESSAGE_LOCATOR = ("//*[text()='%s']");
     private static final By NEXT_BUTTON = By.xpath("//button[text()='Siguiente']"); //Siguiente button
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
@@ -105,10 +105,11 @@ public class QuestionnairePage extends BasePage {
         return this;
     }
 
-    @Step("Check that price is calculating message is displaying")
-    public boolean isPriceCalculatingMessageDisplayed() {
-        log.info("Price is calculating message is displaying");
-        return $(PRICE_IS_CALCULATING_LOCATOR).isDisplayed();
+    @Step("Wait till price is calculating message is displaying")
+    public QuestionnairePage isTextMessageDisplayed(String text) {
+        log.info("Wait till price is calculating message is displaying");
+        $(String.format(TEXT_MESSAGE_LOCATOR, text)).shouldBe(visible, Duration.ofSeconds(20));
+        return this;
     }
 
     @Step("Check that Blanqueo de capitales screen is opened")
