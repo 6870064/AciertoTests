@@ -1,11 +1,14 @@
 package com.itechart.tests;
 
 import com.itechart.base.BaseTest;
+import io.github.dzmitryrak.enums.SortOrder;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class QuestionnaireTests extends BaseTest {
 
     public String tabTitle = "Cuestionarios";
+    public String actualPriceText = "Tarificación Real";
     public String startOfInsurancePeriod = "01.03.2023";
     public String startOfInsuranceLocator = "Fecha_de_efecto";
     public String professionDropdownTitle = "Profesión";
@@ -16,6 +19,7 @@ public class QuestionnaireTests extends BaseTest {
     public String fralleciDropdownValue = "FrequencyOfPayment.Yearly";
     public String fallecimientoDropdownTitle = "Fraccionamiento";
     public String calculatingPriceMessage = "Se está calculando el precio. Por favor, espere unos segundos.";
+    public String checkIncomeTitle = "Blanqueo de capitales";
     public String genderDropdownTitle = "SexoPolicyHolderInsured";
     public String genderValue = "Hombre";
     public String nameFieldTitle = "NombrePolicyHInsured";
@@ -95,19 +99,40 @@ public class QuestionnaireTests extends BaseTest {
 
     @Test(description = "Filling the Questionnaire")
     public void questionnaireTest() {
-        //TODO добавить часть теста на заполнение асиерто
-        //первая вкладка
+
+//        String email = getRandomEmail();
+//        String phone = getRandomPhone();
+//        String expectedPhone = String.format("+34%s", phone);
+//        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
+//                .imInterestedButtonClick(1)
+//                .isFinalModalDisplayed();
+//        aciertoPage.callMeOnThisPhoneButtonClick(2)
+//                .isGratitudeModalDisplayed();
+//        aciertoPage.closeButtonClick()
+//                .isLifeInsurancePageOpened();
+//        aciertoPage.closeCurrentWindow();
+//        loginPage.open();
+//        loginPage.login(USERNAME, PASSWORD);
+//        homePage.isPageOpened();
+//        listView.open("Case")
+//                .clickSwitcher()
+//                .selectFilter(selectFilterValue)
+//                .table()
+//                .sortBy(columnTitle, SortOrder.DESC)
+//                .clickCell(columnNameOwner, 1);
+
         questionnairePage.openCase();
         detailsPage.clickTab(tabTitle);
         caseDetailsPage.waitTillOpened(tabTitle);
-        questionnairePage.isQuestionnairePageOpened();
+        //первая вкладка
+        questionnairePage.isTextDisplayed(actualPriceText);
         questionnairePage.setValue(startOfInsuranceLocator, startOfInsurancePeriod); // Fecha de efecto field
         questionnairePage.clickDropdownValue(professionDropdownTitle, professionDropdownValue);  //Profesión dropdown
         questionnairePage.clickDropdownValue(hobbiesDropdownTitle, hobbiesDropdownValue); //Aficiones/deportes dropdown
         questionnairePage.setOptionDropdownValue(fraccioDropdownTitle, fralleciDropdownValue); //Fraccionamiento dropdown
         questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle); //Fallecimiento dropdown
         questionnairePage.clickChargePriceButton(); //Tarificar button
-        questionnairePage.isTextMessageDisplayed(calculatingPriceMessage);
+        questionnairePage.isTextDisplayed(calculatingPriceMessage);
         questionnairePage.clickNextButton();
         questionnairePage.clickNextCharterButton();
         //вторая вкладка
@@ -133,7 +158,7 @@ public class QuestionnaireTests extends BaseTest {
         //TODO Población dropdown
         questionnairePage.clickNextButton();
         // Третья вкладка
-        questionnairePage.isBlanqueroDeCapitalesScreenOpened(); // "Blanqueo de capitales" is opened
+        questionnairePage.isTextDisplayed(checkIncomeTitle); // "Blanqueo de capitales" is opened
         questionnairePage.setValue(incomeFieldTitle, incomeFieldValue); //Nivel ingresos/facturación field
         questionnairePage.clickCheckboxValue(incomeType); //Tipo de ingresos/facturación checkbox
         questionnairePage.clickCheckboxValue(incomePeriodType); //¿Ingreso anual o mensual? checkbox
@@ -176,7 +201,5 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickNextButton();
         questionnairePage.isRecalculateButtonDisplayed();
         questionnairePage.clickRecalculateButton();
-
-
     }
 }

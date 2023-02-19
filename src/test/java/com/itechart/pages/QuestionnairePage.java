@@ -14,17 +14,15 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class QuestionnairePage extends BasePage {
 
-    private static final By ACTUAL_PRICE_LOCATOR = By.xpath("//span[text() ='Tarificación Real']");
     private static final String INPUT_LOCATOR = "//*[@name='%s']";
     private static final String DROPDOWN_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//input";
     private static final String DROPDOWN_VALUE_LOCATOR = "(//*[contains(@class, 'slds-media slds-media_center slds-p-around_xx-small')][%s]";
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR = "//*[@name='%s']//span";
-    private static final String TEXT_MESSAGE_LOCATOR = ("//*[text()='%s']");
+    private static final String TEXT_LOCATOR = ("//*[text()='%s']");
     private static final By NEXT_BUTTON = By.xpath("//button[text()='Siguiente']"); //Siguiente button
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
-    private static final By CHECK_INCOME_TITLE = By.xpath("//*[text()='Blanqueo de capitales']");
     private static final String CHECKBOX_VALUE = "//*[text()='%s']";
     private static final String CHECKBOX_VALUE_LOCATOR = "//*[@name='%s' and @value='%s']";
     private static final By SAVE_DATA_BUTTON = By.xpath("//button[text()='GUARDAR DATOS']");
@@ -34,13 +32,6 @@ public class QuestionnairePage extends BasePage {
     public QuestionnairePage openCase() {
 
         Selenide.open("https://bauerocp--staging.sandbox.lightning.force.com/lightning/r/Case/5001w00000AgKB0AAN/view");
-        return this;
-    }
-
-    @Step("Check that the Page with options for insurance services is opened")
-    public QuestionnairePage isQuestionnairePageOpened() {
-        log.info("The page with options for insurance services is opened");
-        $(ACTUAL_PRICE_LOCATOR).shouldBe(visible, Duration.ofSeconds(5));
         return this;
     }
 
@@ -106,16 +97,10 @@ public class QuestionnairePage extends BasePage {
     }
 
     @Step("Wait till price is calculating message is displaying")
-    public QuestionnairePage isTextMessageDisplayed(String text) {
+    public QuestionnairePage isTextDisplayed(String text) {
         log.info("Wait till price is calculating message is displaying");
-        $(String.format(TEXT_MESSAGE_LOCATOR, text)).shouldBe(visible, Duration.ofSeconds(20));
+        $(String.format(TEXT_LOCATOR, text)).shouldBe(visible, Duration.ofSeconds(20));
         return this;
-    }
-
-    @Step("Check that Blanqueo de capitales screen is opened")
-    public boolean isBlanqueroDeCapitalesScreenOpened() {
-        log.info("Check that Blanqueo de capitales screen is opened");
-        return $(CHECK_INCOME_TITLE).isDisplayed();
     }
 
     @Step("Clicking on checkbox with value {checkboxValue}")
