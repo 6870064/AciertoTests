@@ -70,14 +70,14 @@ public class QuestionnairePage extends BasePage {
     }
 
     @Step("Clicking on Charge Price button")
-    public QuestionnairePage clickChargePriceButton() {
+    public QuestionnairePage clickTarificarButton() {
         log.info("Clicking on Charge Price button");
         $(CALCULATE_BUTTON).click();
         return this;
     }
 
     @Step("Clicking on Next button 'Siguiente'")
-    public QuestionnairePage clickNextButton() {
+    public QuestionnairePage clickSiguienteButton() {
         log.info("Clicking on Next button 'Siguiente'");
         $(NEXT_BUTTON).click();
         return this;
@@ -90,7 +90,7 @@ public class QuestionnairePage extends BasePage {
     }
 
     @Step("Clicking on Next Charter button")
-    public QuestionnairePage clickNextCharterButton() {
+    public QuestionnairePage clickNextButton() {
         log.info("Clicking on Next Charter button");
         $(NEXT_CHARTER_BUTTON).click();
         return this;

@@ -1,8 +1,6 @@
 package com.itechart.tests;
 
 import com.itechart.base.BaseTest;
-import io.github.dzmitryrak.enums.SortOrder;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class QuestionnaireTests extends BaseTest {
@@ -19,7 +17,9 @@ public class QuestionnaireTests extends BaseTest {
     public String fralleciDropdownValue = "FrequencyOfPayment.Yearly";
     public String fallecimientoDropdownTitle = "Fraccionamiento";
     public String calculatingPriceMessage = "Se está calculando el precio. Por favor, espere unos segundos.";
+    public String policyHolderText = "¿El tomador de la póliza es diferente del asegurado? (Por favor no cambiar la opción a \"Si\")\n";
     public String checkIncomeTitle = "Blanqueo de capitales";
+    public String firstReceipt = "Primer recibo:";
     public String genderDropdownTitle = "SexoPolicyHolderInsured";
     public String genderValue = "Hombre";
     public String nameFieldTitle = "NombrePolicyHInsured";
@@ -130,11 +130,15 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickDropdownValue(professionDropdownTitle, professionDropdownValue);  //Profesión dropdown
         questionnairePage.clickDropdownValue(hobbiesDropdownTitle, hobbiesDropdownValue); //Aficiones/deportes dropdown
         questionnairePage.setOptionDropdownValue(fraccioDropdownTitle, fralleciDropdownValue); //Fraccionamiento dropdown
-        questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle); //Fallecimiento dropdown
-        questionnairePage.clickChargePriceButton(); //Tarificar button
+        questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle); //Fallecimiento dropdown //TODO переделать
+        questionnairePage.clickTarificarButton(); //Tarificar button
         questionnairePage.isTextDisplayed(calculatingPriceMessage);
+        questionnairePage.clickSiguienteButton();
+        questionnairePage.isTextDisplayed(firstReceipt);
         questionnairePage.clickNextButton();
-        questionnairePage.clickNextCharterButton();
+        questionnairePage.isTextDisplayed(policyHolderText);
+        questionnairePage.clickSiguienteButton();
+
         //вторая вкладка
         questionnairePage.setOptionDropdownValue(genderDropdownTitle, genderValue); //Sexo dropdown
         questionnairePage.setValue(nameFieldTitle, nameFieldValue); //Nombre field
@@ -148,6 +152,7 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(childrenFieldTitle, childrenFieldValue); //Hijos field
         questionnairePage.setValue(regionOfBirthFieldTitle, regionOfBirthFieldValue); //Provincia de nacimiento field
         questionnairePage.setValue(placeOfBirthFieldTitle, placeOfBirthFieldValue); //Localidad de nacimiento field
+
         //TODO País de nacimiento dropdown
         //TODO checkbox No
         questionnairePage.setOptionDropdownValue(apartmentTypeFieldTitle, apartmentTypeFieldValue); //Tipo de via dropdown
@@ -156,7 +161,7 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(floorFieldTitle, florFieldValue); //Piso, puerta, escalera
         questionnairePage.setValue(populationFieldTitle, populationFieldValue); //Población field
         //TODO Población dropdown
-        questionnairePage.clickNextButton();
+        questionnairePage.clickSiguienteButton();
         // Третья вкладка
         questionnairePage.isTextDisplayed(checkIncomeTitle); // "Blanqueo de capitales" is opened
         questionnairePage.setValue(incomeFieldTitle, incomeFieldValue); //Nivel ingresos/facturación field
@@ -171,7 +176,7 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(workExperienceFieldTitle, workExperienceFieldValue); //Antigüedad en la empresa field
         //TODO País de residencia fiscal* dropdown
         questionnairePage.clickCheckboxWithNameAndValue(selfEmploymentCheckboxTitle, positiveCheckboxValue); // ¿Es trabajador autónomo? checkbox
-        questionnairePage.clickNextButton();
+        questionnairePage.clickSiguienteButton();
         // Четвертая вкладка
         questionnairePage.isSafeDataButtonDisplayed();
         questionnairePage.clickCheckboxWithNameAndValue(otherInsuranceCheckboxTitle, negativeAnswerCheckboxValue); // ¿El asegurado tiene otros seguros de vida en vigor? checkbox
@@ -182,11 +187,11 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.isNextButtonDisplayed();
         questionnairePage.setValue(bankFieldTitle, bankFieldValue); // Entidad bancaria field
         questionnairePage.setValue(ibanFieldTitle, ibanFieldValue); // IBAN field
-        questionnairePage.clickNextButton();
+        questionnairePage.clickSiguienteButton();
         //шестая вкладка
         questionnairePage.isNextButtonDisplayed();
         questionnairePage.clickCheckboxWithNameAndValue(agreeCheckboxTitle, positiveCheckboxValue); //¿Estás de acuerdo? checkbox
-        questionnairePage.clickNextButton();
+        questionnairePage.clickSiguienteButton();
         questionnairePage.setValue(heightFieldTitle, heightFieldValue); //Altura (CM) field
         questionnairePage.setValue(weightFieldTitle, weightFieldValue); //Peso (Kg)
         questionnairePage.isNextButtonDisplayed();
@@ -198,7 +203,7 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickCheckboxWithNameAndValue(unemploymentCheckboxTitle, negativeCheckboxValue);
         questionnairePage.clickCheckboxWithNameAndValue(drugsCheckboxTitle, negativeCheckboxValue);
         questionnairePage.clickCheckboxWithNameAndValue(declainedInsuranceCheckboxTitle, negativeCheckboxValue);
-        questionnairePage.clickNextButton();
+        questionnairePage.clickSiguienteButton();
         questionnairePage.isRecalculateButtonDisplayed();
         questionnairePage.clickRecalculateButton();
     }
