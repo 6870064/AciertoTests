@@ -10,6 +10,7 @@ public class QuestionnaireTests extends BaseTest {
     public String startOfInsurancePeriod = "01.03.2023";
     public String startOfInsuranceLocator = "Fecha_de_efecto";
     public String professionDropdownTitle = "Profesión";
+    public String deafultTabTitle = "Noticias en tiempo real";
     public String professionDropdownValue = "Almacenista / Operarios";
     public String hobbiesDropdownTitle = "Aficiones/deportes";
     public String hobbiesDropdownValue = "Boxeador / Boxeador";
@@ -44,7 +45,15 @@ public class QuestionnaireTests extends BaseTest {
     public String regionOfBirthFieldValue = "Espana, Barcelona";
     public String placeOfBirthFieldTitle = "LocalidadDeNacimientoTomadorAsegurado";
     public String placeOfBirthFieldValue = "C. d'Arístides Maillol, 12, 08028";
-    public String countryOfBirthFieldTitle = "";
+    public String travelAbroadCheckboxTitle = "¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales?";
+    public String livingAbroadCheckboxTitle = "¿Resides más de 60 días continuados en un país que no es de la UE?";
+    public String travelDangerZoneCheckboxTitle = "¿Vas a realizar algún viaje a zona de guerra o área de crisis?";
+    public String insuranceRejectCheckboxTitle = "¿Has sido rechazado al contratar un seguro de vida o con sobreprima?";
+    public String countryOfBirthDropdownTitle = "País de nacimiento";
+    public String countryOfBirthDropdownValue = "Andorra";
+    public String provinceFieldTitle = "Provincia";
+    public String provinceFieldValue = "Alicante";
+    public String countryDropdownTitle ="País";
     public String apartmentTypeFieldTitle = "AddressTypePolicyHolderInsured";
     public String apartmentTypeFieldValue = "TipoDeVia.Apartamento";
     public String streetNameFieldTitle = "StreetNamePolicyHInsured";
@@ -111,9 +120,9 @@ public class QuestionnaireTests extends BaseTest {
 //        aciertoPage.closeButtonClick()
 //                .isLifeInsurancePageOpened();
 //        aciertoPage.closeCurrentWindow();
-//        loginPage.open();
-//        loginPage.login(USERNAME, PASSWORD);
-//        homePage.isPageOpened();
+        loginPage.open();
+        loginPage.login(USERNAME, PASSWORD);
+        homePage.isPageOpened();
 //        listView.open("Case")
 //                .clickSwitcher()
 //                .selectFilter(selectFilterValue)
@@ -122,6 +131,7 @@ public class QuestionnaireTests extends BaseTest {
 //                .clickCell(columnNameOwner, 1);
 
         questionnairePage.openCase();
+        caseDetailsPage.waitTillOpened(deafultTabTitle);
         detailsPage.clickTab(tabTitle);
         caseDetailsPage.waitTillOpened(tabTitle);
         //первая вкладка
@@ -138,7 +148,6 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickNextButton();
         questionnairePage.isTextDisplayed(policyHolderText);
         questionnairePage.clickSiguienteButton();
-
         //вторая вкладка
         questionnairePage.setOptionDropdownValue(genderDropdownTitle, genderValue); //Sexo dropdown
         questionnairePage.setValue(nameFieldTitle, nameFieldValue); //Nombre field
@@ -152,15 +161,19 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(childrenFieldTitle, childrenFieldValue); //Hijos field
         questionnairePage.setValue(regionOfBirthFieldTitle, regionOfBirthFieldValue); //Provincia de nacimiento field
         questionnairePage.setValue(placeOfBirthFieldTitle, placeOfBirthFieldValue); //Localidad de nacimiento field
-
-        //TODO País de nacimiento dropdown
-        //TODO checkbox No
+        questionnairePage.clickDropdownValue(countryOfBirthDropdownTitle,countryOfBirthDropdownValue); // País de nacimiento dropdown
+        questionnairePage.clickCheckbox(travelAbroadCheckboxTitle, negativeCheckboxValue);  //¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales? checkbox
+        questionnairePage.clickCheckbox(livingAbroadCheckboxTitle,negativeCheckboxValue); //¿Resides más de 60 días continuados en un país que no es de la UE? checkbox
+        questionnairePage.clickCheckbox(travelDangerZoneCheckboxTitle,negativeCheckboxValue); //¿Vas a realizar algún viaje a zona de guerra o área de crisis? checkbox
+        questionnairePage.clickCheckbox(travelDangerZoneCheckboxTitle,negativeCheckboxValue); //¿Has sido rechazado al contratar un seguro de vida o con sobreprima? checkbox
+        questionnairePage.clickCheckbox(insuranceRejectCheckboxTitle, negativeCheckboxValue); //¿Has sido rechazado al contratar un seguro de vida o con sobreprima? checkbox
         questionnairePage.setOptionDropdownValue(apartmentTypeFieldTitle, apartmentTypeFieldValue); //Tipo de via dropdown
         questionnairePage.setValue(streetNameFieldTitle, streetNameFieldValue); //Nombre de la calle field
         questionnairePage.setValue(streetNumberFieldTitle, streetNumberFieldValue); //Número field
         questionnairePage.setValue(floorFieldTitle, florFieldValue); //Piso, puerta, escalera
         questionnairePage.setValue(populationFieldTitle, populationFieldValue); //Población field
-        //TODO Población dropdown
+        questionnairePage.setValue(provinceFieldTitle, provinceFieldValue); //Provincia field
+        questionnairePage.clickDropdownValue(countryDropdownTitle, countryOfBirthDropdownValue); // País dropdown
         questionnairePage.clickSiguienteButton();
         // Третья вкладка
         questionnairePage.isTextDisplayed(checkIncomeTitle); // "Blanqueo de capitales" is opened

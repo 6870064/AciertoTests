@@ -16,18 +16,25 @@ public class QuestionnairePage extends BasePage {
 
     private static final String INPUT_LOCATOR = "//*[@name='%s']";
     private static final String DROPDOWN_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//input";
-    private static final String DROPDOWN_VALUE_LOCATOR = "(//*[contains(@class, 'slds-media slds-media_center slds-p-around_xx-small')][%s]";
+    private static final String DROPDOWN_VALUE_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//div[text()='%s']";
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR = "//*[@name='%s']//span";
     private static final String TEXT_LOCATOR = ("//*[text()='%s']");
     private static final By NEXT_BUTTON = By.xpath("//button[text()='Siguiente']"); //Siguiente button
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
-    private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar'])[1]");
+    private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar']");
     private static final String CHECKBOX_VALUE = "//*[text()='%s']";
     private static final String CHECKBOX_VALUE_LOCATOR = "//*[@name='%s' and @value='%s']";
+    private static final String CHECKBOX_LOCATOR = "//*[text()= '%s']/ancestor::fieldset//input[@value='%s']";
     private static final By SAVE_DATA_BUTTON = By.xpath("//button[text()='GUARDAR DATOS']");
     private static final By BENEFICIARIES_FIELD_LOCATOR = By.xpath("//*[contains(@class, 'slds-textarea')]");
     private static final By RECALCULATE_BUTTON = By.xpath("//button[text()='Recalculate']");
+
+    //*[text()= '¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales?']
+    //*[text()= '¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales?']/ancestor::fieldset//input[@value='NoResource']
+
+    //*[.//label[text()='País de segunda nacionalidad']][@class='field-element']//div[text()='Afganistán']
+
 
     public QuestionnairePage openCase() {
 
@@ -114,6 +121,13 @@ public class QuestionnairePage extends BasePage {
     public QuestionnairePage clickCheckboxWithNameAndValue(String checkboxName, String checkboxValue) {
         log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
         $(String.format(CHECKBOX_VALUE_LOCATOR, checkboxName, checkboxValue)).click();
+        return this;
+    }
+
+    @Step("Clicking on checkbox with name {checkboxName} and value {checkboxValue}")
+    public QuestionnairePage clickCheckbox(String checkboxName, String checkboxValue) {
+        log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
+        $(String.format(CHECKBOX_LOCATOR, checkboxName, checkboxValue)).click();
         return this;
     }
 
