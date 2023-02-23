@@ -19,7 +19,7 @@ public class QuestionnairePage extends BasePage {
     private static final String DROPDOWN_VALUE_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//div[text()='%s']";
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR = "//*[@name='%s']//span";
-    private static final String TEXT_LOCATOR = ("//*[text()='%s']");
+    private static final String TEXT_LOCATOR = "//*[text()='%s']";
     private static final By NEXT_BUTTON = By.xpath("//button[text()='Siguiente']"); //Siguiente button
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
     private static final By CALCULATE_BUTTON = By.xpath("//button[text()='Tarificar']");
@@ -42,19 +42,18 @@ public class QuestionnairePage extends BasePage {
         return this;
     }
 
-    @Step("Entering '{value}' in {input} field")
+    @Step("Entering {value} in {input} field")
     public QuestionnairePage setValue(String input, String value) {
-        log.info("Entering '{value}' in {input} field");
-        $(String.format(INPUT_LOCATOR, input)).setValue(value);
+        log.info("Entering {value} in {input} field");
+        $(By.xpath(String.format(INPUT_LOCATOR, input))).setValue(value);
         return this;
     }
 
     @Step("Choosing {dropdownValue} from {fieldTitle")
     public QuestionnairePage clickDropdownValue(String dropdownTitle, String dropdownValue) {
         log.info("Choosing value from dropdown list");
-        $(String.format(DROPDOWN_LOCATOR, dropdownTitle)).click();
-        $(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue)).shouldBe(visible);
-        $(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue)).click();
+        $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).click();
+        $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).click();
         return this;
     }
 
@@ -106,7 +105,7 @@ public class QuestionnairePage extends BasePage {
     @Step("Wait till price is calculating message is displaying")
     public QuestionnairePage isTextDisplayed(String text) {
         log.info("Wait till price is calculating message is displaying");
-        $(String.format(TEXT_LOCATOR, text)).shouldBe(visible, Duration.ofSeconds(20));
+        $(By.xpath(String.format(TEXT_LOCATOR, text))).shouldBe(visible, Duration.ofSeconds(20));
         return this;
     }
 
