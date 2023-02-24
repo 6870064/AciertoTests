@@ -42,14 +42,14 @@ public class QuestionnairePage extends BasePage {
 
     @Step("Entering {value} in {input} field")
     public QuestionnairePage setValue(String input, String value) {
-        log.info("Entering {value} in {input} field");
+        log.info("Entering {} in {} field", value, input);
         $(By.xpath(String.format(INPUT_LOCATOR, input))).setValue(value);
         return this;
     }
 
-    @Step("Choosing {dropdownValue} from {fieldTitle")
+    @Step("Choosing {dropdownValue} from {dropdownTitle dropdown")
     public QuestionnairePage clickDropdownValue(String dropdownTitle, String dropdownValue) {
-        log.info("Choosing value from dropdown list");
+        log.info("Choosing {} from {} dropdown list", dropdownValue, dropdownTitle);
         $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).click();
         $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).click();
         return this;
@@ -57,7 +57,7 @@ public class QuestionnairePage extends BasePage {
 
     @Step("Choosing value from OptionDropdown list")
     public QuestionnairePage setOptionDropdownValue(String dropDownTitle, String dropdownValue) {
-        log.info("Choosing value from Fraccionamiento dropdown list");
+        log.info("Choosing {} from Fraccionamiento dropdown list", dropdownValue);
         $(By.xpath(String.format(INPUT_LOCATOR, dropDownTitle))).click();
         $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).shouldBe(visible);
         $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).click();
