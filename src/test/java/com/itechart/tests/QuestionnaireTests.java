@@ -1,6 +1,7 @@
 package com.itechart.tests;
 
 import com.itechart.base.BaseTest;
+import com.itechart.pages.CaseDetailsPage;
 import org.testng.annotations.Test;
 
 public class QuestionnaireTests extends BaseTest {
@@ -53,7 +54,7 @@ public class QuestionnaireTests extends BaseTest {
     public String countryOfBirthDropdownValue = "Andorra";
     public String provinceFieldTitle = "Provincia";
     public String provinceFieldValue = "Alicante";
-    public String countryDropdownTitle ="País";
+    public String countryDropdownTitle = "País";
     public String apartmentTypeFieldTitle = "AddressTypePolicyHolderInsured";
     public String apartmentTypeFieldValue = "TipoDeVia.Apartamento";
     public String streetNameFieldTitle = "StreetNamePolicyHInsured";
@@ -131,9 +132,9 @@ public class QuestionnaireTests extends BaseTest {
 //                .clickCell(columnNameOwner, 1);
 
         questionnairePage.openCase();
-        caseDetailsPage.waitTillOpened(deafultTabTitle);
+        CaseDetailsPage.waitTillOpened(deafultTabTitle);
         detailsPage.clickTab(tabTitle);
-        caseDetailsPage.waitTillOpened(tabTitle);
+        CaseDetailsPage.waitTillOpened(tabTitle);
         //первая вкладка
         questionnairePage.isTextDisplayed(actualPriceText);
         questionnairePage.setValue(startOfInsuranceLocator, startOfInsurancePeriod); // Fecha de efecto field
@@ -161,11 +162,11 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(childrenFieldTitle, childrenFieldValue); //Hijos field
         questionnairePage.setValue(regionOfBirthFieldTitle, regionOfBirthFieldValue); //Provincia de nacimiento field
         questionnairePage.setValue(placeOfBirthFieldTitle, placeOfBirthFieldValue); //Localidad de nacimiento field
-        questionnairePage.clickDropdownValue(countryOfBirthDropdownTitle,countryOfBirthDropdownValue); // País de nacimiento dropdown
+        questionnairePage.clickDropdownValue(countryOfBirthDropdownTitle, countryOfBirthDropdownValue); // País de nacimiento dropdown
         questionnairePage.clickCheckbox(travelAbroadCheckboxTitle, negativeCheckboxValue);  //¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales? checkbox
-        questionnairePage.clickCheckbox(livingAbroadCheckboxTitle,negativeCheckboxValue); //¿Resides más de 60 días continuados en un país que no es de la UE? checkbox
-        questionnairePage.clickCheckbox(travelDangerZoneCheckboxTitle,negativeCheckboxValue); //¿Vas a realizar algún viaje a zona de guerra o área de crisis? checkbox
-        questionnairePage.clickCheckbox(travelDangerZoneCheckboxTitle,negativeCheckboxValue); //¿Has sido rechazado al contratar un seguro de vida o con sobreprima? checkbox
+        questionnairePage.clickCheckbox(livingAbroadCheckboxTitle, negativeCheckboxValue); //¿Resides más de 60 días continuados en un país que no es de la UE? checkbox
+        questionnairePage.clickCheckbox(travelDangerZoneCheckboxTitle, negativeCheckboxValue); //¿Vas a realizar algún viaje a zona de guerra o área de crisis? checkbox
+        questionnairePage.clickCheckbox(travelDangerZoneCheckboxTitle, negativeCheckboxValue); //¿Has sido rechazado al contratar un seguro de vida o con sobreprima? checkbox
         questionnairePage.clickCheckbox(insuranceRejectCheckboxTitle, negativeCheckboxValue); //¿Has sido rechazado al contratar un seguro de vida o con sobreprima? checkbox
         questionnairePage.setOptionDropdownValue(apartmentTypeFieldTitle, apartmentTypeFieldValue); //Tipo de via dropdown
         questionnairePage.setValue(streetNameFieldTitle, streetNameFieldValue); //Nombre de la calle field
