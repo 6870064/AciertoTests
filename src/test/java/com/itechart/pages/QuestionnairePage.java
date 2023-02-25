@@ -15,7 +15,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class QuestionnairePage extends BasePage {
 
     private static final String INPUT_LOCATOR = "//*[@name='%s']";
-    private static final String DROPDOWN_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//input";
+ //   private static final String DROPDOWN_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//input";
+    private static final String DROPDOWN_LOCATOR = "(//label[text()='%s']/ancestor::div[contains(@class,'slds-p-bottom_x-small cQuickLookup')]//div[contains(@class,' slds-size_12-of-12')])[2]";
     private static final String DROPDOWN_VALUE_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//div[text()='%s']";
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR = "//*[@name='%s']//span";
@@ -30,9 +31,16 @@ public class QuestionnairePage extends BasePage {
     private static final By BENEFICIARIES_FIELD_LOCATOR = By.xpath("//*[contains(@class, 'slds-textarea')]");
     private static final By RECALCULATE_BUTTON = By.xpath("//button[text()='Recalculate']");
 
+    //*[.//label[text()='%s']][@class='field-element']//input
+// //*[.//label[text()='Aficiones/deportes']][@class='field-element']//li//div[text()='Atletismo, running, biatlón, triatlón / Atletismo, running, biatlón, triatlón']
+  //  (//label[text()='Profesión']/ancestor::div[contains(@class,'slds-p-bottom_x-small cQuickLookup')]//div[contains(@class,' slds-size_12-of-12')])[2]
+
+    //label[text()='Aficiones/deportes']/ancestor::div[contains(@class,'slds-p-bottom_x-small cQuickLookup')]//div[contains(@class,' slds-size_12-of-12')]
     //*[text()= '¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales?']
     //*[text()= '¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales?']/ancestor::fieldset//input[@value='NoResource']
+
     //*[.//label[text()='País de segunda nacionalidad']][@class='field-element']//div[text()='Afganistán']
+
 
     public QuestionnairePage openCase() {
 
@@ -47,19 +55,20 @@ public class QuestionnairePage extends BasePage {
         return this;
     }
 
-    @Step("Choosing {dropdownValue} from {dropdownTitle dropdown")
+    @Step("Choosing {dropdownValue} from {fieldTitle")
     public QuestionnairePage clickDropdownValue(String dropdownTitle, String dropdownValue) {
-        log.info("Choosing {} from {} dropdown list", dropdownValue, dropdownTitle);
+        log.info("Choosing {} from dropdown {}", dropdownValue, dropdownTitle);
         $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).click();
+        $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).shouldBe(visible,Duration.ofSeconds(4));
         $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).click();
         return this;
     }
 
     @Step("Choosing value from OptionDropdown list")
     public QuestionnairePage setOptionDropdownValue(String dropDownTitle, String dropdownValue) {
-        log.info("Choosing {} from Fraccionamiento dropdown list", dropdownValue);
+        log.info("Choosing value from Fraccionamiento dropdown list");
         $(By.xpath(String.format(INPUT_LOCATOR, dropDownTitle))).click();
-        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).shouldBe(visible);
+        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).shouldBe(visible,Duration.ofSeconds(4));
         $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).click();
         return this;
     }
@@ -67,9 +76,9 @@ public class QuestionnairePage extends BasePage {
     @Step("Choosing value from FallecimientoDropdown field list")
     public QuestionnairePage setFallecimientoDropdownValue(String dropDownTitle) {
         log.info("Choosing value from Fallecimiento dropdown list");
-        $(By.xpath(String.format(INPUT_LOCATOR, dropDownTitle))).click();
-        $(By.xpath(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle))).shouldBe(visible);
-        $(By.xpath(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle))).click();
+        $(String.format(INPUT_LOCATOR, dropDownTitle)).click();
+        $(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle)).shouldBe(visible);
+        $(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle)).click();
         return this;
     }
 
@@ -110,21 +119,21 @@ public class QuestionnairePage extends BasePage {
     @Step("Clicking on checkbox with value {checkboxValue}")
     public QuestionnairePage clickCheckboxValue(String checkboxValue) {
         log.info("Clicking on checkbox with value {checkboxValue}");
-        $(By.xpath(String.format(CHECKBOX_VALUE, checkboxValue))).click();
+        $(String.format(CHECKBOX_VALUE, checkboxValue)).click();
         return this;
     }
 
     @Step("Clicking on checkbox with name {checkboxName} and value {checkboxValue}")
     public QuestionnairePage clickCheckboxWithNameAndValue(String checkboxName, String checkboxValue) {
         log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
-        $(By.xpath(String.format(CHECKBOX_VALUE_LOCATOR, checkboxName, checkboxValue))).click();
+        $(String.format(CHECKBOX_VALUE_LOCATOR, checkboxName, checkboxValue)).click();
         return this;
     }
 
     @Step("Clicking on checkbox with name {checkboxName} and value {checkboxValue}")
     public QuestionnairePage clickCheckbox(String checkboxName, String checkboxValue) {
         log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
-        $(By.xpath(String.format(CHECKBOX_LOCATOR, checkboxName, checkboxValue))).click();
+        $(String.format(CHECKBOX_LOCATOR, checkboxName, checkboxValue)).click();
         return this;
     }
 
@@ -161,4 +170,6 @@ public class QuestionnairePage extends BasePage {
         $(RECALCULATE_BUTTON).click();
         return this;
     }
+
+
 }
