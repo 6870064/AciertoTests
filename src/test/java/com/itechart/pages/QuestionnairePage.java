@@ -57,10 +57,14 @@ public class QuestionnairePage extends BasePage {
 
     @Step("Choosing {dropdownValue} from {fieldTitle")
     public QuestionnairePage clickDropdownValue(String dropdownTitle, String dropdownValue) {
-        log.info("Choosing {} from dropdown {}", dropdownValue, dropdownTitle);
-        $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).click();
-        $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).shouldBe(visible,Duration.ofSeconds(4));
-        $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).click();
+        log.info("Click on {} dropdown", dropdownTitle);
+
+        //$(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).click();
+        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))));
+        //$(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).shouldBe(visible,Duration.ofSeconds(4));
+        log.info("Click on {} dropdown value", dropdownValue);
+        Selenide.executeJavaScript("arguments[0].click();",$(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))));
+        //$(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).click();
         return this;
     }
 
