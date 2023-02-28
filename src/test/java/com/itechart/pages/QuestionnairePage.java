@@ -52,11 +52,11 @@ public class QuestionnairePage extends BasePage {
     }
 
     @Step("Choosing value from OptionDropdown list")
-    public QuestionnairePage setOptionDropdownValue(String dropDownTitle, String dropdownValue) {
-        log.info("Clicking on {} dropdown", dropDownTitle);
-        $(By.xpath(String.format(INPUT_LOCATOR, dropDownTitle))).doubleClick();
-        log.info("Clicking on {} dropdown value:", dropDownTitle);
-        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).doubleClick();
+    public QuestionnairePage setOptionDropdownValue(String dropdownTitle, String dropdownValue) {
+        log.info("Clicking on {} dropdown", dropdownTitle);
+        $(By.xpath(String.format(INPUT_LOCATOR, dropdownTitle))).doubleClick();
+        log.info("Clicking on {} dropdown value:{}", dropdownTitle,dropdownValue);
+        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropdownTitle, dropdownValue))).doubleClick();
         return this;
     }
 

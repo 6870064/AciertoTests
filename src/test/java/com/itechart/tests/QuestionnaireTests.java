@@ -15,12 +15,7 @@ public class QuestionnaireTests extends BaseTest {
     public String professionDropdownValue = "Almacenista / Operarios";
     public String hobbiesDropdownTitle = "Aficiones/deportes";
     public String hobbiesDropdownValue = "Boxeador / Boxeador";
-    public String resultString = "Lista de resultados";
-    public String fraccioDropdownTitle = "Fraccionamiento";
-    public String fralleciDropdownValue = "FrequencyOfPayment.Yearly";
-    public String fallecimientoDropdownTitle = "Fraccionamiento";
     public String calculatingPriceMessage = "Se está calculando el precio. Por favor, espere unos segundos.";
-    public String policyHolderText = "¿El tomador de la póliza es diferente del asegurado? (Por favor no cambiar la opción a \"Si\")\n";
     public String checkIncomeTitle = "Blanqueo de capitales";
     public String firstReceipt = "Primer recibo:";
     public String genderDropdownTitle = "SexoPolicyHolderInsured";
@@ -141,7 +136,6 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.setValue(startOfInsuranceLocator, startOfInsurancePeriod); // Fecha de efecto field
         questionnairePage.clickDropdownValue(hobbiesDropdownTitle, hobbiesDropdownValue); //Aficiones/deportes dropdown
         questionnairePage.clickDropdownValue(professionDropdownTitle, professionDropdownValue);  //Profesión dropdown
-     //   questionnairePage.ScrollTillTextBeVisible(resultString);
         questionnairePage.clickTarificarButton(); //Tarificar button
         questionnairePage.isTextDisplayed(calculatingPriceMessage);
         questionnairePage.clickSiguienteButton();
@@ -149,8 +143,8 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickNextButton();
         questionnairePage.clickSiguienteButton();
         //вторая вкладка
-        questionnairePage.setOptionDropdownValue(genderDropdownTitle, genderValue); //Sexo dropdown
         questionnairePage.setValue(nameFieldTitle, nameFieldValue); //Nombre field
+        questionnairePage.setOptionDropdownValue(genderDropdownTitle, genderValue); //Sexo dropdown
         questionnairePage.setValue(surnameFieldTitle, surnameFieldValue); //Primer apellido field
         questionnairePage.setValue(secondSurnameFieldTitle, secondSurnameFieldValue); //Segundo apellido field
         questionnairePage.setValue(languageFieldTitle, languageFieldValue); //Idioma de preferencia field
