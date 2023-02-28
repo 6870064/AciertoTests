@@ -18,7 +18,6 @@ public class QuestionnairePage extends BasePage {
     private static final String DROPDOWN_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//input";
     private static final String DROPDOWN_VALUE_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//div[text()='%s']";
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
-    private static final String FALLECIMIENTO_VALUE_LOCATOR = "//*[@name='%s']//span";
     private static final String TEXT_LOCATOR = "//*[text()='%s']";
     private static final By NEXT_BUTTON = By.xpath("//button[text()='Siguiente']"); //Siguiente button
     private static final By NEXT_CHARTER_BUTTON = By.xpath("//button[text()='Next']");
@@ -47,40 +46,36 @@ public class QuestionnairePage extends BasePage {
     public QuestionnairePage clickDropdownValue(String dropdownTitle, String dropdownValue) {
         log.info("Click on {} dropdown", dropdownTitle);
         $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).doubleClick();
-        log.info("Click on {} dropdown value", dropdownValue);
+        log.info("Click on {} dropdown value {}", dropdownTitle, dropdownValue);
         $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).doubleClick();
         return this;
     }
 
     @Step("Choosing value from OptionDropdown list")
     public QuestionnairePage setOptionDropdownValue(String dropDownTitle, String dropdownValue) {
-        log.info("Choosing value from Fraccionamiento dropdown list");
-        $(By.xpath(String.format(INPUT_LOCATOR, dropDownTitle))).click();
-        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).shouldBe(visible,Duration.ofSeconds(4));
-        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).click();
-        return this;
-    }
-
-    @Step("Choosing value from FallecimientoDropdown field list")
-    public QuestionnairePage setFallecimientoDropdownValue(String dropDownTitle) {
-        log.info("Choosing value from Fallecimiento dropdown list");
-        $(String.format(INPUT_LOCATOR, dropDownTitle)).click();
-        $(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle)).shouldBe(visible);
-        $(String.format(FALLECIMIENTO_VALUE_LOCATOR, dropDownTitle)).click();
+        log.info("Clicking on {} dropdown", dropDownTitle);
+        $(By.xpath(String.format(INPUT_LOCATOR, dropDownTitle))).doubleClick();
+        log.info("Clicking on {} dropdown value:", dropDownTitle);
+        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropDownTitle, dropdownValue))).doubleClick();
         return this;
     }
 
     @Step("Clicking on Charge Price button")
     public QuestionnairePage clickTarificarButton() {
         log.info("Clicking on Charge Price button");
-        $(CALCULATE_BUTTON).click();
+        clickJS(CALCULATE_BUTTON);
         return this;
     }
 
     @Step("Clicking on Next button 'Siguiente'")
     public QuestionnairePage clickSiguienteButton() {
         log.info("Clicking on Next button 'Siguiente'");
-        $(NEXT_BUTTON).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        clickJS(NEXT_BUTTON);
         return this;
     }
 
@@ -93,7 +88,7 @@ public class QuestionnairePage extends BasePage {
     @Step("Clicking on Next Charter button")
     public QuestionnairePage clickNextButton() {
         log.info("Clicking on Next Charter button");
-        $(NEXT_CHARTER_BUTTON).click();
+        clickJS(NEXT_CHARTER_BUTTON);
         return this;
     }
 

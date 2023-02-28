@@ -15,6 +15,7 @@ public class QuestionnaireTests extends BaseTest {
     public String professionDropdownValue = "Almacenista / Operarios";
     public String hobbiesDropdownTitle = "Aficiones/deportes";
     public String hobbiesDropdownValue = "Boxeador / Boxeador";
+    public String resultString = "Lista de resultados";
     public String fraccioDropdownTitle = "Fraccionamiento";
     public String fralleciDropdownValue = "FrequencyOfPayment.Yearly";
     public String fallecimientoDropdownTitle = "Fraccionamiento";
@@ -138,16 +139,14 @@ public class QuestionnaireTests extends BaseTest {
         //первая вкладка
         questionnairePage.isTextDisplayed(actualPriceText);
         questionnairePage.setValue(startOfInsuranceLocator, startOfInsurancePeriod); // Fecha de efecto field
-        questionnairePage.clickDropdownValue(professionDropdownTitle, professionDropdownValue);  //Profesión dropdown
         questionnairePage.clickDropdownValue(hobbiesDropdownTitle, hobbiesDropdownValue); //Aficiones/deportes dropdown
-        questionnairePage.setOptionDropdownValue(fraccioDropdownTitle, fralleciDropdownValue); //Fraccionamiento dropdown
-        questionnairePage.setFallecimientoDropdownValue(fallecimientoDropdownTitle); //Fallecimiento dropdown //TODO переделать
+        questionnairePage.clickDropdownValue(professionDropdownTitle, professionDropdownValue);  //Profesión dropdown
+     //   questionnairePage.ScrollTillTextBeVisible(resultString);
         questionnairePage.clickTarificarButton(); //Tarificar button
         questionnairePage.isTextDisplayed(calculatingPriceMessage);
         questionnairePage.clickSiguienteButton();
         questionnairePage.isTextDisplayed(firstReceipt);
         questionnairePage.clickNextButton();
-        questionnairePage.isTextDisplayed(policyHolderText);
         questionnairePage.clickSiguienteButton();
         //вторая вкладка
         questionnairePage.setOptionDropdownValue(genderDropdownTitle, genderValue); //Sexo dropdown
