@@ -144,14 +144,14 @@ public class QuestionnaireTests extends BaseTest {
         questionnairePage.clickSiguienteButton();
         //вторая вкладка
         questionnairePage.setValue(nameFieldTitle, nameFieldValue); //Nombre field
+        questionnairePage.setOptionDropdownValue(docTypeDropdownTitle, docTypeDropdownValue); // Tipo Documento dropdown
+        questionnairePage.setOptionDropdownValue(civilStatusDropdownTitle, civilStatusDropdownValue); //Estado civil dropdown
         questionnairePage.setOptionDropdownValue(genderDropdownTitle, genderValue); //Sexo dropdown
         questionnairePage.setValue(surnameFieldTitle, surnameFieldValue); //Primer apellido field
         questionnairePage.setValue(secondSurnameFieldTitle, secondSurnameFieldValue); //Segundo apellido field
         questionnairePage.setValue(languageFieldTitle, languageFieldValue); //Idioma de preferencia field
-        questionnairePage.setOptionDropdownValue(docTypeDropdownTitle, docTypeDropdownValue); // Tipo Documento dropdown
         questionnairePage.setValue(docNumberFieldTitle, docNumberFieldValue); // Num. documento (sin espacios) field
         questionnairePage.setValue(expirationDateFieldTitle, expirationDateFieldValue); // Fecha vencimiento field
-        questionnairePage.setOptionDropdownValue(civilStatusDropdownTitle, civilStatusDropdownValue); //Estado civil dropdown
         questionnairePage.setValue(childrenFieldTitle, childrenFieldValue); //Hijos field
         questionnairePage.setValue(regionOfBirthFieldTitle, regionOfBirthFieldValue); //Provincia de nacimiento field
         questionnairePage.setValue(placeOfBirthFieldTitle, placeOfBirthFieldValue); //Localidad de nacimiento field
