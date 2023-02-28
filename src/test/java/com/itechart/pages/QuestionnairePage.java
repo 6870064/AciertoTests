@@ -15,8 +15,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class QuestionnairePage extends BasePage {
 
     private static final String INPUT_LOCATOR = "//*[@name='%s']";
- //   private static final String DROPDOWN_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//input";
-    private static final String DROPDOWN_LOCATOR = "(//label[text()='%s']/ancestor::div[contains(@class,'slds-p-bottom_x-small cQuickLookup')]//div[contains(@class,' slds-size_12-of-12')])[2]";
+    private static final String DROPDOWN_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//input";
     private static final String DROPDOWN_VALUE_LOCATOR = "//*[.//label[text()='%s']][@class='field-element']//div[text()='%s']";
     private static final String OPTION_VALUE_LOCATOR = "//*[@name='%s']//option[@value='%s']";
     private static final String FALLECIMIENTO_VALUE_LOCATOR = "//*[@name='%s']//span";
@@ -30,17 +29,6 @@ public class QuestionnairePage extends BasePage {
     private static final By SAVE_DATA_BUTTON = By.xpath("//button[text()='GUARDAR DATOS']");
     private static final By BENEFICIARIES_FIELD_LOCATOR = By.xpath("//*[contains(@class, 'slds-textarea')]");
     private static final By RECALCULATE_BUTTON = By.xpath("//button[text()='Recalculate']");
-
-    //*[.//label[text()='%s']][@class='field-element']//input
-// //*[.//label[text()='Aficiones/deportes']][@class='field-element']//li//div[text()='Atletismo, running, biatlón, triatlón / Atletismo, running, biatlón, triatlón']
-  //  (//label[text()='Profesión']/ancestor::div[contains(@class,'slds-p-bottom_x-small cQuickLookup')]//div[contains(@class,' slds-size_12-of-12')])[2]
-
-    //label[text()='Aficiones/deportes']/ancestor::div[contains(@class,'slds-p-bottom_x-small cQuickLookup')]//div[contains(@class,' slds-size_12-of-12')]
-    //*[text()= '¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales?']
-    //*[text()= '¿Tiene intención de viajar o vivir fuera de España por más de 60 días anuales?']/ancestor::fieldset//input[@value='NoResource']
-
-    //*[.//label[text()='País de segunda nacionalidad']][@class='field-element']//div[text()='Afganistán']
-
 
     public QuestionnairePage openCase() {
 
@@ -58,13 +46,9 @@ public class QuestionnairePage extends BasePage {
     @Step("Choosing {dropdownValue} from {fieldTitle")
     public QuestionnairePage clickDropdownValue(String dropdownTitle, String dropdownValue) {
         log.info("Click on {} dropdown", dropdownTitle);
-
-        //$(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).click();
-        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))));
-        //$(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).shouldBe(visible,Duration.ofSeconds(4));
+        $(By.xpath(String.format(DROPDOWN_LOCATOR, dropdownTitle))).doubleClick();
         log.info("Click on {} dropdown value", dropdownValue);
-        Selenide.executeJavaScript("arguments[0].click();",$(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))));
-        //$(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).click();
+        $(By.xpath(String.format(DROPDOWN_VALUE_LOCATOR, dropdownTitle, dropdownValue))).doubleClick();
         return this;
     }
 
@@ -174,6 +158,4 @@ public class QuestionnairePage extends BasePage {
         $(RECALCULATE_BUTTON).click();
         return this;
     }
-
-
 }
