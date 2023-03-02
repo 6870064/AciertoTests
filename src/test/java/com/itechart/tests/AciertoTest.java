@@ -62,8 +62,8 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD)
+                .waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -105,8 +105,7 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD).waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -148,8 +147,8 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD)
+                .waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -191,8 +190,8 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD)
+                .waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -234,8 +233,8 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD)
+                .waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -277,8 +276,8 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD)
+                .waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -320,8 +319,8 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD)
+                .waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -363,8 +362,8 @@ public class AciertoTest extends BaseTest {
                 .isLifeInsurancePageOpened();
         aciertoPage.closeCurrentWindow();
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        homePage.isPageOpened();
+        loginPage.login(USERNAME, PASSWORD)
+                .waitTillOpened();
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
