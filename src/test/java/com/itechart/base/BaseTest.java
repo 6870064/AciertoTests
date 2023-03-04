@@ -47,7 +47,7 @@ public abstract class BaseTest {
         Configuration.baseUrl = propertyReader.getPropertyValueByKey("base.url");
         Configuration.timeout = 7000;
         Configuration.browser = "chrome";
-        BasePage.timeout = Duration.ofSeconds(30);
+        BasePage.timeout = Duration.ofSeconds(30L);
 
         var options = new ChromeOptions();
         options.addArguments("--disable-notifications");
