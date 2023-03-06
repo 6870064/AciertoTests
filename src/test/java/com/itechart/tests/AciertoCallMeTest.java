@@ -27,8 +27,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
-                .login(USERNAME, PASSWORD)
-                .waitTillOpened();
+                .login(USERNAME, PASSWORD);
         String caseNumber = listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -67,8 +66,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
-                .login(USERNAME, PASSWORD)
-                .waitTillOpened();
+                .login(USERNAME, PASSWORD);
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -106,8 +104,7 @@ public class AciertoCallMeTest extends BaseTest {
         aciertoPage.fillPhoneFunnelCall(phone)
                 .closeCurrentWindow();
         loginPage.open()
-                .login(USERNAME, PASSWORD)
-                .waitTillOpened();
+                .login(USERNAME, PASSWORD);
         listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -141,8 +138,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
-                .login(USERNAME, PASSWORD)
-                .waitTillOpened();
+                .login(USERNAME, PASSWORD);
         String caseNumber = listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -180,8 +176,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
-                .login(USERNAME, PASSWORD)
-                .waitTillOpened();
+                .login(USERNAME, PASSWORD);
         String caseNumber = listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -216,8 +211,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
-                .login(USERNAME, PASSWORD)
-                .waitTillOpened();
+                .login(USERNAME, PASSWORD);
         String caseNumber = listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)
@@ -253,8 +247,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .closeButtonClick()
                 .closeCurrentWindow();
         loginPage.open()
-                .login(USERNAME, PASSWORD)
-                .waitTillOpened();
+                .login(USERNAME, PASSWORD);
         String caseNumber = listView.open("Case")
                 .clickSwitcher()
                 .selectFilter(selectFilterValue)

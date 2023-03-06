@@ -14,4 +14,9 @@
             <class name="com.itechart.tests.AciertoCallMeTest"/>
         </classes>
     </test> <!-- Test -->
+    <test name="Validate the recurring demand">
+        <classes>
+            <class name="com.itechart.tests.AciertoRecurringDemandTest"/>
+        </classes>
+    </test> <!-- Test -->
 </suite>

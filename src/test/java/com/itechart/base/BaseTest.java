@@ -15,6 +15,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -45,6 +47,7 @@ public abstract class BaseTest {
         Configuration.baseUrl = propertyReader.getPropertyValueByKey("base.url");
         Configuration.timeout = 7000;
         Configuration.browser = "chrome";
+        BasePage.timeout = Duration.ofSeconds(30L);
 
         var options = new ChromeOptions();
         options.addArguments("--disable-notifications");
