@@ -37,6 +37,17 @@ public abstract class BaseTest {
     public String tabName = "Detalles";
     public String selectFilterValue = "Cases Created Today";
     public String columnTitle = "Número del caso";
+    public String zipcode = "28012";
+    public String DateOfBirth = "11/10/1967";
+    public String insuranceAmount = "90.000€";
+    public String personalDataPage = "Fecha de nacimiento";
+    public String insurancePeriod = "Anual";
+    public String personGender = "Hombre";
+    public String columnNameOwner = "Número del caso";
+    public String[] companiesArray = new String[]{"Axa Vida Protec", "Asisa Vida", "Credit Andorra Life", "Zurich Vida",
+            "FIATC Vida", "Previs Vida", "Allianz Vida Riesgo", "Santalucía Vida"};
+    String newInsuranceAmount = insuranceAmount.replace("€", "");
+    String newInsurancePeriod = insurancePeriod.replace("Anual", "Yearly");
 
     @BeforeMethod(description = "Open browser")
     public void setUp() {

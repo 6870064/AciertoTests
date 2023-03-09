@@ -132,5 +132,11 @@
             <artifactId>ssc</artifactId>
             <version>${ssc.version}</version>
         </dependency>
+        <dependency>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+            <version>2.7.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

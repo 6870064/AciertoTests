@@ -8,23 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AciertoTest extends BaseTest {
-    private final String ZIPCODE = "28012";
-    private final String DATE_OF_BIRTH = "11/10/1967";
-    private final String INSURANCE_AMOUNT = "90.000€";
-    private final String PERSONAL_DATA_PAGE = "Fecha de nacimiento";
-    private final String INSURANCE_PERIOD = "Anual";
-    private final String PERSON_GENDER = "Hombre";
-    private final String columnNameOwner = "Número del caso";
-    private final String[] companiesArray = new String[]{"Axa Vida Protec", "Asisa Vida", "Credit Andorra Life", "Zurich Vida",
-            "FIATC Vida", "Previs Vida", "Allianz Vida Riesgo", "Santalucía Vida"};
-    String NEW_INSURANCE_AMOUNT = INSURANCE_AMOUNT.replace("€", "");
-    String NEW_INSURANCE_PERIOD = INSURANCE_PERIOD.replace("Anual", "Yearly");
 
     @Test(description = "Creation of the insurance record")
     public void aciertoTest() {
         String email = getRandomEmail();
         String phone = getRandomPhone();
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -38,7 +27,7 @@ public class AciertoTest extends BaseTest {
     public void aciertoWeCallYouFreeTest() {
         String email = getRandomEmail();
         String phone = getRandomPhone();
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -53,7 +42,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -95,7 +84,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(2)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -137,7 +126,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(3)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -179,7 +168,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(4)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -221,7 +210,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(5)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -263,7 +252,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(6)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -305,7 +294,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .imInterestedButtonClick(7)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
@@ -347,7 +336,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
-        aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
+        aciertoPage.setPersonRecord(insuranceAmount, insurancePeriod, personalDataPage, DateOfBirth, personGender, zipcode, email, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick(2)
