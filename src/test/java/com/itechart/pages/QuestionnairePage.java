@@ -54,9 +54,9 @@ public class QuestionnairePage extends BasePage {
     @Step("Choosing value from OptionDropdown list")
     public QuestionnairePage setOptionDropdownValue(String dropdownTitle, String dropdownValue) {
         log.info("Clicking on {} dropdown", dropdownTitle);
-        $(By.xpath(String.format(INPUT_LOCATOR, dropdownTitle))).doubleClick();
+        $(By.xpath(String.format(INPUT_LOCATOR, dropdownTitle))).click();
         log.info("Clicking on {} dropdown value:{}", dropdownTitle,dropdownValue);
-        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropdownTitle, dropdownValue))).doubleClick();
+        $(By.xpath(String.format(OPTION_VALUE_LOCATOR, dropdownTitle, dropdownValue))).click();
         return this;
     }
 
@@ -71,7 +71,7 @@ public class QuestionnairePage extends BasePage {
     public QuestionnairePage clickSiguienteButton() {
         log.info("Clicking on Next button 'Siguiente'");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -109,14 +109,14 @@ public class QuestionnairePage extends BasePage {
     @Step("Clicking on checkbox with name {checkboxName} and value {checkboxValue}")
     public QuestionnairePage clickCheckboxWithNameAndValue(String checkboxName, String checkboxValue) {
         log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
-        $(String.format(CHECKBOX_VALUE_LOCATOR, checkboxName, checkboxValue)).click();
+        $(By.xpath(String.format(CHECKBOX_VALUE_LOCATOR, checkboxName, checkboxValue))).click();
         return this;
     }
 
     @Step("Clicking on checkbox with name {checkboxName} and value {checkboxValue}")
     public QuestionnairePage clickCheckbox(String checkboxName, String checkboxValue) {
         log.info("Clicking on checkbox with name {checkboxName} and value {checkboxValue}");
-        $(String.format(CHECKBOX_LOCATOR, checkboxName, checkboxValue)).click();
+        $(By.xpath(String.format(CHECKBOX_LOCATOR, checkboxName, checkboxValue))).doubleClick();
         return this;
     }
 
