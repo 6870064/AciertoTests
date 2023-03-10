@@ -50,6 +50,7 @@ public abstract class BaseTest {
         BasePage.timeout = Duration.ofSeconds(30L);
 
         var options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
