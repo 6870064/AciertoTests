@@ -27,7 +27,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -41,7 +41,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -56,7 +56,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(1)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -98,7 +98,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(2)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -140,7 +140,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(3)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -182,7 +182,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(4)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -224,7 +224,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(5)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -266,7 +266,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(6)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -308,7 +308,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .imInterestedButtonClick(7)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();
@@ -350,7 +350,7 @@ public class AciertoTest extends BaseTest {
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
                 .weCallYouForFreeButton(1)
                 .isFinalModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();
         aciertoPage.closeButtonClick()
                 .isLifeInsurancePageOpened();

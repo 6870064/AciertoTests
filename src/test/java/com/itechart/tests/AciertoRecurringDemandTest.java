@@ -18,9 +18,9 @@ public class AciertoRecurringDemandTest extends BaseTest {
     private void aciertoCaseCreated(String email, String phone) {
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .seeDetailsButtonClick(1)
-                .callMeOnThisPhoneButtonClick(1)
+                .callMeOnThisPhoneButtonClick()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
+        aciertoPage.callMeOnThisPhoneButtonClick()
                 .closeButtonClick()
                 .closeCurrentWindow();
     }
