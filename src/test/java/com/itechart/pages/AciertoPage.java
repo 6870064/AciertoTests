@@ -24,7 +24,7 @@ public class AciertoPage extends BasePage {
     private static final By CONFIRM_CHECKBOX = By.xpath("//input[@datagtm='auth-info-comercial']");
     private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
     private static final String IM_INTERESTED_BUTTON = "(//button[text()='Que me llamen'])[%s]";
-    private static final String WE_CALL_YOU_FREE_BUTTON = "(//span[text() = 'Te llamamos gratis'])[%s]";
+    private static final String WE_CALL_YOU_FREE_BUTTON = "(//span[text() = 'Te llamamos gratis']/..)[%s]";
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
     private static final By FINAL_MODAL_LOCATOR = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__user-number')]");
     private static final By FUNNEL_CALL_MODAL = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__content')]");
