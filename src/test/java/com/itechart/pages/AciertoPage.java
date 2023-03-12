@@ -12,6 +12,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.actions;
 
 @Log4j2
 public class AciertoPage extends BasePage {
@@ -97,7 +98,10 @@ public class AciertoPage extends BasePage {
     @Step("Click on [I'm Interested] button with the index {index}")
     public AciertoPage imInterestedButtonClick(int index) {
         $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(30));
-        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))));
+//        SelenideElement element = $(By.xpath(String.format(IM_INTERESTED_BUTTON, index)));
+//        actions().moveToElement(element).click(element).perform();
+
+    //    Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))));
         return this;
     }
 
