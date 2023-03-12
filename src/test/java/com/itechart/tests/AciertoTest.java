@@ -10,7 +10,7 @@ import java.util.Map;
 public class AciertoTest extends BaseTest {
     private final String ZIPCODE = "28012";
     private final String DATE_OF_BIRTH = "11/10/1967";
-    private final String INSURANCE_AMOUNT = "90.000€";
+    private final String INSURANCE_AMOUNT = "120.000€";
     private final String PERSONAL_DATA_PAGE = "Fecha de nacimiento";
     private final String INSURANCE_PERIOD = "Anual";
     private final String PERSON_GENDER = "Hombre";
@@ -39,7 +39,7 @@ public class AciertoTest extends BaseTest {
         String email = getRandomEmail();
         String phone = getRandomPhone();
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
-                .weCallYouForFreeButton(1)
+                .weCallYouForFreeButton(2)
                 .isFinalModalDisplayed();
         aciertoPage.callMeOnThisPhoneButtonClick()
                 .isGratitudeModalDisplayed();

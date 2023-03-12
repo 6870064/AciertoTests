@@ -1,6 +1,5 @@
 package com.itechart.pages;
 
-import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.github.dzmitryrak.pages.BasePage;
@@ -18,13 +17,14 @@ import static com.codeborne.selenide.Selenide.$;
 public class AciertoPage extends BasePage {
     private final String ACIERTO_URL = "https://stg.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
+    private static final String INSURANCE_DETAILS_CHECKBOX_LOCATOR = "//span[text()='%s']/../..";
     private static final String DATA_GTM_LOCATOR = "[data-gtm=%s]";
     private static final String DATAGTM_LOCATOR = "[datagtm='%s']";
     private static final By SIGUIENTE_BUTTON = By.xpath("//button[@datagtm='continue']");
     private static final By CONFIRM_CHECKBOX = By.xpath("//input[@datagtm='auth-info-comercial']");
     private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
     private static final String IM_INTERESTED_BUTTON = "(//button[text()='Que me llamen'])[%s]";
-    private static final String WE_CALL_YOU_FREE_BUTTON = "(//*[contains(@class, 'it-btn it-btn--button-44 it-btn--primary mb-3')])[%s]";
+    private static final String WE_CALL_YOU_FREE_BUTTON = "(//span[text() = 'Te llamamos gratis'])[%s]";
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
     private static final By FINAL_MODAL_LOCATOR = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__user-number')]");
     private static final By FUNNEL_CALL_MODAL = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__content')]");
@@ -44,9 +44,11 @@ public class AciertoPage extends BasePage {
     }
 
     @Step("Choose insurance details")
-    public AciertoPage insuranceDetailsClick(String locator) {
+    public AciertoPage clickInsuranceDetailsCheckbox(String locator) {
         log.info(String.format("Choosing %s as data for filling for and clicking on it", locator));
-        $(By.xpath(String.format(TEXT_INFO_LOCATOR, locator))).click(ClickOptions.usingJavaScript());
+        $(By.xpath(String.format(INSURANCE_DETAILS_CHECKBOX_LOCATOR, locator))).doubleClick();
+       //;' Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(INSURANCE_DETAILS_CHECKBOX_LOCATOR, locator))));
+       // $(By.xpath(String.format(TEXT_INFO_LOCATOR, locator))).click(ClickOptions.usingJavaScript());
         return this;
     }
 
@@ -150,12 +152,12 @@ public class AciertoPage extends BasePage {
                                        String zipcode, String email, String phone) {
         log.info("Creation of an insurance record");
         open();
-        insuranceDetailsClick(amount);
-        insuranceDetailsClick(period);
+        clickInsuranceDetailsCheckbox(amount);
+        clickInsuranceDetailsCheckbox(period);
         clickContinueButton();
         isPageOpened(personalData);
         setPersonData("birth-date", dateOfBirth);
-        insuranceDetailsClick(gender);
+        clickInsuranceDetailsCheckbox(gender);
         setPersonData("zip-code", zipcode);
         clickContinueButton();
         setPersonGtmLocatorData("email", email);

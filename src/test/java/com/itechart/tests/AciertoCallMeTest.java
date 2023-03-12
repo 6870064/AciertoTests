@@ -56,8 +56,8 @@ public class AciertoCallMeTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
-                .insuranceDetailsClick(amount)
-                .insuranceDetailsClick(period)
+                .clickInsuranceDetailsCheckbox(amount)
+                .clickInsuranceDetailsCheckbox(period)
                 .clickContinueButton()
                 .callMeOnThisPhoneButtonClick()
                 .isFunnelCallModalDisplayed();
@@ -92,11 +92,11 @@ public class AciertoCallMeTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
-                .insuranceDetailsClick(amount)
-                .insuranceDetailsClick(period)
+                .clickInsuranceDetailsCheckbox(amount)
+                .clickInsuranceDetailsCheckbox(period)
                 .clickContinueButton()
                 .setPersonData("birth-date", dateOfBirth)
-                .insuranceDetailsClick(gender)
+                .clickInsuranceDetailsCheckbox(gender)
                 .setPersonData("zip-code", zipcode)
                 .clickContinueButton()
                 .callMeOnThisPhoneButtonClick()
