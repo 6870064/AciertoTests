@@ -18,7 +18,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class AciertoPage extends BasePage {
     private final String ACIERTO_URL = "https://stg.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
-    private static final String DATA_LOCATOR = "[data-gtm=%s]";
+    private static final String DATA_GTM_LOCATOR = "[data-gtm=%s]";
+    private static final String DATAGTM_LOCATOR = "[datagtm='%s']";
     private static final By SIGUIENTE_BUTTON = By.xpath("//button[@datagtm='continue']");
     private static final By CONFIRM_CHECKBOX = By.xpath("//input[@datagtm='auth-info-comercial']");
     private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
@@ -66,7 +67,14 @@ public class AciertoPage extends BasePage {
     @Step("Filling the field {locator} with data {data}")
     public AciertoPage setPersonData(String locator, String data) {
         log.info(String.format("Filling %s field with data %s", locator, data));
-        $((String.format(DATA_LOCATOR, locator))).setValue(data);
+        $((String.format(DATA_GTM_LOCATOR, locator))).setValue(data);
+        return this;
+    }
+
+    @Step("Filling the field {locator} with data {data}")
+    public AciertoPage setPersonGtmLocatorData(String locator, String data) {
+        log.info(String.format("Filling %s field with data %s", locator, data));
+        $((String.format(DATAGTM_LOCATOR, locator))).setValue(data);
         return this;
     }
 
@@ -148,7 +156,7 @@ public class AciertoPage extends BasePage {
         isPageOpened(personalData);
         setPersonData("birth-date", dateOfBirth);
         insuranceDetailsClick(gender);
-        setPersonData("zip-code", zipcode);
+        setPersonGtmLocatorData("zip-code", zipcode);
         clickContinueButton();
         setPersonData("email", email);
         setPersonData("phone", phone);
