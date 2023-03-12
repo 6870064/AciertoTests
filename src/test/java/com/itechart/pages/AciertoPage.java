@@ -156,10 +156,10 @@ public class AciertoPage extends BasePage {
         isPageOpened(personalData);
         setPersonData("birth-date", dateOfBirth);
         insuranceDetailsClick(gender);
-        setPersonGtmLocatorData("zip-code", zipcode);
+        setPersonData("zip-code", zipcode);
         clickContinueButton();
-        setPersonData("email", email);
-        setPersonData("phone", phone);
+        setPersonGtmLocatorData("email", email);
+        setPersonGtmLocatorData("phone", phone);
         clickContinueButton();
         clickConfirmCheckbox();
         isLifeInsurancePageOpened();
