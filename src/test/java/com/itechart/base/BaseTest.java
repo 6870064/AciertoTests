@@ -48,10 +48,12 @@ public abstract class BaseTest {
         Configuration.timeout = 7000;
         Configuration.browser = "chrome";
         BasePage.timeout = Duration.ofSeconds(30L);
+        Configuration.pageLoadTimeout = 4000000;
 
         var options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         if (propertyReader.getPropertyValueByKey("headless").equals("true")) {
