@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.actions;
 
 @Log4j2
 public class AciertoPage extends BasePage {
-    private final String ACIERTO_URL = "https://stg.acierto.com/seguros-vida/comparador/";
+    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
     private static final String INSURANCE_DETAILS_CHECKBOX_LOCATOR = "//span[text()='%s']/../..";
     private static final String DATA_GTM_LOCATOR = "[data-gtm=%s]";
@@ -24,7 +24,7 @@ public class AciertoPage extends BasePage {
     private static final By SIGUIENTE_BUTTON = By.xpath("//button[@datagtm='continue']");
     private static final By CONFIRM_CHECKBOX = By.xpath("//input[@datagtm='auth-info-comercial']");
     private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
-    private static final String IM_INTERESTED_BUTTON = "(//button[text()='Que me llamen'])[%s]";
+    private static final String IM_INTERESTED_BUTTON = "(//*[contains(@class, 'ocp-btn box-border relative flex justify-center items-center cursor-pointer max-w-full box-border ocp-btn--block ocp-btn--lg ocp-btn--primary large-card__button')])[%s]";
     private static final String WE_CALL_YOU_FREE_BUTTON = "(//span[text() = 'Te llamamos gratis']/..)[%s]";
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
     private static final By FINAL_MODAL_LOCATOR = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__user-number')]");
@@ -48,8 +48,6 @@ public class AciertoPage extends BasePage {
     public AciertoPage clickInsuranceDetailsCheckbox(String locator) {
         log.info(String.format("Choosing %s as data for filling for and clicking on it", locator));
         $(By.xpath(String.format(INSURANCE_DETAILS_CHECKBOX_LOCATOR, locator))).doubleClick();
-       //;' Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(INSURANCE_DETAILS_CHECKBOX_LOCATOR, locator))));
-       // $(By.xpath(String.format(TEXT_INFO_LOCATOR, locator))).click(ClickOptions.usingJavaScript());
         return this;
     }
 
@@ -62,7 +60,7 @@ public class AciertoPage extends BasePage {
 
     @Step("Click confirm checkbox")
     public AciertoPage clickConfirmCheckbox() {
-        log.info("Clicking on continue button");
+        log.info("Clicking on confirm checkbox");
         Selenide.executeJavaScript("arguments[0].click();", $(CONFIRM_CHECKBOX));
         return this;
     }
@@ -97,11 +95,12 @@ public class AciertoPage extends BasePage {
 
     @Step("Click on [I'm Interested] button with the index {index}")
     public AciertoPage imInterestedButtonClick(int index) {
-        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(30));
-//        SelenideElement element = $(By.xpath(String.format(IM_INTERESTED_BUTTON, index)));
-//        actions().moveToElement(element).click(element).perform();
+        log.info("Click on [I'm Interested] button with the index {}", index);
+        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(20));
+        SelenideElement element = $(By.xpath(String.format(IM_INTERESTED_BUTTON, index)));
+        actions().moveToElement(element).click(element).perform();
 
-    //    Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))));
+    //  Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))));
         return this;
     }
 
@@ -128,6 +127,7 @@ public class AciertoPage extends BasePage {
 
     @Step
     public boolean isFinalModalDisplayed() {
+        log.info("Checking that final modal is displayed");
         return $(FINAL_MODAL_LOCATOR).isDisplayed();
     }
 
@@ -166,8 +166,8 @@ public class AciertoPage extends BasePage {
         clickContinueButton();
         setPersonGtmLocatorData("email", email);
         setPersonGtmLocatorData("phone", phone);
-        clickContinueButton();
         clickConfirmCheckbox();
+        clickContinueButton();
         isLifeInsurancePageOpened();
         return this;
     }
