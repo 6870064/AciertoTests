@@ -12,11 +12,9 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.actions;
 
 @Log4j2
 public class AciertoPage extends BasePage {
-    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
     private static final String INSURANCE_DETAILS_CHECKBOX_LOCATOR = "//span[text()='%s']/../..";
     private static final String DATA_GTM_LOCATOR = "[data-gtm=%s]";
@@ -25,15 +23,17 @@ public class AciertoPage extends BasePage {
     private static final By CONFIRM_CHECKBOX = By.xpath("//input[@datagtm='auth-info-comercial']");
     private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
     private static final String IM_INTERESTED_BUTTON = "(//*[contains(@class, 'ocp-btn box-border relative flex justify-center items-center cursor-pointer max-w-full box-border ocp-btn--block ocp-btn--lg ocp-btn--primary large-card__button')])[%s]";
+    private static final String TE_LLAMAMOS_GRATIS_BUTTON = "//*[contains(@class, 'ocp-btn box-border relative flex justify-center items-center cursor-pointer max-w-full box-border ocp-btn--md ocp-btn--primary mb-3')][%s]";
     private static final By WE_CALL_YOU_FREE_BUTTON = By.xpath("//button[@aria-label='Llámanos gratis']");
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
     private static final By FINAL_MODAL_LOCATOR = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__user-number')]");
     private static final By FUNNEL_CALL_MODAL = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__content')]");
-    private static final By CALL_ME_ON_THIS_PHONE_BUTTON = By.xpath("//button[contains(@data-gtm, 'call-me')]");
+        private static final By CALL_ME_ON_THIS_PHONE_BUTTON = By.xpath("//button[contains(@data-gtm, 'call-me')]");
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
     private static final By FUNNEL_CALL_PHONE = By.xpath("//form//input[@data-gtm='phone']");
     private static final By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
+    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
     String checkbox = "(//label[@class='checkbox']//input)[%s]";
     String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
 
@@ -94,10 +94,18 @@ public class AciertoPage extends BasePage {
     }
 
     @Step("Click on [I'm Interested] button with the index {index}")
-    public AciertoPage clickImInterestedButton(int index) {
-        log.info("Click on [I'm Interested] button with the index {}", index);
+    public AciertoPage clickImInterestedButton(int buttonIndex) {
+        log.info("Click on [I'm Interested] button with the index {}", buttonIndex);
         $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(20));
-        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))));
+        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, buttonIndex))));
+        return this;
+    }
+
+    @Step("Click on [Te llamamos gratis] button with the index {index}")
+    public AciertoPage clickTeLlamamosGratisButton(int buttonIndex) {
+        log.info("Click on [Te llamamos gratis] button with the index {}", buttonIndex);
+        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(20));
+        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(TE_LLAMAMOS_GRATIS_BUTTON, buttonIndex))));
         return this;
     }
 
