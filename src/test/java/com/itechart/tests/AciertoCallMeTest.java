@@ -20,11 +20,11 @@ public class AciertoCallMeTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
-                .callMeOnThisPhoneButtonClick()
+                .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
+                .clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -59,11 +59,11 @@ public class AciertoCallMeTest extends BaseTest {
                 .clickInsuranceDetailsCheckbox(amount)
                 .clickInsuranceDetailsCheckbox(period)
                 .clickContinueButton()
-                .callMeOnThisPhoneButtonClick()
+                .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
+                .clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -99,7 +99,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .clickInsuranceDetailsCheckbox(gender)
                 .setPersonData("zip-code", zipcode)
                 .clickContinueButton()
-                .callMeOnThisPhoneButtonClick()
+                .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.fillPhoneFunnelCall(phone)
                 .closeCurrentWindow();
@@ -132,10 +132,10 @@ public class AciertoCallMeTest extends BaseTest {
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .isPageOpened("Fallecimiento");
-        aciertoPage.callMeOnThisPhoneButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -166,14 +166,14 @@ public class AciertoCallMeTest extends BaseTest {
         String expectedPhone = String.format("+34%s", phone);
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
-                .imInterestedButtonClick(1)
+                .clickImInterestedButton(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
-                .callMeOnThisPhoneButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
+                .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -204,11 +204,11 @@ public class AciertoCallMeTest extends BaseTest {
         String expectedPhone = String.format("+34%s", phone);
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
-                .seeDetailsButtonClick(1)
-                .callMeOnThisPhoneButtonClick()
+                .clickSeeDetailsButton(1)
+                .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -240,11 +240,11 @@ public class AciertoCallMeTest extends BaseTest {
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .selectProduct(2)
-                .comparisonButtonClick()
-                .callMeOnThisPhoneButtonClick()
+                .clickComparisonButton()
+                .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);

@@ -17,11 +17,11 @@ public class AciertoRecurringDemandTest extends BaseTest {
 
     private void aciertoCaseCreated(String email, String phone) {
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
-                .seeDetailsButtonClick(1)
-                .callMeOnThisPhoneButtonClick()
+                .clickSeeDetailsButton(1)
+                .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick()
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
     }
 
