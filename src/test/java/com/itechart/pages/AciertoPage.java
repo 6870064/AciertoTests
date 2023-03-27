@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 public class AciertoPage extends BasePage {
+    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
     private static final String INSURANCE_DETAILS_CHECKBOX_LOCATOR = "//span[text()='%s']/../..";
     private static final String DATA_GTM_LOCATOR = "[data-gtm=%s]";
@@ -28,12 +29,11 @@ public class AciertoPage extends BasePage {
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
     private static final By FINAL_MODAL_LOCATOR = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__user-number')]");
     private static final By FUNNEL_CALL_MODAL = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__content')]");
-        private static final By CALL_ME_ON_THIS_PHONE_BUTTON = By.xpath("//button[contains(@data-gtm, 'call-me')]");
+    private static final By CALL_ME_ON_THIS_PHONE_BUTTON = By.xpath("//button[contains(@data-gtm, 'call-me')]");
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
     private static final By FUNNEL_CALL_PHONE = By.xpath("//form//input[@data-gtm='phone']");
     private static final By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
-    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
     String checkbox = "(//label[@class='checkbox']//input)[%s]";
     String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
 
