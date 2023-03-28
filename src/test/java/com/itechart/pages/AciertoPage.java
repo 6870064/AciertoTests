@@ -35,8 +35,8 @@ public class AciertoPage extends BasePage {
     private static final By FUNNEL_CALL_PHONE = By.xpath("//form//input[@data-gtm='phone']");
     private static final By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
     private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
-    String checkbox = "(//label[@class='checkbox']//input)[%s]";
-    String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
+    String checkbox = "(//input[@type='checkbox'])[%s]";
+    By comparisonButton = By.xpath("//button[@component='OcpButton']");
 
     @Step("Open Acierto Main Page")
     public AciertoPage open() {
@@ -227,7 +227,7 @@ public class AciertoPage extends BasePage {
 
     @Step("Click [Comparar] button")
     public AciertoPage clickComparisonButton() {
-        $(By.xpath(String.format(comparisonButton, "Comparar"))).click();
+        $(comparisonButton).click();
         return this;
     }
 }
