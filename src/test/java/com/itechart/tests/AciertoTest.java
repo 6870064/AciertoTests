@@ -222,7 +222,7 @@ public class AciertoTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
-                .clickImInterestedButton(9)
+                .clickImInterestedButton(7)
                 .isFinalModalDisplayed();
         aciertoPage.clickCallMeOnThisPhoneButton()
                 .isGratitudeModalDisplayed();
