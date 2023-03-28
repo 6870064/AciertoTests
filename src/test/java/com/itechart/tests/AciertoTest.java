@@ -3,6 +3,7 @@ package com.itechart.tests;
 import com.itechart.base.BaseTest;
 import io.github.dzmitryrak.enums.SortOrder;
 import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -263,7 +264,7 @@ public class AciertoTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
-                .clickImInterestedButton(11)
+                .clickImInterestedButton(6)
                 .isFinalModalDisplayed();
         aciertoPage.clickCallMeOnThisPhoneButton()
                 .isGratitudeModalDisplayed();
@@ -305,7 +306,7 @@ public class AciertoTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.setPersonRecord(INSURANCE_AMOUNT, INSURANCE_PERIOD, PERSONAL_DATA_PAGE, DATE_OF_BIRTH, PERSON_GENDER, ZIPCODE, email, phone)
-                .clickImInterestedButton(13)
+                .clickImInterestedButton(7)
                 .isFinalModalDisplayed();
         aciertoPage.clickCallMeOnThisPhoneButton()
                 .isGratitudeModalDisplayed();
