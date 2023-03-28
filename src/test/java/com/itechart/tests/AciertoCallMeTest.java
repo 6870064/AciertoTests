@@ -20,7 +20,7 @@ public class AciertoCallMeTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
-                .clickCallMeOnThisPhoneButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
                 .clickCallMeOnThisPhoneButton()
@@ -59,7 +59,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .clickInsuranceDetailsCheckbox(amount)
                 .clickInsuranceDetailsCheckbox(period)
                 .clickContinueButton()
-                .clickCallMeOnThisPhoneButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
                 .clickCallMeOnThisPhoneButton()
@@ -99,7 +99,7 @@ public class AciertoCallMeTest extends BaseTest {
                 .clickInsuranceDetailsCheckbox(gender)
                 .setPersonData("zip-code", zipcode)
                 .clickContinueButton()
-                .clickCallMeOnThisPhoneButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.fillPhoneFunnelCall(phone)
                 .closeCurrentWindow();
@@ -132,7 +132,7 @@ public class AciertoCallMeTest extends BaseTest {
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .isPageOpened("Fallecimiento");
-        aciertoPage.clickCallMeOnThisPhoneButton()
+        aciertoPage.clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.clickCallMeOnThisPhoneButton()
                 .clickCloseButton()
@@ -168,7 +168,7 @@ public class AciertoCallMeTest extends BaseTest {
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .clickImInterestedButton(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.clickCallMeOnThisPhoneButton()
+        aciertoPage.clickCallMeOnHeaderPhoneButton()
                 .clickCloseButton()
                 .clickCallMeOnThisPhoneButton()
                 .isFunnelCallModalDisplayed();
