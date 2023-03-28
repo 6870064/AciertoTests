@@ -15,25 +15,26 @@ import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 public class AciertoPage extends BasePage {
-    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
     private static final String INSURANCE_DETAILS_CHECKBOX_LOCATOR = "//span[text()='%s']/../..";
     private static final String DATA_GTM_LOCATOR = "[data-gtm=%s]";
     private static final String DATAGTM_LOCATOR = "[datagtm='%s']";
     private static final By SIGUIENTE_BUTTON = By.xpath("//button[@datagtm='continue']");
     private static final By CONFIRM_CHECKBOX = By.xpath("//input[@datagtm='auth-info-comercial']");
-    private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
-    private static final String IM_INTERESTED_BUTTON = "(//*[contains(@class, 'ocp-btn box-border relative flex justify-center items-center cursor-pointer max-w-full box-border ocp-btn--block ocp-btn--lg ocp-btn--primary large-card__button')])[%s]";
-    private static final String TE_LLAMAMOS_GRATIS_BUTTON = "//*[contains(@class, 'ocp-btn box-border relative flex justify-center items-center cursor-pointer max-w-full box-border ocp-btn--md ocp-btn--primary mb-3')][%s]";
+    private static final String DETAIL_BUTTON = "(//*[contains(@class, 'ocp-btn--secondary large-card__button')])[%s]";
+    private static final String IM_INTERESTED_BUTTON = "(//*[contains(@class, 'ocp-btn--primary large-card__button')])[%s]";
+    private static final String TE_LLAMAMOS_GRATIS_BUTTON = "(//*[contains(@class, 'ocp-btn--primary mb-3')])[%s]";
     private static final By WE_CALL_YOU_FREE_BUTTON = By.xpath("//button[@aria-label='Llámanos gratis']");
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
     private static final By FINAL_MODAL_LOCATOR = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__user-number')]");
     private static final By FUNNEL_CALL_MODAL = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__content')]");
     private static final By CALL_ME_ON_THIS_PHONE_BUTTON = By.xpath("//button[contains(@data-gtm, 'call-me')]");
+    private static final By CALL_ME_ON_HEADER_PHONE_BUTTON = By.xpath("//button[contains(@class,'call-to-me-button')]");
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
     private static final By FUNNEL_CALL_PHONE = By.xpath("//form//input[@data-gtm='phone']");
     private static final By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
+    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
     String checkbox = "(//label[@class='checkbox']//input)[%s]";
     String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
 
@@ -141,6 +142,13 @@ public class AciertoPage extends BasePage {
     public AciertoPage clickCallMeOnThisPhoneButton() {
         log.info("Click on [Call Me On This Phone] button");
         $(CALL_ME_ON_THIS_PHONE_BUTTON).shouldBe(visible, Duration.ofSeconds(30)).click();
+        return this;
+    }
+
+    @Step
+    public AciertoPage clickCallMeOnHeaderPhoneButton() {
+        log.info("Click on [Call Me On This Phone] button");
+        $(CALL_ME_ON_HEADER_PHONE_BUTTON).shouldBe(visible, Duration.ofSeconds(30)).click();
         return this;
     }
 
