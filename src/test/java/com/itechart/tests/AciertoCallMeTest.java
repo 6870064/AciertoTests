@@ -168,9 +168,9 @@ public class AciertoCallMeTest extends BaseTest {
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .clickImInterestedButton(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.clickCallMeOnHeaderPhoneButton()
+        aciertoPage.clickCallMeOnThisPhoneButton()
                 .clickCloseButton()
-                .clickCallMeOnThisPhoneButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.clickCallMeOnThisPhoneButton()
                 .clickCloseButton()
@@ -205,7 +205,7 @@ public class AciertoCallMeTest extends BaseTest {
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .clickSeeDetailsButton(1)
-                .clickCallMeOnThisPhoneButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.clickCallMeOnThisPhoneButton()
                 .clickCloseButton()
@@ -225,7 +225,7 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Correo electrónico Web", "");
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
-                put("Origen de la Llamada", "CTC result list No price card");
+                put("Origen de la Llamada", "CTC Detail Header");
                 put("Caso principal", caseNumber);
                 put("Nombre de la cuenta", "");
             }
@@ -241,7 +241,7 @@ public class AciertoCallMeTest extends BaseTest {
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .selectProduct(2)
                 .clickComparisonButton()
-                .clickCallMeOnThisPhoneButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.clickCallMeOnThisPhoneButton()
                 .clickCloseButton()
