@@ -44,7 +44,6 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
                 put("Origen de la Llamada", "CTC Header");
-                put("Caso principal", "");
                 put("Nombre de la cuenta", "");
             }
         };
@@ -80,7 +79,6 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
                 put("Origen de la Llamada", "CTC Header");
-                put("Caso principal", "");
                 put("Nombre de la cuenta", "");
             }
         };
@@ -118,7 +116,6 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
                 put("Origen de la Llamada", "CTC Header");
-                put("Caso principal", "");
                 put("Nombre de la cuenta", "");
             }
         };
@@ -153,7 +150,6 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
                 put("Origen de la Llamada", "CTC result list No price card");
-                put("Caso principal", caseNumber);
                 put("Nombre de la cuenta", "");
             }
         };
@@ -191,7 +187,6 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
                 put("Origen de la Llamada", "CTC result list No price card");
-                put("Caso principal", caseNumber);
                 put("Nombre de la cuenta", "");
             }
         };
@@ -226,7 +221,6 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
                 put("Origen de la Llamada", "CTC Detail Header");
-                put("Caso principal", caseNumber);
                 put("Nombre de la cuenta", "");
             }
         };
@@ -262,7 +256,6 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
                 put("Origen de la Llamada", "CTC result list No price card");
-                put("Caso principal", caseNumber);
                 put("Nombre de la cuenta", "");
             }
         };

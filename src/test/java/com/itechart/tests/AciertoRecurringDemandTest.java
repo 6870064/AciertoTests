@@ -29,7 +29,7 @@ public class AciertoRecurringDemandTest extends BaseTest {
     //https://app.qase.io/case/ACIERTO-172
     @Test(description = "Recurring demand: Choosing from grouped cases")
     public void aciertoParentCase() {
-        String phone = getRandomPhone();
+        String phone = "611111111";
         String email = getRandomEmail();
         aciertoCaseCreated(email, phone);
         aciertoCaseCreated(email, phone);

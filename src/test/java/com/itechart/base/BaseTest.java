@@ -86,9 +86,7 @@ public abstract class BaseTest {
     }
 
     public String getRandomPhone() {
-        String phone = String.format("92%03d%04d",
-                (int) Math.floor(999 * Math.random()),
-                (int) Math.floor(9999 * Math.random()));
+        String phone = "600000000";
         return phone;
     }
 
