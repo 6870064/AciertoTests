@@ -17,12 +17,13 @@ public class AciertoRecurringDemandTest extends BaseTest {
 
     private void aciertoCaseCreated(String email, String phone) {
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
-                .seeDetailsButtonClick(1)
-                .callMeOnThisPhoneButtonClick(1)
-                .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
-                .closeCurrentWindow();
+                .clickImInterestedButton(1)
+                .isFinalModalDisplayed();
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .isGratitudeModalDisplayed();
+        aciertoPage.clickCloseButton()
+                .isLifeInsurancePageOpened();
+        aciertoPage.closeCurrentWindow();
     }
 
     //https://app.qase.io/case/ACIERTO-172

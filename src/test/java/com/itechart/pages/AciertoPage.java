@@ -1,6 +1,5 @@
 package com.itechart.pages;
 
-import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.github.dzmitryrak.pages.BasePage;
@@ -16,22 +15,28 @@ import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 public class AciertoPage extends BasePage {
-    private final String ACIERTO_URL = "https://stg.acierto.com/seguros-vida/comparador/";
     private static final String TEXT_INFO_LOCATOR = "//*[text()='%s']";
-    private static final String DATA_LOCATOR = "[data-gtm=%s]";
-    private static final String DETAIL_BUTTON = "(//span[text()='Ver detalles']/ancestor::button)[%s]";
-    private static final String IM_INTERESTED_BUTTON = "(//*[contains(@class, 'it-btn it-btn--block it-btn--button-44 it-btn--primary large-card__button')])[%s]";
-    private static final String WE_CALL_YOU_FREE_BUTTON = "(//*[contains(@class, 'it-btn it-btn--button-44 it-btn--primary mb-3')])[%s]";
+    private static final String INSURANCE_DETAILS_CHECKBOX_LOCATOR = "//span[text()='%s']/../..";
+    private static final String DATA_GTM_LOCATOR = "[data-gtm=%s]";
+    private static final String DATAGTM_LOCATOR = "[datagtm='%s']";
+    private static final By SIGUIENTE_BUTTON = By.xpath("//button[@datagtm='continue']");
+    private static final By CONFIRM_CHECKBOX = By.xpath("//input[@datagtm='auth-info-comercial']");
+    private static final String DETAIL_BUTTON = "(//*[contains(@class, 'ocp-btn--secondary large-card__button')])[%s]";
+    private static final String IM_INTERESTED_BUTTON = "(//*[contains(@class, 'ocp-btn--primary large-card__button')])[%s]";
+    private static final String TE_LLAMAMOS_GRATIS_BUTTON = "(//*[contains(@class, 'ocp-btn--primary mb-3')])[%s]";
+    private static final By WE_CALL_YOU_FREE_BUTTON = By.xpath("//button[@aria-label='Llámanos gratis']");
     private static final By LIFE_INSURANCE_LABEL = By.xpath("//*[text() ='Seguro de vida']");
     private static final By FINAL_MODAL_LOCATOR = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__user-number')]");
     private static final By FUNNEL_CALL_MODAL = By.xpath("//*[contains(@class, 'funnel-call-to-me-modal__content')]");
-    private static final String CALL_ME_ON_THIS_PHONE_BUTTON = "(//button[contains(@data-gtm, 'call-me')])[%s]";
+    private static final By CALL_ME_ON_THIS_PHONE_BUTTON = By.xpath("//button[contains(@data-gtm, 'call-me')]");
+    private static final By CALL_ME_ON_HEADER_PHONE_BUTTON = By.xpath("//button[contains(@class,'call-to-me-button')]");
     private static final By THANKS_YOU_MODAL = By.xpath("//*[contains(@class, 'message-modal__text-title')]");
     private static final By CLOSE_BUTTON = By.xpath("//button//span[text()='Cerrar']");
     private static final By FUNNEL_CALL_PHONE = By.xpath("//form//input[@data-gtm='phone']");
     private static final By FUNNEL_CALL_AGREEMENT = By.xpath("//input[@data-gtm='auth-info-comercial']//ancestor::div[contains(@class,'checkbox')]");
-    String checkbox = "(//label[@class='checkbox']//input)[%s]";
-    String comparisonButton = "//span[contains(text(),'%s')]/ancestor::button";
+    private final String ACIERTO_URL = "https://stg-funnel-life.acierto.com/seguros-vida/comparador/";
+    String checkbox = "(//input[@type='checkbox'])[%s]";
+    By comparisonButton = By.xpath("//button[@component='OcpButton']");
 
     @Step("Open Acierto Main Page")
     public AciertoPage open() {
@@ -41,23 +46,37 @@ public class AciertoPage extends BasePage {
     }
 
     @Step("Choose insurance details")
-    public AciertoPage insuranceDetailsClick(String locator) {
+    public AciertoPage clickInsuranceDetailsCheckbox(String locator) {
         log.info(String.format("Choosing %s as data for filling for and clicking on it", locator));
-        $(By.xpath(String.format(TEXT_INFO_LOCATOR, locator))).click(ClickOptions.usingJavaScript());
+        $(By.xpath(String.format(INSURANCE_DETAILS_CHECKBOX_LOCATOR, locator))).doubleClick();
         return this;
     }
 
     @Step("Click continue button")
     public AciertoPage clickContinueButton() {
         log.info("Clicking on continue button");
-        Selenide.executeJavaScript("arguments[0].click();", $((String.format(DATA_LOCATOR, "continue"))));
+        Selenide.executeJavaScript("arguments[0].click();", $(SIGUIENTE_BUTTON));
+        return this;
+    }
+
+    @Step("Click confirm checkbox")
+    public AciertoPage clickConfirmCheckbox() {
+        log.info("Clicking on confirm checkbox");
+        Selenide.executeJavaScript("arguments[0].click();", $(CONFIRM_CHECKBOX));
         return this;
     }
 
     @Step("Filling the field {locator} with data {data}")
     public AciertoPage setPersonData(String locator, String data) {
         log.info(String.format("Filling %s field with data %s", locator, data));
-        $((String.format(DATA_LOCATOR, locator))).setValue(data);
+        $((String.format(DATA_GTM_LOCATOR, locator))).setValue(data);
+        return this;
+    }
+
+    @Step("Filling the field {locator} with data {data}")
+    public AciertoPage setPersonGtmLocatorData(String locator, String data) {
+        log.info(String.format("Filling %s field with data %s", locator, data));
+        $((String.format(DATAGTM_LOCATOR, locator))).setValue(data);
         return this;
     }
 
@@ -76,21 +95,31 @@ public class AciertoPage extends BasePage {
     }
 
     @Step("Click on [I'm Interested] button with the index {index}")
-    public AciertoPage imInterestedButtonClick(int index) {
-        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(30));
-        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, index))));
+    public AciertoPage clickImInterestedButton(int buttonIndex) {
+        log.info("Click on [I'm Interested] button with the index {}", buttonIndex);
+        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(20));
+        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(IM_INTERESTED_BUTTON, buttonIndex))));
+        return this;
+    }
+
+    @Step("Click on [Te llamamos gratis] button with the index {index}")
+    public AciertoPage clickTeLlamamosGratisButton(int buttonIndex) {
+        log.info("Click on [Te llamamos gratis] button with the index {}", buttonIndex);
+        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(20));
+        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(TE_LLAMAMOS_GRATIS_BUTTON, buttonIndex))));
         return this;
     }
 
     @Step("Click on [We call you fo free] button with the index {index}")
-    public AciertoPage weCallYouForFreeButton(int index) {
-        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(30));
-        Selenide.executeJavaScript("arguments[0].click();", $(By.xpath(String.format(WE_CALL_YOU_FREE_BUTTON, index))));
+    public AciertoPage clickWeCallYouForFreeButton() {
+        log.info("Click on [Te llamamos gratis] button");
+        $(By.xpath(String.format(IM_INTERESTED_BUTTON, 1))).shouldBe(visible, Duration.ofSeconds(20));
+        Selenide.executeJavaScript("arguments[0].click();", $(WE_CALL_YOU_FREE_BUTTON));
         return this;
     }
 
     @Step("Click on the button [See details] bith the index {index}")
-    public AciertoPage seeDetailsButtonClick(int index) {
+    public AciertoPage clickSeeDetailsButton(int index) {
         log.info("Click on I'm interested button with {} index", index);
         $(By.xpath(String.format(DETAIL_BUTTON, index))).shouldBe(visible, Duration.ofSeconds(30)).click();
         return this;
@@ -105,13 +134,21 @@ public class AciertoPage extends BasePage {
 
     @Step
     public boolean isFinalModalDisplayed() {
+        log.info("Checking that final modal is displayed");
         return $(FINAL_MODAL_LOCATOR).isDisplayed();
     }
 
     @Step
-    public AciertoPage callMeOnThisPhoneButtonClick(int indexButton) {
+    public AciertoPage clickCallMeOnThisPhoneButton() {
         log.info("Click on [Call Me On This Phone] button");
-        $(By.xpath(String.format(CALL_ME_ON_THIS_PHONE_BUTTON, indexButton))).shouldBe(visible, Duration.ofSeconds(30)).click();
+        $(CALL_ME_ON_THIS_PHONE_BUTTON).shouldBe(visible, Duration.ofSeconds(30)).click();
+        return this;
+    }
+
+    @Step
+    public AciertoPage clickCallMeOnHeaderPhoneButton() {
+        log.info("Click on [Call Me On This Phone] button");
+        $(CALL_ME_ON_HEADER_PHONE_BUTTON).shouldBe(visible, Duration.ofSeconds(30)).click();
         return this;
     }
 
@@ -122,7 +159,7 @@ public class AciertoPage extends BasePage {
     }
 
     @Step("Click on [Close] button on Grateful modal")
-    public AciertoPage closeButtonClick() {
+    public AciertoPage clickCloseButton() {
         log.info("Click on [Close] button on Grateful modal");
         $(CLOSE_BUTTON).click();
         return this;
@@ -133,16 +170,17 @@ public class AciertoPage extends BasePage {
                                        String zipcode, String email, String phone) {
         log.info("Creation of an insurance record");
         open();
-        insuranceDetailsClick(amount);
-        insuranceDetailsClick(period);
+        clickInsuranceDetailsCheckbox(amount);
+        clickInsuranceDetailsCheckbox(period);
         clickContinueButton();
         isPageOpened(personalData);
         setPersonData("birth-date", dateOfBirth);
-        insuranceDetailsClick(gender);
+        clickInsuranceDetailsCheckbox(gender);
         setPersonData("zip-code", zipcode);
         clickContinueButton();
-        setPersonData("email", email);
-        setPersonData("phone", phone);
+        setPersonGtmLocatorData("email", email);
+        setPersonGtmLocatorData("phone", phone);
+        clickConfirmCheckbox();
         clickContinueButton();
         isLifeInsurancePageOpened();
         return this;
@@ -166,13 +204,13 @@ public class AciertoPage extends BasePage {
         log.info("Enter phone: {}", phone);
         $(FUNNEL_CALL_PHONE).setValue(phone);
         try {
-            callMeOnThisPhoneButtonClick(2);
-            closeButtonClick();
+            clickCallMeOnThisPhoneButton();
+            clickCloseButton();
         } catch (Throwable e) {
             log.info("CallMe button is grey ");
             $(FUNNEL_CALL_PHONE).setValue(phone);
-            callMeOnThisPhoneButtonClick(2);
-            closeButtonClick();
+            clickCallMeOnThisPhoneButton();
+            clickCloseButton();
         }
         return this;
     }
@@ -188,8 +226,8 @@ public class AciertoPage extends BasePage {
     }
 
     @Step("Click [Comparar] button")
-    public AciertoPage comparisonButtonClick() {
-        $(By.xpath(String.format(comparisonButton, "Comparar"))).click();
+    public AciertoPage clickComparisonButton() {
+        $(comparisonButton).click();
         return this;
     }
 }

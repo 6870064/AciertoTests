@@ -20,11 +20,11 @@ public class AciertoCallMeTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
-                .callMeOnThisPhoneButtonClick(1)
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
+                .clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -56,14 +56,14 @@ public class AciertoCallMeTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
-                .insuranceDetailsClick(amount)
-                .insuranceDetailsClick(period)
+                .clickInsuranceDetailsCheckbox(amount)
+                .clickInsuranceDetailsCheckbox(period)
                 .clickContinueButton()
-                .callMeOnThisPhoneButtonClick(1)
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.enterPhoneFunnelCall(phone)
-                .callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
+                .clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -92,14 +92,14 @@ public class AciertoCallMeTest extends BaseTest {
         String phone = getRandomPhone();
         String expectedPhone = String.format("+34%s", phone);
         aciertoPage.open()
-                .insuranceDetailsClick(amount)
-                .insuranceDetailsClick(period)
+                .clickInsuranceDetailsCheckbox(amount)
+                .clickInsuranceDetailsCheckbox(period)
                 .clickContinueButton()
                 .setPersonData("birth-date", dateOfBirth)
-                .insuranceDetailsClick(gender)
+                .clickInsuranceDetailsCheckbox(gender)
                 .setPersonData("zip-code", zipcode)
                 .clickContinueButton()
-                .callMeOnThisPhoneButtonClick(1)
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
         aciertoPage.fillPhoneFunnelCall(phone)
                 .closeCurrentWindow();
@@ -132,10 +132,10 @@ public class AciertoCallMeTest extends BaseTest {
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .isPageOpened("Fallecimiento");
-        aciertoPage.callMeOnThisPhoneButtonClick(1)
+        aciertoPage.clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -166,14 +166,14 @@ public class AciertoCallMeTest extends BaseTest {
         String expectedPhone = String.format("+34%s", phone);
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
-                .imInterestedButtonClick(1)
+                .clickImInterestedButton(1)
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
-                .callMeOnThisPhoneButtonClick(1)
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -204,11 +204,11 @@ public class AciertoCallMeTest extends BaseTest {
         String expectedPhone = String.format("+34%s", phone);
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
-                .seeDetailsButtonClick(1)
-                .callMeOnThisPhoneButtonClick(1)
+                .clickSeeDetailsButton(1)
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
@@ -225,7 +225,7 @@ public class AciertoCallMeTest extends BaseTest {
                 put("Correo electrónico Web", "");
                 put("Teléfono del cliente", expectedPhone);
                 put("Origen del caso", "Phone");
-                put("Origen de la Llamada", "CTC result list No price card");
+                put("Origen de la Llamada", "CTC Detail Header");
                 put("Caso principal", caseNumber);
                 put("Nombre de la cuenta", "");
             }
@@ -240,11 +240,11 @@ public class AciertoCallMeTest extends BaseTest {
         String email = getRandomEmail();
         aciertoPage.setPersonRecord(amount, period, personalDataPage, dateOfBirth, gender, zipcode, email, phone)
                 .selectProduct(2)
-                .comparisonButtonClick()
-                .callMeOnThisPhoneButtonClick(1)
+                .clickComparisonButton()
+                .clickCallMeOnHeaderPhoneButton()
                 .isFunnelCallModalDisplayed();
-        aciertoPage.callMeOnThisPhoneButtonClick(2)
-                .closeButtonClick()
+        aciertoPage.clickCallMeOnThisPhoneButton()
+                .clickCloseButton()
                 .closeCurrentWindow();
         loginPage.open()
                 .login(USERNAME, PASSWORD);
