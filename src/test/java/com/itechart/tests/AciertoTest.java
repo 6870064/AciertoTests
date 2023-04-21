@@ -77,17 +77,17 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[0]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[0]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Axa Vida Protec' and validation it in Salesforce")
@@ -119,17 +119,16 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[1]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[1]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Santalucía Vida' and validation it in Salesforce")
@@ -161,17 +160,16 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[2]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[2]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'FIATC Vida' and validation it in Salesforce")
@@ -203,17 +201,16 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[3]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[3]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Credit Andorra Life' and validation it in Salesforce")
@@ -245,17 +242,16 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[4]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[4]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Zurich Vida' and validation it in Salesforce")
@@ -287,17 +283,16 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[5]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[5]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Previs Vida' and validation it in Salesforce")
@@ -329,17 +324,16 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[6]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[6]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 
     @Test(description = "Creation of the insurance record with provider 'Allianz Vida Riesgo' and validation it in Salesforce")
@@ -371,16 +365,15 @@ public class AciertoTest extends BaseTest {
                 put("Teléfono del cliente", expectedPhone);
             }
         };
-        //TODO раскомментировать после фикса методов валидиции полей
-//        detailsPage.validate(userDetailsData);
-//        Map<String, String> userProductData = new HashMap<>() {
-//            {
-//                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
-//                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
-//                put("Nombre del producto", companiesArray[7]);
-//            }
-//        };
-//        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
-//        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
+        detailsPage.validate(userDetailsData);
+        Map<String, String> userProductData = new HashMap<>() {
+            {
+                put("Pago de frecuencia", NEW_INSURANCE_PERIOD);
+                put("Cantidad de capital", NEW_INSURANCE_AMOUNT);
+                put("Nombre del producto", companiesArray[7]);
+            }
+        };
+        detailsPage.panels().panel("Detalle de Cuenta").validate("Teléfono", expectedPhone);
+        detailsPage.panels().panel("Oportunidad y Producto").validate(userProductData);
     }
 }
